@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/netflix.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-02-21T00:00:00-07:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/"},"image":"https://jturgasen.github.io/netflix.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn","dateModified":"2016-02-21T00:00:00-07:00","datePublished":"2016-02-21T00:00:00-07:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/netflix.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2016-02-21T00:00:00-07:00">
+          
+          Feb 21, 2016
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-xsmall uk-position-relative">
+
+
+  <div>
+    
+    
+    <div class="uk-article-content"></div>
+  </div>
+
+</div>
+      </div>
+
+<p><a href="https://www.youtube.com/watch?v=-mL3zT1iIKw">A Day in the Life of a Netflix Engineer by Dave Hahn of Netflix at AWS re:Invent 2015</a></p>
+
+<p>Takeaways:</p>
+
+<ul>
+  <li>At Netflix their ops team is responsible for…
+    <ul>
+      <li>Crisis management</li>
+      <li>Availability reporting</li>
+      <li>Reliability best practices</li>
+      <li>AWS relationship</li>
+      <li>Operations education</li>
+    </ul>
+  </li>
+  <li>The #1 goal of the team is to <strong>protect the customer experience</strong> by designing for…
+    <ul>
+      <li>Graceful degredation</li>
+      <li>Failover</li>
+      <li>Failback</li>
+    </ul>
+  </li>
+  <li>Talks about the user experience and graceful failures like…
+    <ul>
+      <li>Show movie list if recommendations are broke</li>
+      <li>Failover if a streaming endpoint fails</li>
+      <li>Don’t show broke links in a page, use filler instead</li>
+    </ul>
+  </li>
+  <li>They trade increased velocity of innovation for increase failures (or increased risk)</li>
+  <li>Beware homegrown tools that make it easy to do the wrong thing (eg: no or little bounds checking)</li>
+  <li>You can’t change things you can’t measure</li>
+  <li>They use A/B testing</li>
+  <li>Blah blah blah about how great they are….</li>
+  <li>Being good at data center operations does not help them competitively as a company.  They’re entertainment, not an internet company</li>
+  <li>Talks about their custom CDN devices</li>
+  <li>SOA “composed of loosely coupled elements that have bounded contexts”</li>
+  <li>They have an internal, self-documenting tool that enumerates API dependencies and associations</li>
+  <li>Blah blah blah DevOps culture</li>
+  <li>Each microservice team completely owns their service   (on-call, deploy it, pick tech for it, etc)</li>
+  <li>Making devs be on-call is better than having ops people try to figure out software failures</li>
+  <li>Include both devs and ops in incident reviews / post-mortems</li>
+  <li>Mentions Eureka, their service discovery software</li>
+  <li>They use the EC2 API so much that they get throttled.  To alleviate this, they cache AWS objects locally in some custom software</li>
+  <li>Talks about Hystrix</li>
+  <li>Talks about automating and abstracting infrastructure to make life easier for  the devs</li>
+  <li>Talks about Spinnaker (their deployment tool)</li>
+  <li>They collect metrics for “insights”.  Uses “Atlas” (TSDB), their own software</li>
+  <li>Talks about using preditive metrics (deviations from the norm/prediction) instead of simple threshold metrics</li>
+  <li>Blah blah blah plan for failure in the cloud</li>
+  <li>The policy is that “a single failed instance should not affect a running service”</li>
+  <li>They are big into stateless-ness (in case of failures)</li>
+  <li>Use Cassandra for “high data spread and redundancy”</li>
+  <li>Chaos Monkey runs hourly.  It has been 2 years since Chaos Monkey has actually broke the system</li>
+  <li>They kick off Chaos Kong monthly</li>
+</ul>
+
+<p>Not a great talk for me because I already understand most of the concepts and tools he spoke about and he didn’t dig too deep - but a good talk for newbies.</p>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn" data-url="https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati/">&laquo; Tech Takeaway 036 Growing from the Few to the Many Scaling The Operations Organization at Facebook by Pedro Canahuati</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt/">Tech Takeaway 038 Maintaining Consistency in a Massively Parallel Environment by Dinah McNutt &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

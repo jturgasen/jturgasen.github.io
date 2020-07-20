@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takeaway 001 Building and Running Distributed Systems using Apache Mesos | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takeaway 001 Building and Running Distributed Systems using Apache Mesos" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-001-building-and-running-distributed-systems-using-apache-mesos/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-001-building-and-running-distributed-systems-using-apache-mesos/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/mesos.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-09-27T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-001-building-and-running-distributed-systems-using-apache-mesos/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-001-building-and-running-distributed-systems-using-apache-mesos/"},"image":"https://jturgasen.github.io/mesos.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Tech Takeaway 001 Building and Running Distributed Systems using Apache Mesos","dateModified":"2014-09-27T00:00:00-06:00","datePublished":"2014-09-27T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/mesos.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takeaway 001 Building and Running Distributed Systems using Apache Mesos</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2014-09-27T00:00:00-06:00">
+          
+          Sep 27, 2014
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-xsmall uk-position-relative">
+
+
+  <div>
+    
+    
+    <div class="uk-article-content"><iframe width="560" height="315" src="https://www.youtube.com/embed/hTcZGODnyf0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+  </div>
+
+</div>
+      </div>
+
+<p>Takeaways:</p>
+
+<ul>
+  <li>Read the paper <a href="http://queue.acm.org/detail.cfm?id=2482856">There’s Just No Getting around It: You’re Building a Distributed System</a> by Mark Cavage</li>
+  <li>In the Mesos vocabulary <strong>frameworks</strong> run on top of Mesos and act as coordinators</li>
+  <li>Another term for a framework is <strong>scheduler</strong> and the workers are called <strong>tasks</strong> or <strong>executors</strong></li>
+  <li>Mesos sits between the frameworks (schedulers) and the slaves/workers and provides an abstraction layer so the frameworks don’t have to talk directly to the machines</li>
+  <li>Frameworks don’t need to worry about failure detection, task start/stop/cleanup/killing/monitoring, and task distribution - Mesos does that instead</li>
+  <li>Because Mesos acts as an abstraction layer we can have multiple frameworks talking to Mesos and they all share the same pool of resources</li>
+  <li>Mesos manages <em>resources</em>, IaaS sits below it and manages <em>machines</em>, and PaaS sits above it and manages <em>applications and services</em></li>
+  <li>Resources are essentially the parameters of the task, what it needs.  For example:
+    <ul>
+      <li>I need my task to run on 8 different physical servers</li>
+      <li>The task needs to be fault tolerant so I need each physical server to be in a unique cluster</li>
+      <li>Each task on a system needs 2 cores</li>
+      <li>Each task on a system needs 8 gigs of RAM</li>
+    </ul>
+  </li>
+  <li><strong>Calls</strong> are messages sent from the scheduler/framework to Mesos (eg: run this task)</li>
+  <li><strong>Events</strong> are messages sent from Mesos to the scheduler/framework (eg: task ended, here’s the results or task died, what should we do?)</li>
+  <li>Uses the call/event message passing model instead of the request/response model because some events are generated without a request</li>
+  <li>Events are primitives, I’m not sure if calls are too</li>
+  <li><strong>Calls</strong> are essentially broken down into 3 types: lifecycle management, resource allocation, and task management
+    <ul>
+      <li>The lifecycle management primitive REGISTER is used to register a framework with Mesos</li>
+      <li>The lifecycle management primitive REREGISTER is used to reregister a framework with Mesos</li>
+      <li>The lifecycle management primitive UNREGISTER is used to unregister a framework with Mesos</li>
+      <li>The resource allocation primitive REQUEST requests resources</li>
+      <li>The resource allocation primitive DECLINE declines a resource offer from Mesos (eg: not guaranteed enough RAM for the task)</li>
+      <li>The resource allocation primitive REVIVE restarts a task</li>
+      <li>The task management primitive LAUNCH is used to launch a task</li>
+      <li>The task management primitive KILL is used to kill a task</li>
+      <li>The task management primitive ACKNOWLEDGE is to acknowledge the status of a task</li>
+      <li>The task management primitive RECONCILE is used to sync state (what you think the task should be doing vs what it is actually doing)</li>
+    </ul>
+  </li>
+  <li><strong>Events</strong> are broken down into the same 3 types: lifecycle management, resource allocation, and task management
+    <ul>
+      <li>The lifecycle management primitive REGISTERED tells the scheduler it has been successfully registered / authenticated</li>
+      <li>The lifecycle management primitive REREGISTERED is used when a scheduler faults and is restarted</li>
+      <li>The resource allocation primitive OFFERS sends resource offers to the scheduler, probably after a REQUEST</li>
+      <li>The resource allocation primitive RESCIND rescinds resource offers</li>
+      <li>The task management primitive UPDATE sends updates from a task to the scheduler (eg: current state of the task)</li>
+    </ul>
+  </li>
+  <li>The flow of a scheduler/framework running a task:
+    <ul>
+      <li>Scheduler sends a REGISTER call to Mesos.  Note that authentication can be done at this point.</li>
+      <li>Mesos responds with REGISTERED event</li>
+      <li>Optionally, the scheduler can send a REQUEST call.  <strong>NOTE</strong> This acts as a “hint” for Mesos event OFFERS.  OFFERS can be sent before a REQUEST is sent.</li>
+      <li>Mesos starts sending OFFER events to the scheduler/framework</li>
+      <li>The scheduler uses OFFER events to determine which task(s) it wants to run</li>
+      <li>The scheduler then sends a LAUNCH call to Mesos</li>
+      <li>Mesos then starts the task on the specified slave(s)</li>
+      <li>While the task runs Mesos continues to send OFFER events to the scheduler in case the framework has more stuff it needs to run</li>
+      <li>Later, Mesos will send an UPDATE event to the framework/scheduler (task complete, task failed, task lost due to hardware failure, task running, etc)</li>
+    </ul>
+  </li>
+  <li>Currently officially supports C++, Java, and Python API bindings</li>
+  <li>These are the “medium level APIs” while the primitives (OFFER, LAUNCH, REGISTER, etc) are the “low level APIs”</li>
+  <li><strong>SchedulerDriver</strong> is used to make calls from the scheduler/framework to Mesos</li>
+  <li>In the SchedulerDriver the calls to Mesos are implemented as methods</li>
+  <li>The scheduler/framework talks to the SchedulerDriver which in turn talks to Mesos</li>
+  <li>SchedulerDriver is responsible for finding Mesos (eg: failover scenario, service registry, etc)</li>
+  <li>The SchedulerDriver passes low-level events from Mesos to the scheduler/framework and sends medium-level calls from the scheduler/framework to Mesos</li>
+  <li>The SchedulerDriver is linked against <strong>libmesos</strong></li>
+  <li>libmesos uses HTTP to talk to Mesos so they are trying to remove it</li>
+  <li>99% of the types you will use with Mesos are protocol buffers</li>
+  <li>The components of a REGISTER call:
+    <ul>
+      <li><strong>user</strong> is the user name that your tasks run as, can be root if necessary</li>
+      <li>All tasks from a framework run as the user.  They are working to change this so tasks can run as multiple users</li>
+      <li><strong>name</strong> is the human-readable identifier for your framework</li>
+      <li><strong>FrameworkID</strong> is the machine-readable identifier for your framework</li>
+      <li>Frameworks/schedulers can fail.  They can then restart on another node and connect to Mesos using the same FrameworkID and communications resume</li>
+      <li>Instead of a straight up “failure” scenario you might use this to upgrade/patch a scheduler without stopping all tasks</li>
+      <li><strong>failover_timeout</strong> tells Mesos how to react when the framework fails</li>
+      <li>If the failover_timeout is set to 0 it means Mesos should kill all tasks, this is the default</li>
+      <li>If failover_timeout is set to a number then it’s the number of seconds that a Mesos should wait for before killing all of the framework’s tasks</li>
+      <li>In practice, most people either want to kill all tasks when a framework fails or to keep all tasks running when a framework fails (eg: 0 or infinite)</li>
+      <li><strong>checkpoint</strong> can either be false (the default) or a number</li>
+      <li>Checkpoint tells Mesos how to react when the mesos-slave process on a worker node dies (kill them or let them run for X I think)</li>
+      <li><strong>role</strong> is the organization or group that your framework’s task(s) should take resources from</li>
+      <li>Can be a number or an asterisk.  Asterisk = any</li>
+      <li>Role allows you to split up the resources by organization/group, fair sharing, resource reservations, etc</li>
+      <li><strong>hostname</strong> is the name of the actual host that the framework is running on</li>
+    </ul>
+  </li>
+  <li>The components of an OFFER event
+    <ul>
+      <li><strong>OfferID</strong> is the machine-readable identifier for the offer</li>
+      <li><strong>FrameworkID</strong> is the same as the one explained above in the REGISTER section</li>
+      <li><strong>SlaveID</strong> is the machine-readable identifier of the slave (VM, bare metal host) that the offer is from</li>
+      <li><strong>hostname</strong> is unknown, he skipped it!  Probably the same as the REGISTER hostname</li>
+      <li><strong>resources</strong> are what’s available on the slave to run tasks (amount of CPU, memory, disks)</li>
+      <li><strong>attributes</strong> is unknown, he skipped it!</li>
+      <li><strong>executor_ids</strong> is unknown, he skipped it too!</li>
+    </ul>
+  </li>
+  <li>The components of a LAUNCH call (to start a task):
+    <ul>
+      <li><strong>name</strong> is the human-readable identifer</li>
+      <li><strong>TaskID</strong> is the machine-readable identifier of your task, like a PID</li>
+      <li><strong>Resource</strong> is the resources your task is using, might be less than the OFFER</li>
+      <li><strong>ExecutorInfo</strong> is</li>
+      <li><strong>CommandInfo</strong></li>
+      <li><strong>bytes</strong></li>
+    </ul>
+  </li>
+  <li>TaskInfo is what describes the task, lives within a LAUNCH call</li>
+  <li>An <strong>executor</strong> sits between the mesos-slave process and the task on a node
+    <ul>
+      <li>Creates a level of “indirection” or abstraction.  Allows a single executor to run multiple tasks.  Tasks can be shell commands, threads, whatever</li>
+      <li>Containerization is either around a single task or around an executor and it’s tasks</li>
+      <li>When an executor is containerized you can scale the container based on how many tasks the executor runs</li>
+      <li>I assume the executor’s container has a hard limit on resources but can scale down when appropriate</li>
+      <li>Using the executor API is optional</li>
+      <li>The executor sends <strong>calls</strong> to the mesos-slave process and mesos-slave sends <strong>events</strong> to the executor</li>
+      <li>Similar to the Mesos and framework/scheduler interaction, executors have REGISTER, REREGISTER, UNREGISTER, UPDATE, LAUNCH, KILL, etc</li>
+      <li>By sending “generic” commands to the executor we allow it to realize the execution of the task however it wants (threads, shell commands, python, etc)</li>
+    </ul>
+  </li>
+  <li>The Mesos CLI tool has a syntax that’s similar to git</li>
+  <li>Web UI is a REST interface</li>
+  <li><strong>Command Executor</strong> sits between the task and the mesos-slave.  Can kill the task when the slave process dies</li>
+  <li>Zookeeper is only used for <strong>leader election</strong> of a master</li>
+  <li>They are working on removing the Zookeeper dependency</li>
+  <li>Other masters are passive standbys</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takeaway 001 Building and Running Distributed Systems using Apache Mesos" data-url="https://jturgasen.github.io/tech-takeaway-001-building-and-running-distributed-systems-using-apache-mesos/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-001-building-and-running-distributed-systems-using-apache-mesos/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-001-building-and-running-distributed-systems-using-apache-mesos/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-001-building-and-running-distributed-systems-using-apache-mesos/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-002-tupperware-containerized-deployment-at-facebook/">Tech Takeaway 002 Tupperware Containerized Deployment at Facebook &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

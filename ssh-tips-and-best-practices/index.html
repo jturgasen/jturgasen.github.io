@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>SSH Tips and Best Practices | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="SSH Tips and Best Practices" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/ssh-tips-and-best-practices/" />
+<meta property="og:url" content="https://jturgasen.github.io/ssh-tips-and-best-practices/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/tux.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-10-12T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/ssh-tips-and-best-practices/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/ssh-tips-and-best-practices/"},"image":"https://jturgasen.github.io/tux.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"SSH Tips and Best Practices","dateModified":"2014-10-12T00:00:00-06:00","datePublished":"2014-10-12T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/tux.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">SSH Tips and Best Practices</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2014-10-12T00:00:00-06:00">
+          
+          Oct 12, 2014
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <p>I’ve collected a huge amount of bookmarks that discuss SSH tips and best practices.  Let’s consolidate them here.  First the best practices in no particular order:</p>
+
+<ul>
+  <li><strong>Protect Private Keys with a Passphrase</strong> - If you don’t enter a passphrase when generating your private key it will be stored in plain text.</li>
+  <li><strong>Use ssh-agent to Reduce Typing</strong> - Use <code class="highlighter-rouge">ssh-agent</code> to reduce the number of times you need to type in your private key’s passphrase.</li>
+  <li><strong>Generate and Store Private Keys on a Smart Card</strong> - Look for cards that support OpenPGP or use a commercial product like <a href="https://www.crypto-stick.com/">Crypto Stick</a>.</li>
+  <li><strong>Use Protocol v2 Only</strong> - Only allow protocol version 2.  Version is is known to be insecure.</li>
+  <li><strong>Disable Password Authentication</strong> - Only use keys if possible.</li>
+  <li><strong>Create a Banner</strong> - Show your legal disclaimers at each login.</li>
+  <li><strong>Use Two-Factor Authentication</strong> - Google Authenticator has a PAM module to enable TFA for SSH.  Note it does NOT need to hit outside servers to function.</li>
+  <li><strong>Consider gpg-agent for Private Keys</strong> - GPG uses stronger encryption and more passes.</li>
+  <li><strong>Lockdown Using Directives in authorized_keys</strong> - Lots of options in here, look for the AUTHORIZED_KEYS FILE FORMAT section of the man page.</li>
+  <li><strong>Install Keys via Configuration Management Software</strong> - Why push your public keys over and over, let the CM software handle it.  Makes it easy to revoke access, too.</li>
+  <li><strong>Think About Backups</strong> - Are unencrypted private keys being backed up?  If so, who has access to them?</li>
+  <li><strong>HashKnownHosts</strong> - Have SSH save known hosts as hashes rather than plain-text hostnames so the attacker won’t know which system(s) to jump to next.</li>
+  <li><strong>Store Host Keys in DNS</strong> - Not a best practice but a neat trick, look at the <code class="highlighter-rouge">VerifyHostKeyDNS</code> option.</li>
+  <li><strong>Only Use the Original EC2 Keypairs as a Backup</strong> - Don’t use the keypairs that are generated when an EC2 instance is spun up for day to day access.</li>
+</ul>
+
+<p>And now the tips, tricks, and a couple hardening guides - also in no particular order:</p>
+
+<ul>
+  <li><a href="https://www.reddit.com/r/linux/comments/245jt9/ssh_kung_fu/">SSH Kung Fu</a> - Link to an article + Reddit comments with more tips and tricks</li>
+  <li><a href="http://www.jedi.be/blog/2010/08/27/ssh-tricks-the-usual-and-beyond/">SSH Tricks: The Unusual and Beyond</a> - Pro-tier tricks</li>
+  <li><a href="http://www.tenshu.net/2012/02/sysadmin-talks-openssh-tips-and-tricks.html">A sysadmin talks OpenSSH tips and tricks</a> - Great stuff once you get past the intro</li>
+  <li><a href="https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts#ProxyCommand_with_Netcat">OpenSSH Cookbook: Proxies and Jump Hosts</a> - Proxies and jump hosts with <code class="highlighter-rouge">nc</code> and SSH</li>
+  <li><a href="https://news.ycombinator.com/item?id=7973713">Proxies and Jump Hosts</a> - Do you need <code class="highlighter-rouge">nc</code> for jump hosts any more?  Looks like <code class="highlighter-rouge">-W</code> works instead.</li>
+  <li><a href="https://www.reddit.com/r/linuxadmin/comments/2hgizs/ssh_keys_workflow/">SSH Keys Workflow</a> - Reddit discusses where and how to store SSH keys, some good tips in the comments</li>
+  <li><a href="http://blog.tinned-software.net/restrict-ssh-logins-using-ssh-keys-to-a-particular-ip-address/">Restrict Key-based Login Based on Source IP or Hostname</a> - Set on a per-key basis, neat trick</li>
+  <li><a href="https://ef.gy/hardening-ssh">How to Harden SSH with Identities and Certificates</a> - Guide for tinfoil hat level SSH security</li>
+  <li><a href="http://csrc.nist.gov/publications/PubsDrafts.html#NIST-IR-7966">Security of Automated Access Management Using Secure Shell (SSH) by NIST</a></li>
+  <li><a href="https://news.ycombinator.com/item?id=7973407">SSH Config User and Host Aliases</a> - SSH config tricks for logging into system(s) using a different username (vs typing the different username each time)</li>
+  <li><a href="https://news.ycombinator.com/item?id=7974665">SSH Aliases Support Tab Completion</a> - Works with SFTP too!</li>
+  <li><a href="https://news.ycombinator.com/item?id=4677049">Simplify your life with an SSH config file</a> - Link to article + comments, via Hacker News</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="SSH Tips and Best Practices" data-url="https://jturgasen.github.io/ssh-tips-and-best-practices/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/ssh-tips-and-best-practices/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/ssh-tips-and-best-practices/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/ssh-tips-and-best-practices/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/what-are-vxlans/">&laquo; What are VXLANs?</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/why-use-configuration-management-software/">Why Use Configuration Management Software? &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

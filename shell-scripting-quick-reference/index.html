@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Josh Turgasen’s Shell Scripting Quick Reference | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Josh Turgasen’s Shell Scripting Quick Reference" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/shell-scripting-quick-reference/" />
+<meta property="og:url" content="https://jturgasen.github.io/shell-scripting-quick-reference/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/cloud.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-10-09T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/shell-scripting-quick-reference/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/shell-scripting-quick-reference/"},"image":"https://jturgasen.github.io/cloud.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Josh Turgasen’s Shell Scripting Quick Reference","dateModified":"2014-10-09T00:00:00-06:00","datePublished":"2014-10-09T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/cloud.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Josh Turgasen&#39;s Shell Scripting Quick Reference</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2014-10-09T00:00:00-06:00">
+          
+          Oct 9, 2014
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <p>The shell scripting quick reference I wrote way back in 2003 (!!), now in markdown!</p>
+
+<h2 id="misc-notes">Misc Notes</h2>
+
+<ul>
+  <li>As a best practice variables names should be surrounded in curly braces such as <code class="highlighter-rouge">${VARIABLE}</code></li>
+  <li>It is also a best practice to explicitly set your <code class="highlighter-rouge">$PATH</code> at the beginning of the script</li>
+  <li>To easily store file modes for backout use <em>*ACL</em> commands, they can be parsed easier than <code class="highlighter-rouge">ls -l</code> output</li>
+  <li>When using strings, quote variables to ensure the word splitting is correct</li>
+  <li>Use <code class="highlighter-rouge">echo</code> to debug your code.  <code class="highlighter-rouge">echo starting this</code> then <code class="highlighter-rouge">echo that completed</code>, or <code class="highlighter-rouge">echo ${VAR}</code></li>
+</ul>
+
+<h2 id="variables">Variables</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">VAR=VALUE</code> - Sets the variable VAR to VALUE</li>
+  <li><code class="highlighter-rouge">VAR="VALUE"</code> - Quote the VALUE if you use a string</li>
+  <li><code class="highlighter-rouge">${VAR:-VALUE}</code> - If VAR is set return its value, if not display VALUE**</li>
+  <li><code class="highlighter-rouge">${VAR:=VALUE}</code> - If VAR is set return its value, if not set VAR to VALUE</li>
+  <li><code class="highlighter-rouge">${VAR:=VALUE}</code> - If VAR is set return VALUE, if it is empty return null</li>
+  <li><code class="highlighter-rouge">${VAR:offset:length}</code> - Returns a substring of VAR beginning at <em>offset</em>.  <em>length</em> is optional</li>
+  <li><code class="highlighter-rouge">echo $VAR</code> - Displays the value of VAR</li>
+  <li><code class="highlighter-rouge">export $VAR</code> - Makes the variable VAR available to all new subprocesses</li>
+  <li><code class="highlighter-rouge">$1</code> - First argument</li>
+  <li><code class="highlighter-rouge">$2</code> - Second argument, $3 is the third argument and so on</li>
+  <li><code class="highlighter-rouge">$*</code> - All arguments</li>
+  <li><code class="highlighter-rouge">$#</code> - Number of arguments</li>
+  <li><code class="highlighter-rouge">$0</code> - Name of the shell script</li>
+  <li><code class="highlighter-rouge">$$</code> - The script’s PID</li>
+  <li><code class="highlighter-rouge">$?</code> - Exit or return code from the last command</li>
+  <li><code class="highlighter-rouge">$@</code> - All arguments as separate words</li>
+  <li><code class="highlighter-rouge">"$@"</code> - Each argument individually quoted (ie: “$1” “$2” “$3”, etc), <strong>PREFERRED OVER <code class="highlighter-rouge">$@</code></strong></li>
+  <li>
+    <p><code class="highlighter-rouge">$!</code> - Displays the PID of the last background process that exited</p>
+  </li>
+  <li><code class="highlighter-rouge">read VAR</code> - Reads input from the terminal and sets VAR to that input</li>
+  <li>
+    <p><code class="highlighter-rouge">read VAR1 VAR2 ...</code> - The first word of input is set to VAR1 the second to VAR2 and so on.  If there are multiple words left over when you get to the last variable it’s value is set to all of the remaining words</p>
+  </li>
+  <li><code class="highlighter-rouge">shift</code> - Moves all arguments to the left one place (ie: <code class="highlighter-rouge">$2</code> becomes <code class="highlighter-rouge">$1</code> and <code class="highlighter-rouge">$1</code> is removed)</li>
+  <li><code class="highlighter-rouge">shift number</code> - Move all arguments <em>number</em> of places to the left (1, 2, 3, etc - an integer)</li>
+</ul>
+
+<h2 id="case-statements">case Statements</h2>
+
+<p>The basic format of a case statement:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>case variable in
+value1 ) commands... ;;
+value2 ) commands... ;;
+...
+* ) commands... ;;
+esac
+</code></pre></div></div>
+
+<ul>
+  <li>If variable is equal to value1 then execute the commands up to <code class="highlighter-rouge">;;</code></li>
+  <li>If not, compare it to value2 and so on</li>
+  <li>If it doesn’t match any values it executes the commands after the <code class="highlighter-rouge">* )</code></li>
+</ul>
+
+<p>Another example that uses an <strong>or</strong>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>case variable in
+value1|value2 ) commands... ;;
+value3 ) commands... ;;
+...
+* ) commands... ;;
+esac
+</code></pre></div></div>
+
+<ul>
+  <li>If variable is either value1 or value2 then execute the commands up to <code class="highlighter-rouge">;;</code></li>
+  <li>If not, compare it to value3 and so on</li>
+  <li>If it doesn’t match any values it executes the commands after the <code class="highlighter-rouge">* )</code></li>
+</ul>
+
+<p>Another example using <strong>wildcards</strong>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>case variable in
+value1 ) commands... ;;
+value2* ) commands... ;;
+...
+* ) commands... ;;
+esac
+</code></pre></div></div>
+
+<ul>
+  <li>If variable is equal to value1 then execute the commands up to the two semicolons</li>
+  <li>If not, compare it to value2 and so on</li>
+  <li>If value2 is a and variable is aa or abcde it will match</li>
+  <li>If it doesn’t match any values it executes the commands after the * )</li>
+</ul>
+
+<h2 id="loops">Loops</h2>
+
+<p>The format of a for loop:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for variable in word1 word2 word3 ... ; do
+  commands....
+done
+</code></pre></div></div>
+
+<ul>
+  <li>Loops until there are no more words (ie: if there are 4 words it will loop 4 times and then go on to the next part of the script)</li>
+  <li>The value of variable is set to the current value of word each time though the loop</li>
+</ul>
+
+<p>The format of a while loop:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>while command ; do
+  commands
+done
+</code></pre></div></div>
+
+<ul>
+  <li>Loops until the exit status of <em>command</em> is non-zero</li>
+</ul>
+
+<p>The format of a until loop:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>until command ; do
+  commands
+done
+</code></pre></div></div>
+
+<ul>
+  <li>Loops until the exit status of <em>command</em> is 0</li>
+</ul>
+
+<p>How to break out of a loop:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">break</code> - Break out of the current loop and resume execution of the script after the loop</li>
+  <li><code class="highlighter-rouge">break number</code> - Break out of <em>number</em> of nested loops and resume executed of the script after the outermost loop</li>
+  <li><code class="highlighter-rouge">continue</code> - Stop execution of the current loop, go to the beginning of the loop and process the next value</li>
+  <li><code class="highlighter-rouge">continue number</code> - Same as above but stop execution of number of embedded loops</li>
+</ul>
+
+<h2 id="tests-and-comparisons">Tests and Comparisons</h2>
+
+<p>A simple if then statement that makes a decision based on the exit code of a command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if command ; then
+  commands...
+fi
+</code></pre></div></div>
+
+<ul>
+  <li>Tests the exit code of command and executes commands if it is 0</li>
+  <li>If the exit code of command is non-zero the script continues after the <code class="highlighter-rouge">fi</code></li>
+</ul>
+
+<p><code class="highlighter-rouge">[ command ]</code> - <code class="highlighter-rouge">[</code> is an alias for <code class="highlighter-rouge">test</code> and must be closed with <code class="highlighter-rouge">]</code>.  Here is an example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if [ test ] ; then
+  commands...
+fi
+</code></pre></div></div>
+
+<ul>
+  <li>Tests the exit code of test and executes commands if it is 0</li>
+  <li>If the exit code of test is non-zero the script continues after the fi</li>
+</ul>
+
+<p>An <code class="highlighter-rouge">if / else</code> statement:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if [ test ] ; then
+  commands...
+else
+  commands...
+fi
+</code></pre></div></div>
+
+<p>An else if (<code class="highlighter-rouge">elif</code>) statement, you can nest them:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if [ test1 ] ; then
+  commands1...
+elif [ test2 ] ; then
+  commands2...
+fi
+fi
+</code></pre></div></div>
+
+<p>If the exit status of <code class="highlighter-rouge">test1</code> is 0 then <code class="highlighter-rouge">commands1</code> is executed and the script continues after the second <code class="highlighter-rouge">fi</code>
+If the exit status of <code class="highlighter-rouge">test1</code> is non-zero then the <code class="highlighter-rouge">elif</code> test is executed
+If the exit status of <code class="highlighter-rouge">test2</code> is 0 then <code class="highlighter-rouge">commands2</code> is executed
+If the exit status of <code class="highlighter-rouge">test2</code> is non-zero then nothing is executed and the script continues after the first <code class="highlighter-rouge">fi</code></p>
+
+<p>Chaining commands based on exit code:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">command1 &amp;&amp; command2</code> - If <em>command1</em> has an exit code of 0, run <em>command2</em></li>
+  <li><code class="highlighter-rouge">command1 || command2</code> - If <em>command2</em> non-zero exit code run <em>command2</em></li>
+</ul>
+
+<p>Integer comparisons:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">integer1 -eq integer2</code> - Equal to</li>
+  <li><code class="highlighter-rouge">integer1 -ne integer2</code> - Not equal</li>
+  <li><code class="highlighter-rouge">integer1 -gt integer2</code> - Greater than</li>
+  <li><code class="highlighter-rouge">integer1 -lt integer2</code> - Less than</li>
+  <li><code class="highlighter-rouge">integer1 -le integer2</code> - Less than or equal to</li>
+  <li><code class="highlighter-rouge">integer1 -ge integer2</code> - Greater than or equal to</li>
+</ul>
+
+<p>String comparisons:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">string1 = string2</code> - Equal to</li>
+  <li><code class="highlighter-rouge">string1 != string2</code> - Not equal to</li>
+  <li><code class="highlighter-rouge">-z string</code> - Zero length</li>
+  <li><code class="highlighter-rouge">-n string</code> - Non-zero length</li>
+</ul>
+
+<p>File tests:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-a file</code> - File exists (ksh only)</li>
+  <li><code class="highlighter-rouge">-b file</code> - Block device</li>
+  <li><code class="highlighter-rouge">-c file</code> - Character device</li>
+  <li><code class="highlighter-rouge">-d file</code> - Directory</li>
+  <li><code class="highlighter-rouge">-f file</code> - Ordinary file</li>
+  <li><code class="highlighter-rouge">-g file</code> - Has the SGID bit set</li>
+  <li><code class="highlighter-rouge">-G file</code> - If file is owned by the EGID of the process</li>
+  <li><code class="highlighter-rouge">-k file</code> - Sticky bit set</li>
+  <li><code class="highlighter-rouge">-L file</code> - Symbolic link</li>
+  <li><code class="highlighter-rouge">-O file</code> - If the file is owned by the EUID of the process</li>
+  <li><code class="highlighter-rouge">-p file</code> - Named pipe or FIFO</li>
+  <li><code class="highlighter-rouge">-r file</code> - Readable by the process</li>
+  <li><code class="highlighter-rouge">-s file</code> - Non-zero length</li>
+  <li><code class="highlighter-rouge">-u file</code> - Has SUID bit set</li>
+  <li><code class="highlighter-rouge">-w file</code> - Writeable by the process</li>
+  <li><code class="highlighter-rouge">-x file</code> - Executable by the process</li>
+  <li><code class="highlighter-rouge">file1 -ef file2</code> - <em>file1</em> and <em>file2</em> are linked (symlink or hard link)</li>
+  <li><code class="highlighter-rouge">file1 -nt file2</code> - <em>file1</em> is newer than <em>file2</em></li>
+  <li><code class="highlighter-rouge">file1 -ot file2</code> - <em>file1</em> is older than <em>file2</em></li>
+</ul>
+
+<h2 id="trapping-signals">Trapping Signals</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">trap command signal1 signal2 ...</code> - Execute <em>command</em> if signal(s) are received</li>
+  <li><code class="highlighter-rouge">trap signal1 signal2 ...</code> - Stop trapping signal1, signal2 and so on</li>
+</ul>
+
+<p>Common signals, check manpages for more:</p>
+
+<ul>
+  <li>0 - Exit from shell</li>
+  <li>1 - Hangup or logout</li>
+  <li>2 - Interrupt (CTRL + C)</li>
+  <li>15 - Software termination via kill</li>
+</ul>
+
+<h2 id="io-redirection">I/O Redirection</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">&gt; file</code> - Save STDOUT to <em>file</em></li>
+  <li><code class="highlighter-rouge">&gt;&gt; file</code> - Append STDOUT to <em>file</em></li>
+  <li><code class="highlighter-rouge">&lt; file</code> - Read STDIN from <em>file</em></li>
+  <li><code class="highlighter-rouge">2&gt; file</code> - Saves STDERR to <em>file</em></li>
+  <li><code class="highlighter-rouge">2&gt;&amp;1</code> - Redirects STDERR to SDTOUT</li>
+  <li><code class="highlighter-rouge">&gt; file 2&gt;&amp;1</code> - Redirects STDOUT and STDERR to <em>file</em></li>
+  <li><code class="highlighter-rouge">command1 | command2</code> - Takes STDOUT from <em>command1</em> and redirects it to STDIN to <em>command2</em></li>
+  <li><code class="highlighter-rouge">command | tee file</code> - Sets the output of command to both the screen and <em>file</em></li>
+  <li><code class="highlighter-rouge">command &gt; /dev/null</code> - Redirects STDOUT to /dev/null</li>
+  <li><code class="highlighter-rouge">command 2&gt; /dev/null</code> - Redirects STDERR to /dev/null</li>
+  <li><code class="highlighter-rouge">command &gt; /dev/null 2&gt;&amp;1</code> - Redirects both STDOUT and STDERR to /dev/null</li>
+</ul>
+
+<h2 id="misc-helpful-commands">Misc Helpful Commands</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">expr</code> - Integer math</li>
+  <li><code class="highlighter-rouge">wait PID</code> - Pause until <em>PID</em> is finished executing, if no PID is specified wait for all background jobs to complete</li>
+  <li><code class="highlighter-rouge">sleep seconds</code> - Pause for <em>seconds</em> and continue</li>
+  <li><code class="highlighter-rouge">true</code> - Does nothing, always returns an exit status of 0</li>
+  <li><code class="highlighter-rouge">false</code> - Does nothing, always returns an exit status of 1</li>
+  <li><code class="highlighter-rouge">sort -u</code> - Removes duplicate lines</li>
+  <li><code class="highlighter-rouge">xargs command</code> - Allows <em>command</em> to read arguments from standard input, eg: <code class="highlighter-rouge">find . | xargs ls -la</code></li>
+  <li><code class="highlighter-rouge">set -a</code> - Exports all shell variables</li>
+  <li><code class="highlighter-rouge">exec command</code> - Replaces the current running process with <em>command</em>, used often when starting a new shell so you don’t have to exit twice</li>
+  <li><code class="highlighter-rouge">uniq</code> - Used to remove and/or manipulate continuous duplicate lines</li>
+  <li><code class="highlighter-rouge">rev</code> - Reverses the characters on each line in a file (eg: abc becomes cba, etc)</li>
+  <li><code class="highlighter-rouge">tac</code> - Reverse cat, last line first, second to last second, etc</li>
+  <li><code class="highlighter-rouge">usleep time</code> - Sleeps for <em>time</em> in microseconds</li>
+  <li><code class="highlighter-rouge">basename command</code> - Strips all leading slashes off command such as $0 or /usr/bin/ls</li>
+  <li>
+    <p><code class="highlighter-rouge">getopts</code> - Parses arguments for shell scripts</p>
+  </li>
+  <li><code class="highlighter-rouge">cut -ddelimiter -ffields</code> - Cuts the specified field(s) from standard input using <em>delimiter</em> to delimit each <em>field</em>.  Fields can be a single field (3), multiple fields (1,3,5), a range of fields (1-10) or a combination (1,3-4,7).</li>
+  <li>
+    <p><code class="highlighter-rouge">cut -cnumber</code> - Cuts characters <em>number</em> from each line.  <em>number</em> is the same format as fields above</p>
+  </li>
+  <li><code class="highlighter-rouge">awk '{print $field }'</code> - Displays <em>field</em> number using 1 or more spaces as a field delimiter</li>
+  <li><code class="highlighter-rouge">awk '{print $field1,$field2 }'</code> - Same as above but prints two fields separated by spaces, remove the comma to have the fields not separated</li>
+  <li><code class="highlighter-rouge">awk -Fdelimiter '{print $field }'</code> - Prints field number <em>field</em> using delimiter as the field delimiter</li>
+  <li><code class="highlighter-rouge">awk '{print $NF}'</code> - Prints the last field in each line (the <code class="highlighter-rouge">$</code> regex)</li>
+  <li><code class="highlighter-rouge">awk 'length($0) &gt;number'</code> - Prints each line that is more than <em>number</em> of characters long</li>
+  <li><code class="highlighter-rouge">awk 'NF &gt; 0'</code> - Prints all non-blank lines in a file</li>
+  <li><code class="highlighter-rouge">awk '{print NF}'</code> - Prints the number of fields in each line</li>
+  <li>
+    <p><code class="highlighter-rouge">awk '/string/{print $1}'</code> - Grabs the first field in each line that contains string</p>
+  </li>
+  <li><code class="highlighter-rouge">grep -i string</code> - Case insensitive grep</li>
+  <li><code class="highlighter-rouge">grep -v string</code> - Displays all lines except those that contain <em>string</em></li>
+  <li><code class="highlighter-rouge">grep -c string</code> - Displays the number of lines that contain <em>string</em></li>
+  <li><code class="highlighter-rouge">grep -n string</code> - Precedes each line with it’s line number in the file</li>
+  <li><code class="highlighter-rouge">grep -h string</code> - Suppresses the file name from being displayed when searching multiple files</li>
+  <li><code class="highlighter-rouge">grep -q string</code> - Suppresses all output, returns an exit status of 0 if the string is found</li>
+  <li>
+    <p><code class="highlighter-rouge">egrep 'string1|string2'</code> - Greps for lines containing <em>string1</em> or <em>string2</em>, more strings can be specified, delimit them with a pipe</p>
+  </li>
+  <li><code class="highlighter-rouge">tr string1 string2</code> - Replace all instances of <em>string1</em> with <em>string2</em></li>
+  <li><code class="highlighter-rouge">tr -d string</code> - Delete all instances of <em>string</em></li>
+</ul>
+
+<h2 id="misc-stuff">Misc Stuff</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">#!shell -e</code> - Exit script if any command returns a non-zero exit code</li>
+  <li><code class="highlighter-rouge">#!shell -x</code> - Enables debugging</li>
+  <li>
+    <p><code class="highlighter-rouge">#!shell -n</code> - Checks the syntax without running any commands</p>
+  </li>
+  <li><code class="highlighter-rouge">[characters]</code> - Matches single character such as [A-Z] or [1-4] or any characters in the brackets such as [12345] or [aD3Fbr]</li>
+  <li><code class="highlighter-rouge">[characters,characters]</code> - Matches a single character within 2 ranges of (ie: [a-c,e-g]</li>
+  <li><code class="highlighter-rouge">[!characters]</code> - Matches any characters EXCEPT those listed, same format as above</li>
+  <li><code class="highlighter-rouge">?</code> - Matches a single character except period or dot</li>
+  <li><code class="highlighter-rouge">*</code> - Matches zero or more characters except files that begin with a period or dot</li>
+  <li><code class="highlighter-rouge">\</code> - The next character loses it’s special meaning to the shell (such as echo *)</li>
+  <li><code class="highlighter-rouge">''</code> - Single quotes, all characters within single quotes lose their special meaning to the shell</li>
+  <li><code class="highlighter-rouge">""</code> - Double quotes, SOME characters lose their special meaning.  $, ? and * do not</li>
+  <li>`` - Backticks or backquotes, replaces the enclosed command with the output of that command</li>
+  <li><code class="highlighter-rouge">#</code> - Comment</li>
+  <li><code class="highlighter-rouge">exit number</code> - Exit the script with a return or exit code of number</li>
+  <li><code class="highlighter-rouge">:</code> - Performs no action, always runs an exit code of 0</li>
+  <li><code class="highlighter-rouge">name() { commands }</code> - Creates a function named name that contains the command or commands commands</li>
+  <li><code class="highlighter-rouge">function name { commands }</code> - Alternate method of creating a function</li>
+  <li><code class="highlighter-rouge">return number</code> - Makes the exit status of a function number</li>
+  <li><code class="highlighter-rouge">. file</code> - Executes the contents of file in the current shell</li>
+  <li><code class="highlighter-rouge">echo</code> - Prints a blank line</li>
+  <li><code class="highlighter-rouge">eval</code> - Has the shell evaluate the line twice, often used with ~user</li>
+  <li><code class="highlighter-rouge">( ls /dir ) | while read file ; do cp "$file" ../newdir ; done</code> - Used to process a list of files where some of the files contain spaces in their name</li>
+</ul>
+
+<h2 id="bash-specific-stuff">bash Specific Stuff</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">* + - / %</code> - Arithmetic operators</li>
+  <li><code class="highlighter-rouge">((var++))</code> - Increments <em>var</em> after obtaining it’s value (eg: echo $((ONE++)) returns 1)</li>
+  <li><code class="highlighter-rouge">((++var))</code> - Increments <em>var</em> before obtaining it’s value (eg: echo $((++ONE)) returns 2)</li>
+  <li><code class="highlighter-rouge">((var--))</code> - Decrements <em>var</em> after obtaining it’s value</li>
+  <li><code class="highlighter-rouge">((--var))</code> - Decrements <em>var</em> before obtaining it’s value</li>
+  <li><code class="highlighter-rouge">((var=operation))</code> = Sets <em>var</em> to the result of the arithmetic operation</li>
+</ul>
+
+<p>The following are character classes, they go between <code class="highlighter-rouge">[::]</code> such as <code class="highlighter-rouge">[:lower:]</code>:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">alnum</code> - Alphanumeric</li>
+  <li><code class="highlighter-rouge">alpha</code> - All letters</li>
+  <li><code class="highlighter-rouge">digit</code> - All numbers</li>
+  <li><code class="highlighter-rouge">lower</code> - Lowercase letters</li>
+  <li><code class="highlighter-rouge">punct</code> - Punctuation symbols</li>
+  <li><code class="highlighter-rouge">upper</code> - Upper case letter</li>
+</ul>
+
+<p>Some bash predefined variables:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">EUID</code> - Current UID</li>
+  <li><code class="highlighter-rouge">GROUPS</code> - Groups you’re a member of, array variable</li>
+  <li><code class="highlighter-rouge">HOSTNAME</code> - The usual</li>
+  <li><code class="highlighter-rouge">PPID</code> - bash’s PPID</li>
+  <li><code class="highlighter-rouge">RANDOM</code> - Prints a random number between 0 and 32k when referenced</li>
+  <li><code class="highlighter-rouge">SHELLOPTS</code> - Options passed to the current shell using -o</li>
+  <li><code class="highlighter-rouge">OPTARG</code> - Last command line argument read using getops</li>
+  <li><code class="highlighter-rouge">OPTIND</code> - Points to the array index of the next argument to by processed with getops</li>
+  <li><code class="highlighter-rouge">UID</code> - UID of the current user as set when the shell was started</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Josh Turgasen's Shell Scripting Quick Reference" data-url="https://jturgasen.github.io/shell-scripting-quick-reference/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/shell-scripting-quick-reference/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/shell-scripting-quick-reference/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/shell-scripting-quick-reference/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/ensuring-smooth-software-rollouts/">&laquo; Ensuring Smooth Software Rollouts</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/symantec-cluster-server-quick-reference/">My Symantec Veritas Cluster Server Quick Reference &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

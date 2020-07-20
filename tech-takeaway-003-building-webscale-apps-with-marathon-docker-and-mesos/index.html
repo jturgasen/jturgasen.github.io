@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takwaway 003 Building Webscale Apps with Marathon, Docker, and Mesos | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takwaway 003 Building Webscale Apps with Marathon, Docker, and Mesos" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-003-building-webscale-apps-with-marathon-docker-and-mesos/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-003-building-webscale-apps-with-marathon-docker-and-mesos/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/mesos.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-09-28T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-003-building-webscale-apps-with-marathon-docker-and-mesos/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-003-building-webscale-apps-with-marathon-docker-and-mesos/"},"image":"https://jturgasen.github.io/mesos.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Tech Takwaway 003 Building Webscale Apps with Marathon, Docker, and Mesos","dateModified":"2014-09-28T00:00:00-06:00","datePublished":"2014-09-28T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/mesos.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takwaway 003 Building Webscale Apps with Marathon, Docker, and Mesos</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2014-09-28T00:00:00-06:00">
+          
+          Sep 28, 2014
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-xsmall uk-position-relative">
+
+
+  <div>
+    
+    
+    <div class="uk-article-content"><iframe width="560" height="315" src="https://www.youtube.com/embed/6y86sw7wj_A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+  </div>
+
+</div>
+      </div>
+
+<p>Takeaways:</p>
+
+<ul>
+  <li>We need <em>aggregated</em> resources (Mesos) instead of <em>partitioned</em> resources (VMs)</li>
+  <li>You break up your resources (into VMs) and then put them back together (webscale apps), that seems backwards</li>
+  <li>Instead of making the lines between machines more distinct (VMs) they want to make them blurrier (treat a cluster as one big computer)</li>
+  <li>They want to do for the data center what an OS does for a single machine</li>
+  <li>Static provisioning and partitioning leads to wasted resources, Mesos is more about dynamic provisioning</li>
+  <li>Mesos is a <strong>resource manager</strong></li>
+  <li>Mesos allows multiple local schedulers to live in the same cluster (eg: Marathon + Hadoop + Chronos)</li>
+  <li><strong>Resource offers</strong> are when Mesos sends an offer to a scheduler</li>
+  <li>It’s up to the scheduler to determine which offer is a <em>good fit</em> or if the offer is a <em>good enough fit</em> or if the offer <em>doesn’t fit</em></li>
+  <li>The offer architecture allows the scheduler itself to make the decision rather than Mesos</li>
+  <li>Offers include details such as physical location (rack and/or cluster location) so the scheduler can make decisions.
+    <ul>
+      <li>Do two tasks need to be on the same rack for data locality?</li>
+      <li>Do two tasks need to be in separate clusters for fault tolerance</li>
+    </ul>
+  </li>
+  <li>Assume that things break all the time</li>
+  <li>Mesos is designed to have no SOPF</li>
+  <li>Slave processes on a node can die and re-attach (if you configure it that way)</li>
+  <li>Frameworks are made of 2 parts: the <strong>scheduler</strong> and the <strong>executor</strong></li>
+  <li>Frameworks interact with Mesos and the scheduler, which is a part of the framework, makes the scheduling decisions</li>
+  <li>Mesos is very flexible.  You can include things such as NICs and GPUs in the resource offers</li>
+  <li>Break down jobs/tasks into categories
+    <ul>
+      <li>On-demand batch jobs (MapReduce)</li>
+      <li>Long or infinitely running tasks (webapps)</li>
+      <li>Scheduled tasks (cron job type things)</li>
+    </ul>
+  </li>
+  <li>Mesosphere has written frameworks that cover most types of webapps, you shouldn’t have to write your own for each new webapp</li>
+  <li>Chronos supports job dependencies</li>
+  <li>ElasticSearch and MPI and Hadoop already and many more have schedulers written</li>
+  <li>Marathon is like an init or upstart for your data center, generic long-running task scheduler.  (“I always want 60 instances of this webapp running”)</li>
+  <li>Marathon has a webform that makes REST calls to the scheduler</li>
+  <li>Marathon also uses the REST interface so you can easily view task states via CLI</li>
+  <li>Marathon supports health checks such as…
+    <ul>
+      <li>Interval</li>
+      <li>Max Consecutive Failures</li>
+      <li>Timeout</li>
+      <li>Grace period</li>
+      <li>Path / port / protocol to use for the health check</li>
+    </ul>
+  </li>
+  <li>Marathon has 2 ways to determine if stuff is healthy.  Either poll the endpoint or you can subscribe a web server to receive callbacks.</li>
+  <li>When something happens a task will post events to it’s callback handler and you can act on those as necessary</li>
+  <li>Can kill tasks via CLI</li>
+  <li>Supports HA but that’s done out of band separate from Marathon / Mesos (eg: scripting against your load balancer)</li>
+  <li>Master heartbeats to slaves</li>
+  <li>Has an <strong>event bus</strong>, research this more</li>
+  <li>Upcoming Marathon and Mesos features…
+    <ul>
+      <li>Versioned immutable apps including history and rollbacks</li>
+      <li>Health checks, they are finding ways to have to mesos-slave do the health checks because the scheduler doing everything doesn’t scale</li>
+      <li>Health checks will be aggregated and sent back to the scheduler vs the scheduler doing 20 billion health checks</li>
+      <li>Rolling deploys, 2 parameters, upgrade 1 instance then 100, then 25% then 50% then 100%</li>
+      <li>Namespaces and dependencies</li>
+    </ul>
+  </li>
+  <li>In Marathon they have a flat list of apps right now.  They want to create dependencies (trees)</li>
+  <li>Will be able to do things like first scale up DBs before scaling up web servers so your DB doesn’t get overloaded, dependencies essentially</li>
+  <li>Mesos could be called a <strong>resource broker</strong></li>
+  <li>Mesos is compute-agnostic, onsite vs local, can talk to EC2 and OpenStack at the same time, etc</li>
+  <li>Largest scale to date is 50,000 slaves</li>
+  <li>Mesos only has one active master at a time, but you can run more that are passive</li>
+  <li>Always want a uneven number of masters because you need quorum to elect a new master</li>
+  <li>When a new master is elected all components of the cluster will re-register with the new master and reconcile state (vs replicating state to all passive masters)</li>
+  <li>This may change in the future (eg: replicated state between masters)</li>
+  <li>Hadoop framework may support weights so you can prioritize things that run on the same cluster</li>
+  <li>Yarn is geared towards big data apps, not a general-purpose solution like Mesos</li>
+  <li>Mesos supports resource reservations (for a department or an app), implemented via weights</li>
+  <li>Reservations can also be set on a per-node basis (eg: I want framework X to have Y resources on every node)</li>
+  <li>Research is being done on “right-sizing” tasks, similar to FB’s Tupperware</li>
+  <li>People are working on “reactive auto-scale”, where you can fire up more AWS instances if your cluster is running low on capacity</li>
+  <li>People are also working on “preditive auto-scale” by looking at traffic patterns and pre-provisioning more nodes</li>
+  <li>Twitter does not use any special hardware for their master</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takwaway 003 Building Webscale Apps with Marathon, Docker, and Mesos" data-url="https://jturgasen.github.io/tech-takeaway-003-building-webscale-apps-with-marathon-docker-and-mesos/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-003-building-webscale-apps-with-marathon-docker-and-mesos/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-003-building-webscale-apps-with-marathon-docker-and-mesos/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-003-building-webscale-apps-with-marathon-docker-and-mesos/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/tech-takeaway-002-tupperware-containerized-deployment-at-facebook/">&laquo; Tech Takeaway 002 Tupperware Containerized Deployment at Facebook</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-004-deterministic-capacity-planning-for-openstack-as-elastic-cloud-infrastructure/">Tech Takeaway 004 Deterministic capacity planning for OpenStack as elastic cloud infrastructure &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

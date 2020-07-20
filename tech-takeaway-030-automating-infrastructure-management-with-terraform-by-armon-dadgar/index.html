@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takeaway 030 Automating Infrastructure Management with Terraform by Armon Dadgar | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takeaway 030 Automating Infrastructure Management with Terraform by Armon Dadgar" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/terraform.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-08-23T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/"},"image":"https://jturgasen.github.io/terraform.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Tech Takeaway 030 Automating Infrastructure Management with Terraform by Armon Dadgar","dateModified":"2015-08-23T00:00:00-06:00","datePublished":"2015-08-23T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/terraform.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takeaway 030 Automating Infrastructure Management with Terraform by Armon Dadgar</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2015-08-23T00:00:00-06:00">
+          
+          Aug 23, 2015
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-xsmall uk-position-relative">
+
+
+  <div>
+    
+    
+    <div class="uk-article-content"></div>
+  </div>
+
+</div>
+      </div>
+
+<p><a href="https://www.youtube.com/watch?v=WdV4eYZO5Ao">Armon Dadgar of Hashicorp talks about Terraform at the SF CloudOps Meetup in October 2014</a></p>
+
+<p>Takeaways:</p>
+
+<ul>
+  <li>To him, orchestration is <strong>infrastructure lifecycle management</strong> that consists of
+    <ul>
+      <li>Acquisition</li>
+      <li>Provisioning</li>
+      <li>Updating</li>
+      <li>Destroying</li>
+    </ul>
+  </li>
+  <li>Talks about the old way of doing things (weeks to get a server, manual provisioning/updating/destroying)</li>
+  <li>Talks about how the cloud is “utility computing”</li>
+  <li>You can aquire the infrastructure quickly with cloud (AWS via a credit card), but how do you provision quickly?</li>
+  <li>Config management abstracts away complexity because you don’t need to know the shell code to put a file into place with X mode and Y owner, you just need to know Chef/Puppet/etc</li>
+  <li>Config management lets you “codify knowledge” by putting it into shared repos</li>
+  <li>Automation is less error prone than manual processes</li>
+  <li>Containers…
+    <ul>
+      <li>OS-agnostic packaging</li>
+      <li>Simplify delivery</li>
+      <li>Lets you use config management inside of it</li>
+    </ul>
+  </li>
+  <li>Talks about the rise of SaaS and how it allows companies to focus on their core compentency rather than manage an Exchange server</li>
+  <li>SaaS is great, but there are so many SaaS providers that it introduces <em>more</em> complexity</li>
+  <li>Operators / sysadmins
+    <ul>
+      <li>Understand infrastructure so you can fix it</li>
+      <li>Adopt new technology and stay nimble</li>
+      <li>Deploy efficiently - move fast without breaking things</li>
+    </ul>
+  </li>
+  <li>The goals of Terraform
+    <ul>
+      <li>One workflow that’s technology agnostic</li>
+      <li>Focuses on the modern data center (public cloud + private cloud + SaaS + legacy)</li>
+      <li>Make PaaS and SaaS a first class entity because they aren’t going away</li>
+      <li>Operator first</li>
+    </ul>
+  </li>
+  <li>He feels infrastructure as code is
+    <ul>
+      <li>Description of the desired state</li>
+      <li>Management automation</li>
+      <li>The infrastructure is documented via code</li>
+      <li>Knowlege sharing (eg: save Chef and Terraform info in git for all to see)</li>
+    </ul>
+  </li>
+  <li>Terraform must be flexible and support
+    <ul>
+      <li>The entire data center</li>
+      <li>PaaS and SaaS</li>
+      <li>Networking</li>
+      <li>Storage</li>
+    </ul>
+  </li>
+  <li>Terraform uses HCL (Hashicorp Config Language)
+    <ul>
+      <li>Based on libucl</li>
+      <li>Human readable</li>
+      <li>JSON interoperable</li>
+    </ul>
+  </li>
+  <li>Terraform uses <strong>resources</strong> like Chef and Puppet
+    <ul>
+      <li>The first part of a resource defines it’s type (eg: digitalocean_droplet or dns_record)</li>
+      <li>The second part of a resource is it’s logical name (eg: webserver, foodns)</li>
+      <li>The third part of a resource is the parameters (OS image, region, memory size, DNS record type, etc)</li>
+    </ul>
+  </li>
+  <li>Terraform does does dependency management for you (eg: does the DNS record come first or does the DO droplet come first)</li>
+  <li>Terraform recognizes the ordering of operations by creating a <strong>resource graph</strong></li>
+  <li>The resource graph also lets you visualize operations and perform non-dependent operations in parallel</li>
+  <li><strong>Providers</strong> are
+    <ul>
+      <li>The integration points (eg: AWS, Azure, etc)</li>
+      <li>They expose resources</li>
+      <li>Provides a simple CRUD API that abstracts Terraform from the provider</li>
+    </ul>
+  </li>
+  <li>Talks about how infra is layered (physical -&gt; virtual -&gt; containers)</li>
+  <li>It’s easy to roll out infra, but it’s hard to change it because you usually don’t know what depends on what</li>
+  <li>Terraform separates planning from execution
+    <ul>
+      <li>Operator determines what changes to make</li>
+      <li>Terraform creates an <strong>execution plan</strong> and shows it to the operator</li>
+      <li>If it looks good the operator tells Terraform to apply the plan</li>
+      <li>The flow is State + Configuration -&gt; Execution Plan -&gt; Plan Application -&gt; State</li>
+    </ul>
+  </li>
+  <li>The tenants of Terraform are
+    <ul>
+      <li>Infra as code for understandability and documentation</li>
+      <li>Compose providers so you can express the layers of infra (physical virtual container)</li>
+      <li>Safely iterate (plan -&gt; apply)</li>
+      <li>Technology agnostic</li>
+    </ul>
+  </li>
+  <li>Terraform <strong>modules</strong>
+    <ul>
+      <li>Abstract infra components</li>
+      <li>Provide “higher level reasoning” (think Chef for OS files)</li>
+      <li>You can re-use them (DRY)</li>
+    </ul>
+  </li>
+  <li>Talks about how operations are on the front line of enabling a CD model</li>
+  <li>Talks about how self-service is the ultimate end-game</li>
+  <li>In the Terraform pipline
+    <ul>
+      <li>Ops takes care of the modules and “substrate” (eg: lower level stuff, VPN, storage, etc)</li>
+      <li>Developers just plug-and-play</li>
+    </ul>
+  </li>
+  <li>Terraform enables the operators and by doing that it also enables Devs and end-users via self-service</li>
+  <li>You can’t rollback changes</li>
+  <li>If a step fails subsequent steps won’t be applied, but steps that are being performed in parallel will be applied</li>
+  <li>If a plan+execution fails the next plan+execution will handle cleanup of partial changes</li>
+  <li>Note how abstractions are per-provider.  They do not abstract to the level of “just a VM” but instead they use a “AWS VM”</li>
+  <li>Many tools tried to abstract to the VM level, all failed, that is why they are not abstracting this far</li>
+  <li>Execution plans tell you if it’s going to do a create -&gt; destroy operation</li>
+  <li>Terraform maintains a state file.  You can run a command to refresh it and/or it refreshes each time a plan phase runs</li>
+  <li>They are exporing using a centralized state repo like git instead of a file</li>
+  <li>They are working on a feature that will read your AWS config and spits out Terraform templates</li>
+  <li>If you tell Terraform to spin up 4 web servers you can flip a variable and change it to 5 - no need to create a new template</li>
+  <li>Terraform is not an application scheduler.  It can create 4 Docker containers on a VM but you can’t say “I want these 4 containers living on any VM”</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takeaway 030 Automating Infrastructure Management with Terraform by Armon Dadgar" data-url="https://jturgasen.github.io/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/tech-takeaway-029-scaling-facebook-with-opensource-tools-by-david-recordon/">&laquo; Tech Takeaway 029 Scaling Facebook with OpenSource Tools by David Recordon</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-031-cloud-native-cost-optimization-by-adrian-cockcroft/">Tech Takeaway 031 Cloud Native Cost Optimization by Adrian Cockcroft &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

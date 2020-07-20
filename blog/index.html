@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>JoshT’s Tech Blog | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="JoshT’s Tech Blog" />
+<meta name="author" content="Josh Turgasen" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:description" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<link rel="canonical" href="https://jturgasen.github.io/blog/" />
+<meta property="og:url" content="https://jturgasen.github.io/blog/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<link rel="next" href="https://jturgasen.github.io/blog/2/" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"Josh Turgasen"},"url":"https://jturgasen.github.io/blog/","author":{"@type":"Person","name":"Josh Turgasen"},"description":"Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security","headline":"JoshT’s Tech Blog","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/header-tux.jpg);" data-uk-height-viewport><div class="uk-position-cover" style=" background: linear-gradient(to left top,rgba(218, 91, 197, 0.8) 0%,rgba(151, 27, 191, 0.8) 30%,rgba(2, 8, 212, 0.8) 80%);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li class="uk-active"><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container uk-container-small uk-flex uk-flex-middle" data-uk-height-viewport="offset-top: true">
+    <div class="uk-section uk-section-regular uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center">
+          <div class="uk-width-1-1">
+            
+                <h1 class="uk-heading-medium">All Blog Entries</h1>
+              
+              
+                <div class="uk-text-lead">DevOps, SRE, Cloud, Information Security, SaaS, and Related Disciplines</div>
+              
+              
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            
+
+<div class="uk-child-width-1-2@m uk-grid-match" data-uk-grid>
+  
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/kubernetes.jpg" alt="Certified Kubernetes Administrator Passed!" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/cka-passed/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/cka-passed/">Certified Kubernetes Administrator Passed!</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/cka-passed/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Jul 19, 2020</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/sre-book.jpg" alt="Taking a Break" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/taking-a-break/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/taking-a-break/">Taking a Break</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/taking-a-break/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Jun 11, 2016</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/sre-book.jpg" alt="Unquestionably Essential Site Reliability Engineering by OReilly" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/unquestionably-essential-site-reliability-engineering-by-oreilly/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/unquestionably-essential-site-reliability-engineering-by-oreilly/">Unquestionably Essential Site Reliability Engineering by OReilly</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/unquestionably-essential-site-reliability-engineering-by-oreilly/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Jun 10, 2016</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/kafka.jpg" alt="Tech Takeaway 040 Apache Kafka and the Next 700 Stream Processing Systems by Jay Kreps" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-040-apache-kafka-and-the-next-700-stream-processing-systems-by-jay-kreps/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-040-apache-kafka-and-the-next-700-stream-processing-systems-by-jay-kreps/">Tech Takeaway 040 Apache Kafka and the Next 700 Stream Processing Systems by Jay Kreps</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-040-apache-kafka-and-the-next-700-stream-processing-systems-by-jay-kreps/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Jun 10, 2016</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/airbnb.jpg" alt="Tech Takeaway 039 Monitoring Without Infrastructure at Airbnb by Igor Serebryany" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-039-monitoring-without-infrastructure-at-airbnb-by-igor-serebryany/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-039-monitoring-without-infrastructure-at-airbnb-by-igor-serebryany/">Tech Takeaway 039 Monitoring Without Infrastructure at Airbnb by Igor Serebryany</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-039-monitoring-without-infrastructure-at-airbnb-by-igor-serebryany/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Jun 10, 2016</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/google.jpg" alt="Tech Takeaway 038 Maintaining Consistency in a Massively Parallel Environment by Dinah McNutt" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt/">Tech Takeaway 038 Maintaining Consistency in a Massively Parallel Environment by Dinah McNutt</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Feb 21, 2016</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/netflix.jpg" alt="Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/">Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Feb 21, 2016</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/facebook.jpg" alt="Tech Takeaway 036 Growing from the Few to the Many Scaling The Operations Organization at Facebook by Pedro Canahuati" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati/">Tech Takeaway 036 Growing from the Few to the Many Scaling The Operations Organization at Facebook by Pedro Canahuati</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Feb 21, 2016</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/uber.jpg" alt="Tech Takeaway 035 How Uber Uses Your Phone as a Backup Data Center by Joshua Corbin" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-035-how-uber-uses-your-phone-as-a-backup-data-center-by-joshua-corbin/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-035-how-uber-uses-your-phone-as-a-backup-data-center-by-joshua-corbin/">Tech Takeaway 035 How Uber Uses Your Phone as a Backup Data Center by Joshua Corbin</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-035-how-uber-uses-your-phone-as-a-backup-data-center-by-joshua-corbin/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Feb 21, 2016</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/facebook.jpg" alt="Tech Takeaway 034 Building a Billion User Load Balancer by Patrick Shuff" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-034-building-a-billion-user-load-balancer-by-patrick-shuff/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-034-building-a-billion-user-load-balancer-by-patrick-shuff/">Tech Takeaway 034 Building a Billion User Load Balancer by Patrick Shuff</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-034-building-a-billion-user-load-balancer-by-patrick-shuff/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Feb 21, 2016</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/monitoring.jpg" alt="Tech Takeaway 033 Monitoring Managing and Troubleshooting Large Scale Networks by Peter Hoose" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-033-monitoring-managing-and-troubleshooting-large-scale-networks-by-peter-hoose/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-033-monitoring-managing-and-troubleshooting-large-scale-networks-by-peter-hoose/">Tech Takeaway 033 Monitoring Managing and Troubleshooting Large Scale Networks by Peter Hoose</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-033-monitoring-managing-and-troubleshooting-large-scale-networks-by-peter-hoose/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Feb 21, 2016</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/microservices.jpg" alt="Tech Takeaway 032 The State of the Art in Microservices by Adrian Cockcroft" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/">Tech Takeaway 032 The State of the Art in Microservices by Adrian Cockcroft</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 23, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/cloud.jpg" alt="Tech Takeaway 031 Cloud Native Cost Optimization by Adrian Cockcroft" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-031-cloud-native-cost-optimization-by-adrian-cockcroft/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-031-cloud-native-cost-optimization-by-adrian-cockcroft/">Tech Takeaway 031 Cloud Native Cost Optimization by Adrian Cockcroft</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-031-cloud-native-cost-optimization-by-adrian-cockcroft/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 23, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/terraform.jpg" alt="Tech Takeaway 030 Automating Infrastructure Management with Terraform by Armon Dadgar" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/">Tech Takeaway 030 Automating Infrastructure Management with Terraform by Armon Dadgar</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 23, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/facebook.jpg" alt="Tech Takeaway 029 Scaling Facebook with OpenSource Tools by David Recordon" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-029-scaling-facebook-with-opensource-tools-by-david-recordon/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-029-scaling-facebook-with-opensource-tools-by-david-recordon/">Tech Takeaway 029 Scaling Facebook with OpenSource Tools by David Recordon</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-029-scaling-facebook-with-opensource-tools-by-david-recordon/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/cloud.jpg" alt="Tech Takeaway 027 Building a Website To Scale   Target 200 Million Page Views per Day and Beyond by Eric Pickup" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-028-building-a-website-to-scale-target-200-million-page-views-per-day-and-beyond-by-eric-pickup/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-028-building-a-website-to-scale-target-200-million-page-views-per-day-and-beyond-by-eric-pickup/">Tech Takeaway 027 Building a Website To Scale   Target 200 Million Page Views per Day and Beyond by Eric Pickup</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-028-building-a-website-to-scale-target-200-million-page-views-per-day-and-beyond-by-eric-pickup/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/twitter.jpg" alt="Tech Takeaway 027 Operations at Twitter Scaling Beyond 100 Million Users by John Adams" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/">Tech Takeaway 027 Operations at Twitter Scaling Beyond 100 Million Users by John Adams</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/twitter.jpg" alt="Tech Takeaway 026 Fixing Twitter Improving the Performance and Scalability of the Worlds Most Popular Micro blogging Site by John Adams" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-026-fixing-twitter-improving-the-performance-and-scalability-of-the-worlds-most-popular-micro-blogging-site-by-john-adams/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-026-fixing-twitter-improving-the-performance-and-scalability-of-the-worlds-most-popular-micro-blogging-site-by-john-adams/">Tech Takeaway 026 Fixing Twitter Improving the Performance and Scalability of the Worlds Most Popular Micro blogging Site by John Adams</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-026-fixing-twitter-improving-the-performance-and-scalability-of-the-worlds-most-popular-micro-blogging-site-by-john-adams/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/sre-book.jpg" alt="Tech Takeaway 025 From Zero to Hero Recommended Practices for Training your Ever Evolving SRE Teams by Andrew Widdowson of Google" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/">Tech Takeaway 025 From Zero to Hero Recommended Practices for Training your Ever Evolving SRE Teams by Andrew Widdowson of Google</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/flickr.jpg" alt="Tech Takeaway 024 10 Deploys Per Day Dev and Ops Cooperation at Flickr by John Allspaw and Paul Hammond" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-024-10-deploys-per-day-dev-and-ops-cooperation-at-flickr-by-john-allspaw-and-paul-hammond/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-024-10-deploys-per-day-dev-and-ops-cooperation-at-flickr-by-john-allspaw-and-paul-hammond/">Tech Takeaway 024 10 Deploys Per Day Dev and Ops Cooperation at Flickr by John Allspaw and Paul Hammond</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-024-10-deploys-per-day-dev-and-ops-cooperation-at-flickr-by-john-allspaw-and-paul-hammond/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/sensu.jpg" alt="Tech Takeaway 023 Introduction to Sensu by Bethany Erskine" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/">Tech Takeaway 023 Introduction to Sensu by Bethany Erskine</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/nagios.jpg" alt="Tech Takeaway 022 Stop Using Nagios by Andy Sykes" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-022-stop-using-nagios-by-andy-sykes/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-022-stop-using-nagios-by-andy-sykes/">Tech Takeaway 022 Stop Using Nagios by Andy Sykes</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-022-stop-using-nagios-by-andy-sykes/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/netflix.jpg" alt="Tech Takeaway 021 Embracing Failure Fault Injection and Service Resilience at Netflix by Josh Evans" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-021-embracing-failure-fault-injection-and-service-resilience-at-netflix-by-josh-evans/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-021-embracing-failure-fault-injection-and-service-resilience-at-netflix-by-josh-evans/">Tech Takeaway 021 Embracing Failure Fault Injection and Service Resilience at Netflix by Josh Evans</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-021-embracing-failure-fault-injection-and-service-resilience-at-netflix-by-josh-evans/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/networking.jpg" alt="Tech Takeaway 020 Design Review Best Practices by Mandi Walls of Chef" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-020-design-review-best-practices-by-mandi-walls-of-chef/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-020-design-review-best-practices-by-mandi-walls-of-chef/">Tech Takeaway 020 Design Review Best Practices by Mandi Walls of Chef</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-020-design-review-best-practices-by-mandi-walls-of-chef/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/cloud.jpg" alt="Tech Takeaway 019 Grilled Cheese at Scale A Recipe for Stability Practices by Connie Lynne Villani of Groupon" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-019-grilled-cheese-at-scale-a-recipe-for-stability-practices-by-connie-lynne-villani-of-groupon/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-019-grilled-cheese-at-scale-a-recipe-for-stability-practices-by-connie-lynne-villani-of-groupon/">Tech Takeaway 019 Grilled Cheese at Scale A Recipe for Stability Practices by Connie Lynne Villani of Groupon</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-019-grilled-cheese-at-scale-a-recipe-for-stability-practices-by-connie-lynne-villani-of-groupon/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+    <div>
+      <div class="uk-card uk-card-default uk-card-blog">
+        
+          <div class="uk-card-media-top uk-inline">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://jturgasen.github.io/uploads/sre-book.jpg" alt="Tech Takeaway 018 Keys to SRE by Ben Treynor of Google" data-uk-img>
+            <a class="uk-overlay uk-position-cover" href="/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/"></a>
+          </div>
+        
+        <div class="uk-card-body">
+          <h3 class="uk-card-title"><a class="uk-link-heading" href="/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/">Tech Takeaway 018 Keys to SRE by Ben Treynor of Google</a></h3>
+        </div>
+        <div class="uk-card-footer">
+          <a class="uk-link-reset uk-text-small text-400" href="/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/">Read more</a>
+          
+          <span class="uk-text-small uk-text-muted uk-align-right">Aug 1, 2015</span>
+        </div>                    
+      </div>
+    </div>
+  
+</div>
+
+<ul class="uk-pagination uk-flex-center uk-margin-large-top">
+   
+  <li><h5 class="uk-margin-remove"><a href="/blog/2/">Next &rarr;</a></h5></li>
+  
+</ul>
+
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li class="uk-active"><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

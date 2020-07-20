@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takeaway 032 The State of the Art in Microservices by Adrian Cockcroft | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takeaway 032 The State of the Art in Microservices by Adrian Cockcroft" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notesE" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notesE" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/microservices.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-08-23T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/"},"image":"https://jturgasen.github.io/microservices.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notesE","headline":"Tech Takeaway 032 The State of the Art in Microservices by Adrian Cockcroft","dateModified":"2015-08-23T00:00:00-06:00","datePublished":"2015-08-23T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/microservices.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takeaway 032 The State of the Art in Microservices by Adrian Cockcroft</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2015-08-23T00:00:00-06:00">
+          
+          Aug 23, 2015
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-xsmall uk-position-relative">
+
+
+  <div>
+    
+    
+    <div class="uk-article-content"></div>
+  </div>
+
+</div>
+      </div>
+
+<p><a href="https://www.youtube.com/watch?v=pwpxq9-uw_0">Adrian Cockcroft of Netflix talks about microservices at Geekdom in SF on January 15th 2014</a></p>
+
+<ul>
+  <li>Talks about using the OODA loop (observe, orient, decide, act) in continuious delivery</li>
+  <li>Innovation is in the <strong>observe</strong> step
+    <ul>
+      <li>Observing custom pain points</li>
+      <li>Observing the competition to plan a competive move</li>
+      <li>Observing customers via measurement</li>
+      <li>Observing the market for a “land grab” opportunity</li>
+    </ul>
+  </li>
+  <li>The <strong>orient</strong> step is about analysis
+    <ul>
+      <li>Use big data</li>
+      <li>Model your hypothosis</li>
+      <li>Look at data that no-one has ever looked at before (eg: find new data sources)</li>
+    </ul>
+  </li>
+  <li>The <strong>decide</strong> portion of the loop is
+    <ul>
+      <li>Slowed down by corporate culture (do you need permission from a VP?)</li>
+      <li>JFDI (just fucking do it)</li>
+      <li>Share your plans, get a response, maybe take action (slow)</li>
+    </ul>
+  </li>
+  <li>The <strong>act</strong> part of the loop should
+    <ul>
+      <li>Sped up by the cloud</li>
+      <li>Deploy things quickly (eg: don’t submit a ticket and wait for a month)</li>
+      <li>Improve features incrementally (agile)</li>
+      <li>Use AB testing</li>
+      <li>Deploy daily!</li>
+      <li>Use feature flags</li>
+    </ul>
+  </li>
+  <li><strong>The faster you go through the OODA loop, the faster you learn about your customers and the market</strong></li>
+  <li>Note that the OODA loop isn’t always a loop (eg: sometimes you need to go back to Decide if the Act doesn’t work)</li>
+  <li>Talks about how silos work (sysadmin, storage, PM, network admin, software devs, etc)</li>
+  <li>Monolithic product delivery spans multiple silos</li>
+  <li>Each product team should use microservices, have an API, and the products should interact using those APIs</li>
+  <li>A product team consists of a PM, UX, developers, QA, and DBA.  Note that sysadmin, network admin, storage admin are not included (see below)</li>
+  <li>You need commonality in delivery (eg: a platform)</li>
+  <li>The platform team can be internal (sysadmins + network admins + storage admins) or can be external (AWS, Rackspace, etc)</li>
+  <li>Essentially your ops team becomes your platform team and they are mostly coders (automation, APIs, “glue”, etc)</li>
+  <li>DevOps is a re-org due to the points above (silos, new ops/platform team, new product teams)</li>
+  <li>DevOps is not a tooling problem, it’s a cultural and organizational problem</li>
+  <li>He feels Dev and Ops should work for the same management</li>
+  <li>A platform is a set of patterns that everyone is buying into and a common platform makes stuff easy to do</li>
+  <li>Netflix originally had a monolithic app</li>
+  <li>One problem with the monolithic model is that it doesn’t scale
+    <ul>
+      <li>If there’s a showstopper bug how do you determine who introduced it?</li>
+      <li>A single bug breaks the entire monolith</li>
+      <li>Friday afternoon = there’s a bug, everyone stop all your work and figure it out (huge waste of time)</li>
+    </ul>
+  </li>
+  <li>Microservices is a model that stops the developers from being blocked</li>
+  <li>In the microservices model each service has their own PM, their own release model, their own developers, and potentially their own programming languages</li>
+  <li>Microservices decouples development cycles
+    <ul>
+      <li>Monolithic is a single development cycle</li>
+      <li>Microservices is many individual development cycles</li>
+    </ul>
+  </li>
+  <li>He loves Docker because it deploys so quickly (build + deploy in seconds)</li>
+  <li>Microservices APIs must be stable!</li>
+  <li>Take advantage of the pre-built containers on Docker Hub for common application (Apache, Redis, etc) and layer your configuration on top of them</li>
+  <li>A huge advantage of the pre-build Docker Hub containers is there is lots of people using them, thus lots of people are testing them for you</li>
+  <li>The entire Docker deployment process (compile code, extend container, deploy to PaaS) takes seconds</li>
+  <li>The speed of Docker is addictive, once devs use it they won’t go back</li>
+  <li>With microservices and Docker the
+    <ul>
+      <li>Cost, size, and risk of change is reduced, thus</li>
+      <li>The rate of change increases so you are more competitive as a business</li>
+    </ul>
+  </li>
+  <li>He feels that microservices + CD via Docker is a true disruptor</li>
+  <li>Microservices is <strong>loosely coupled service oriented architecture with bounded contexts</strong></li>
+  <li>The original service oriented architecture (SOA) got bogged down with heavy weights stuff.  Microservices are lightweight</li>
+  <li>If you have to update everything at the same time you aren’t loosely coupled</li>
+  <li>If things can be updated independently then you are loosely coupled</li>
+  <li>Tight coupling can be an <strong>organization</strong> problem too (if you have to coordinate between many parts of the organization)</li>
+  <li>Database schemas can create tight coupling.  If multiple components depend on the schema you need to bounce them all at once</li>
+  <li>If you have to know too much about the surrounding services you don’t have a bounded context</li>
+  <li>Each microservice team is trying to build what is essentially an exeternalizable API that is stable and self-contained</li>
+  <li>This means all the developers need to do is
+    <ul>
+      <li>Know about <em>their</em> API</li>
+      <li>Don’t break the API</li>
+      <li>Make it better on inside (optimize, add features, etc)</li>
+    </ul>
+  </li>
+  <li>You can decompose a monolithic system into microservices by
+    <ul>
+      <li>It’s the job of management to break big problems into smaller problems and give them to engineers to solve</li>
+      <li>Read the book Domain Driven Design by Eric Evans</li>
+    </ul>
+  </li>
+  <li>Coupling concerns and tips:
+    <ul>
+      <li>The code will resemble the organization that wrote it (monolithic or microservices).  Build an organization that resembles the code you want built</li>
+      <li>Enterprise Service Buses (ESBs) are terrible because everyone gets locked into them (common message formats, etc)</li>
+      <li>It’s better to have point to point messages (API to API) instead of a common message bus</li>
+      <li>Message buses tend to suffer from split-brain and CAP theorm bites you</li>
+      <li>Beware centralized DB schemas</li>
+      <li>Make your versioning flexible and allow for multiple versions running at the same time</li>
+    </ul>
+  </li>
+  <li>One great thing about the speed of containers is you can run them on VMs that run for minutes or hours and you can kill them when you’re done or when a new version spins up</li>
+  <li>This leads to cost savings when using AWS or a utility computing model</li>
+  <li>Why is your test and dev environment running when nobody is at work?  Kill it, save money, spin it up in the morning</li>
+  <li>The next step beyond Docker is <strong>AWS Lambda</strong></li>
+  <li>Lambda is essentially containers than run your code, spits back the result, and kills itself.  Billed in 100ms increments</li>
+  <li>Great slide with links to microservices architectures for various companies at 31:15</li>
+  <li>Shows the “template” for a microservices architecture at 32:52</li>
+  <li>If it’s ephemeral you can Dockerize it</li>
+  <li>Check out <strong>Gilt’s</strong> microservices architecture.  It’s a lot like Twitter’s but extended and uses Docker</li>
+  <li>Don’t use message queues for everything because they aren’t the best with failure modes and corner case failure modes</li>
+  <li>The characteristics of web scale:
+    <ul>
+      <li>Brand new microservices are deployed infrequently (plan ahead!)</li>
+      <li>New versions of existing services are deployed frequently or automatically</li>
+      <li>You don’t need general purpose orchestration that can deploy everything</li>
+      <li>You will use hundreds of microservices</li>
+      <li>Each deployment is heavily customized (he didn’t elaborate on this)</li>
+    </ul>
+  </li>
+  <li>Talks about Docker monitizing the app store (sell pre-made containers, rent them by the hour, create pre-made environments, etc)</li>
+  <li>At Netflix they run Cassandra in a container and it sucks its data from other containers</li>
+  <li>He sees 3/4 of new projects being written in Go / GoLang</li>
+  <li>Read the book <strong>Lean Enterprise</strong> (DevOps, CI/CD, and more)</li>
+  <li>How do you incrementally get to microservices?
+    <ul>
+      <li><strong>First</strong> break up your monolithic backend data store</li>
+      <li>Find something that’s “unrelated” or a one-off in the backend data store, split it off, repeat</li>
+      <li>Create a data-access service layer that sits in front of all the DBs. Never access the DB directly</li>
+      <li>Storage Tier as a Service over HTTP (STaaSH) is a Netflix OSS tool that does this, supports MySQL and Cassandra backends</li>
+      <li><em>*Second</em> break up the front-end</li>
+      <li>Put an API proxy tier in front of it (eg: Netflix Zuul, Apigee, etc) and start splitting up the traffic</li>
+      <li>The API proxy tier essentially acts as an abstraction layer</li>
+    </ul>
+  </li>
+  <li>When building a new microservices architecture your first step should be the API proxy tier (Netflix Zuul, Apigee, etc)</li>
+  <li>Have the API proxy tier reply with static/throwaway responses until the real APIs are built</li>
+  <li>The data schema for an application is part of the application (don’t have some separate group do it)</li>
+  <li>Instrumentation is baked into reusable components.  Netflix OSS tools log in a standard way (standard columns)</li>
+  <li><strong>Zipkin</strong> does end-to-end tracing / metrics</li>
+  <li>Netflix has 600 microservices</li>
+  <li>A problem with a large number of services is how do you visualize and monitor individual service dependencies instead of all 600</li>
+  <li>They control access to services/APIs by using AWS security groups
+    <ul>
+      <li>Each service has a SG with the same name</li>
+      <li>The service is put into the SG</li>
+      <li>Any services that want to call that service are put into the SG</li>
+    </ul>
+  </li>
+  <li>They also use AWS IAM and AWS key/secret management</li>
+  <li>For small teams monolithic is ok so long as you can split it later (eg: if you add a new feature do you want to destabalize your existing codebase or just create a new microservice?)</li>
+  <li>On a small team “one container should be one person’s work”</li>
+  <li>“There is no good way to do API versioning but there are less bad ways”</li>
+  <li>If you build an API build the client library as well because if you don’t then the consumers or other programmers will</li>
+  <li>The API client library needs to efficientely encode and decode the payload and do proper error handling</li>
+  <li>API client libraries should be very self-contained</li>
+  <li>“SDN is the data center people trying to build Amazon VPC”</li>
+  <li>Keep a consistent platform because the cost of forking it (eg: moving from Java to Python) is high because you will then need to keep them in sync</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takeaway 032 The State of the Art in Microservices by Adrian Cockcroft" data-url="https://jturgasen.github.io/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/tech-takeaway-031-cloud-native-cost-optimization-by-adrian-cockcroft/">&laquo; Tech Takeaway 031 Cloud Native Cost Optimization by Adrian Cockcroft</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-033-monitoring-managing-and-troubleshooting-large-scale-networks-by-peter-hoose/">Tech Takeaway 033 Monitoring Managing and Troubleshooting Large Scale Networks by Peter Hoose &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

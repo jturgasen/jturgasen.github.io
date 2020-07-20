@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takeaway 018 Keys to SRE by Ben Treynor of Google | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takeaway 018 Keys to SRE by Ben Treynor of Google" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/sre-book.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-08-01T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/"},"image":"https://jturgasen.github.io/sre-book.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Tech Takeaway 018 Keys to SRE by Ben Treynor of Google","dateModified":"2015-08-01T00:00:00-06:00","datePublished":"2015-08-01T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/sre-book.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takeaway 018 Keys to SRE by Ben Treynor of Google</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2015-08-01T00:00:00-06:00">
+          
+          Aug 1, 2015
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-xsmall uk-position-relative">
+
+
+  <div>
+    
+    
+    <div class="uk-article-content"></div>
+  </div>
+
+</div>
+      </div>
+
+<p><a href="https://www.youtube.com/watch?v=n4Wf14e2jxQ">Keys to SRE by Ben Treynor of Google, presented at SREcon14</a></p>
+
+<p>Takeaways:</p>
+
+<ul>
+  <li>Why have a SRE team?  Because <strong>reliability is the most important feature</strong></li>
+  <li>What’s more important feature in a product: That the product works, or the newest feature?</li>
+  <li>Reliability is easy to take for granted.  Just because it has always worked doesn’t mean it will always work.</li>
+  <li>By the time things become unstable a number of things have failed</li>
+  <li>Work on reliability all the time, not just when things are on fire</li>
+  <li>It can take months or even years to make a system reliable after a failure so it’s best to do the work up front</li>
+  <li>Devs want to launch features and see them adopted.  Ops wants to make sure things don’t blow up.</li>
+  <li>The number one cause of outages and errors is when you change something</li>
+  <li>Mitigate the risk of changes by…
+    <ul>
+      <li>Launch reviews.</li>
+      <li>Product deep-dives that include ops.</li>
+      <li>Release checklists</li>
+      <li>Extended canary process</li>
+    </ul>
+  </li>
+  <li>Consider where to place the canary (think about traffic, usage patterns)</li>
+  <li>Consider putting the canary in each region</li>
+  <li><strong>Beware</strong> of statements from the developers like “this isn’t a release, it’s a feature add / flag flip” or “it’s a low risk UI change”</li>
+  <li>As organizations build process around their release process the devs will find ways to mitigate that process</li>
+  <li>Devs know the most about the code.  The team that knows the least about the code (operations) has the strongest incentive to object to it’s launch</li>
+  <li>SRE does not attempt to assess launch risk, avoid all outages, or set release policy</li>
+  <li>Google uses <strong>error budgets</strong> to determine launches</li>
+  <li>For example, if you serve 1 billion queries per month and need 99.9%, that means 1 million queries per month can fail.  That’s your budget.</li>
+  <li>What do you want to spend your error budget on?  Launches or outages?</li>
+  <li>Determine your SLA.  Not everything needs 99.999%</li>
+  <li>When determining your SLA <strong>think about the client device’s reliability</strong>.  If the client device is only 98% then your service can be 98% too.</li>
+  <li>If the service is in SLA, launch away, devs are doing a good job</li>
+  <li>If the service is not within SLA freeze the launch until you earn back enough error budget</li>
+  <li>Error budgets make launch/no launch a math problem rather than an opinion or power conflict</li>
+  <li>If you use error budgets the dev teams will quickly realize that they must self-police.  If they don’t, they won’t launch as often as they would like.</li>
+  <li>You can throw people at badly functioning systems to keep it alive via manual labor but that sucks.  Ops ends up owning all of the crap work.</li>
+  <li>Devs don’t see the work that ops has to do so they may forget it exists or that ops is overburdened.  If I don’t see it, it doesn’t exist.</li>
+  <li>At Google SRE and devs are a common staffing pool.  Managers must determine the ratios.  When more operations work is required (SRE) it means fewer software engineers for new features (dev)</li>
+  <li>Google SRE only hires coders because they speak the same language as the devs</li>
+  <li>They also look for people that get bored easily (I’ve done this 4 times, I’m bored with it, let’s automate it)</li>
+  <li>They cap the amount of ops work that a SRE does so that the SRE can write more code because coding reduces the work to traffic ratio</li>
+  <li>Make sure to keep the devs in the SRE rotation.  “Nothing builds consensus on a bug priorities like a couple of sleepless nights in a row”</li>
+  <li>Every dev team will resist this.  You need management buy-in.</li>
+  <li>After about 6 months they won’t want to go back to the old way</li>
+  <li>Excess operations load always gets assigned to the dev team.  This creates a self-regulating system</li>
+  <li>SRE teams can be disbanded if all of the SREs are having problems with the devs.  If it happens, the SREs are moved and the devs are now on-call</li>
+  <li>This is incentive for devs to work with and listen to SRE because if they don’t then they are the ones who get to deal with all of the ops problems</li>
+  <li>Two goals for each outage: minimize impact and prevent recurrence</li>
+  <li>There’s <strong>no NOC</strong> because it’s essentially just a load balancer and they add latency.  Send the alerts to a person who can actually fix the problem.</li>
+  <li>You need good diagnostic information if you want high uptimes</li>
+  <li>“There is a problem on this cluster” = bad error report</li>
+  <li>“You are seeing high latency on X% of queries from this cluster to that cluster” = good error report</li>
+  <li>Rather than using “operational readiness” drills to practice, they use <strong>Wheel of Misfortune</strong> (think Netflix Chaos Monkey)</li>
+  <li>Write <strong>post-mortems</strong>.  You don’t want the same outage twice.</li>
+  <li>They have explicit limits on how many events per oncall shift a SRE can handle.  This is so SREs can do proper post-mortems</li>
+  <li>Google uses <strong>blameless post-mortems</strong>.  They focus on process and technology, not people</li>
+  <li>Post-mortems should have a timeline, they should have all the facts, and you should reate bugs for the followup work</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takeaway 018 Keys to SRE by Ben Treynor of Google" data-url="https://jturgasen.github.io/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/tech-takeaway-017-deploying-all-day-without-breaking-the-internet-by-sean-oconnor-of-bitly/">&laquo; Tech Takeaway 017 Deploying All Day Without Breaking the Internet by Sean OConnor of Bitly</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-019-grilled-cheese-at-scale-a-recipe-for-stability-practices-by-connie-lynne-villani-of-groupon/">Tech Takeaway 019 Grilled Cheese at Scale A Recipe for Stability Practices by Connie Lynne Villani of Groupon &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

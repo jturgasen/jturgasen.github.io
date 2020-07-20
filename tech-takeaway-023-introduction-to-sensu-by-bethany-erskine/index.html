@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takeaway 023 Introduction to Sensu by Bethany Erskine | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takeaway 023 Introduction to Sensu by Bethany Erskine" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/sensu.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-08-01T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/"},"image":"https://jturgasen.github.io/sensu.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Tech Takeaway 023 Introduction to Sensu by Bethany Erskine","dateModified":"2015-08-01T00:00:00-06:00","datePublished":"2015-08-01T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/sensu.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takeaway 023 Introduction to Sensu by Bethany Erskine</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2015-08-01T00:00:00-06:00">
+          
+          Aug 1, 2015
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-xsmall uk-position-relative">
+
+
+  <div>
+    
+    
+    <div class="uk-article-content"></div>
+  </div>
+
+</div>
+      </div>
+
+<p><a href="https://www.youtube.com/watch?v=30JwqsNi1GA">Introduction to Sensu by Bethany Erskine at nycdevops 2013</a></p>
+
+<p>Takeaways:</p>
+
+<ul>
+  <li>Why Sensu?
+    <ul>
+      <li>Written in Ruby</li>
+      <li>Plugins can be written in any language</li>
+      <li>The sensu-chef cookbook is great</li>
+      <li>Solid community</li>
+      <li>Can re-use Nagios checks</li>
+      <li>Graphite integration</li>
+      <li>Easy to scale</li>
+    </ul>
+  </li>
+  <li>Sensu is sometimes called a <strong>monitoring router</strong></li>
+  <li>4g RAM + 4 CPU is enough for a single VM to run RabbitMQ + Redis + Sensu</li>
+  <li>1.5g RAM + 2 CPU is enough for a Sensu server</li>
+  <li>They started with a single server and knew it was time to scale when the server’s load got insane and the RabbitMQ queues started to back up</li>
+  <li>Monitor the RabbitMQ <strong>ready queue size</strong>.  If it hits about 10k and stays there, send an alert</li>
+  <li>Checks are distributed among Sensu servers using round-robin - add more servers and go</li>
+  <li>Graphite has been their main pain point</li>
+  <li>They send metrics from the Sensu server to a special message queue and Graphite consumes that queue via AMQP, but Graphite sometimes can’t keep up</li>
+  <li>To stop Graphite from getting overloaded they changed from 10 second intervals to a larger number, made staging it’s own Graphite cluster, and moved the prod Graphite cluster to SSDs</li>
+  <li>Instead of porting checks from Nagios they “nuked and paved”</li>
+  <li>Nuke and pave is also a great opportunity to re-evaluate your checks because you probably have lots of non-actionable alerts</li>
+  <li>Rather than alerting for high memory usage they changed it to be gathered as a metric instead</li>
+  <li>Gather both system <em>and</em> service metrics</li>
+  <li>Plan out your new monitoring system.  Plan out which checks run on which types of servers</li>
+  <li>Checks must be actionable!</li>
+  <li>Plan out your handlers.  Smaller things can be e-mail but super important things should be sent via PagerDuty</li>
+  <li>Check for disk usage, swap usage, zombie processes, read-only file systems</li>
+  <li>Collect metrics from vmstat, disk usage, CPU, memory, interface, and disk perf</li>
+  <li>They use e-mail, PagerDuty, and Campfile as handlers</li>
+  <li>After you define your generic alerts and metrics, determine which role-specific checks and metrics you need (web servers, DB, etc)</li>
+  <li>If she could do it over she would create a custom Sensu cookbook and wrap the sensu-chef cookbook</li>
+  <li>Create a crash and burn server for Sensu testing.  Great for testing Sensu upgrades, configuration changes, and testing your CM tool (Chef etc)</li>
+  <li>Create a workflow for implementing, testing, deploying, and signing off on checks</li>
+  <li>Get developers involved.  Let them add checks and metric collections</li>
+  <li>They put their application checks within the application’s cookbook (eg: Nginx checks are in the Nginx cookbook).  Neat, but not good if you change to another monitoring system in the future</li>
+  <li>Sensu community plugins should be your first choice followed by Nagios plugins followed by custom code</li>
+  <li>Set up 3rd party monitoring for the Sensu servers.  Who watches the watchers?  Monitor your monitoring.</li>
+  <li>They use the 3rd party monitoring to make sure the server is alive and the disks aren’t full - nothing exciting</li>
+  <li>Have your test/dev/stage Sensu environment monitor your prod Sensu environment</li>
+  <li>Sensu can collect metrics about itself</li>
+  <li>After you deploy to prod you will likely need to tune your alerts</li>
+  <li>RabbitMQ sits between the clients and the servers.  Clients and servers do not communicate directly</li>
+  <li>Redis is used to persist data that is used by the API</li>
+  <li>Sensu has an omnibus installer (Sensu + Rabbit + Redis + Ruby)</li>
+  <li>They see the most load from metric collections and not from alerts</li>
+  <li>The servers and clients use a JSON config file that configures Rabbit + Redis + API + Dashboard</li>
+  <li>There are two ways to implement checks…
+    <ul>
+      <li><strong>Stand-alone checks</strong> are defined and scheduled on the client itself</li>
+      <li><strong>Pub/Sub</strong> are when the server tells the clients which checks to run and when to run them</li>
+    </ul>
+  </li>
+  <li>Pub/Sub checks are also known as <strong>subscription checks</strong></li>
+  <li>In the subscription model the server(s) send messages to RabbitMQ that say something like “all prod web servers check X”.  The clients listen to the queue, act, return the results to RabbitMQ, and the server(s) pick up the results</li>
+  <li>Handlers takes action on an event using TCP or UDP or pipe or AMQP or other handlers</li>
+  <li>Handers are how you “route” alerts.  For example, you can route non-critical alerts to a HipChat room and send critical alerts to PagerDuty</li>
+  <li>You can create custom handlers to remediate alerts (eg: auto-bounce a process when the process stops responding)</li>
+  <li>Make sure the proper Ruby Gems are installed for your handlers.  Don’t forget that Ruby is included in the omnibus distribution</li>
+  <li>A check sends a <strong>result</strong> as an <strong>event</strong> to a handler</li>
+  <li>You can specify multiple handlers for each check</li>
+  <li>Has a REST API.  You can <code class="highlighter-rouge">curl -l http://hostname:4567/events</code> on the Sensu server or /info for other stuff etc etc</li>
+  <li>The first time the client starts it registers with the server</li>
+  <li>If the client/server keepalive fails the server assumes the client is down</li>
+  <li>Can send events directly to Sensu via <code class="highlighter-rouge">nc</code> by sending JSON</li>
+  <li><strong>Aggregate alerts</strong> are useful for preventing alert floods</li>
+  <li>For example, alert when X amount of checks are <em>not</em> ok</li>
+  <li>RabbitMQ has a nice web interface, use it</li>
+  <li>Lock your plugins Gem dependency versions for plugins</li>
+  <li>If you write custom Sensu-related tools have them make use of the API</li>
+  <li>If you use sensu-dashboard put Nginx in front of it because it runs on a weird port and makes you login each time.  Note that this is convenient but insecure</li>
+  <li>They have a plugin that polls Graphite’s API and sends alerts based on the output</li>
+  <li>Mutators are handler-specific data massagers that can alter event data before it is passed to a handler.</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takeaway 023 Introduction to Sensu by Bethany Erskine" data-url="https://jturgasen.github.io/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/tech-takeaway-022-stop-using-nagios-by-andy-sykes/">&laquo; Tech Takeaway 022 Stop Using Nagios by Andy Sykes</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-024-10-deploys-per-day-dev-and-ops-cooperation-at-flickr-by-john-allspaw-and-paul-hammond/">Tech Takeaway 024 10 Deploys Per Day Dev and Ops Cooperation at Flickr by John Allspaw and Paul Hammond &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

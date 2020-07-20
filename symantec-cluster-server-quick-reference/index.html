@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>My Symantec Veritas Cluster Server Quick Reference | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="My Symantec Veritas Cluster Server Quick Reference" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/symantec-cluster-server-quick-reference/" />
+<meta property="og:url" content="https://jturgasen.github.io/symantec-cluster-server-quick-reference/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/veritas.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-10-10T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/symantec-cluster-server-quick-reference/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/symantec-cluster-server-quick-reference/"},"image":"https://jturgasen.github.io/veritas.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"My Symantec Veritas Cluster Server Quick Reference","dateModified":"2014-10-10T00:00:00-06:00","datePublished":"2014-10-10T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/veritas.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">My Symantec Veritas Cluster Server Quick Reference</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2014-10-10T00:00:00-06:00">
+          
+          Oct 10, 2014
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <p>This is my old Veritas Cluster Server (now Symantec Cluster Server) quick reference.</p>
+
+<h2 id="commands-quick-reference">Commands Quick Reference</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">hastatus</code> - Displays status information about cluster/groups/nodes</li>
+  <li><code class="highlighter-rouge">hasys</code> - Displays information about and administers nodes</li>
+  <li><code class="highlighter-rouge">hagrp</code> - Displays information about and administers service groups</li>
+  <li><code class="highlighter-rouge">haagent</code> - Displays information about and administers agents</li>
+  <li><code class="highlighter-rouge">hatype</code> - Displays information about and administers resource  types</li>
+  <li><code class="highlighter-rouge">hares</code> - Displays information about and administers resources</li>
+  <li><code class="highlighter-rouge">haclus</code> - Displays information about and administers the cluster</li>
+  <li><code class="highlighter-rouge">gabconfig</code> - Displays information about and administers GAB</li>
+  <li><code class="highlighter-rouge">lltstat</code> - Displays information about and administers LLT</li>
+  <li><code class="highlighter-rouge">hastart</code> - Starts the cluster and/or individual nodes</li>
+  <li><code class="highlighter-rouge">hastop</code> - Stops the cluster and/or individual nodes</li>
+  <li><code class="highlighter-rouge">hacf</code> - Checks the integrity of <code class="highlighter-rouge">main.cf</code></li>
+</ul>
+
+<h2 id="misc-information">Misc Information</h2>
+<ul>
+  <li>VCS uses the <code class="highlighter-rouge">main.cf</code> that is in memory, not the one on the disk.  The command <code class="highlighter-rouge">haconf -dump -makero</code> marks the configuration read only and writes it to disk on all nodes.  Keep the configuration read-only all the time unless you need to make changes</li>
+  <li>If you must Stop + A a system DO NOT do a <code class="highlighter-rouge">go</code> after.  While the system is halted other Nodes will take over it’s Service Groups and typing “go” could lead to data corruption, use <code class="highlighter-rouge">boot</code> instead</li>
+</ul>
+
+<h2 id="displaying-information">Displaying Information</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">hastatus</code> - Show VCS events in realtime</li>
+  <li><code class="highlighter-rouge">hastatus -summary</code> - Displays the current status of the cluster including the status of service groups, nodes and AutoDisabled service groups</li>
+  <li>
+    <p><code class="highlighter-rouge">hastatus -group group</code> - Displays information about <em>group</em> including its resources.  Multiple <code class="highlighter-rouge">-group group</code> options and arguments can be specified</p>
+  </li>
+  <li><code class="highlighter-rouge">hasys -list</code> - Displays a list of all systems</li>
+  <li><code class="highlighter-rouge">hasys -display</code> - Detailed information about all systems</li>
+  <li>
+    <p><code class="highlighter-rouge">hasys -display system-name</code> - Detailed information about <em>system-name</em></p>
+  </li>
+  <li><code class="highlighter-rouge">hagrp -list</code> - Lists all service groups and both their local and global attributes</li>
+  <li><code class="highlighter-rouge">hagrp -resources group</code> - Lists all the resources of <em>group</em></li>
+  <li><code class="highlighter-rouge">hagrp -dep group</code> - Displays the service group dependency tree for <em>group</em></li>
+  <li><code class="highlighter-rouge">hagrp -display</code> - Detailed information about all groups</li>
+  <li><code class="highlighter-rouge">hagrp -display group</code> - Detailed information about <em>group</em></li>
+  <li><code class="highlighter-rouge">hagrp -display group -sys node</code> - Displays the value of all attributes of <em>group</em> on <em>node</em></li>
+  <li><code class="highlighter-rouge">hagrp -display group -attribute attribute</code> - Displays the value of <em>attribute</em> for group</li>
+  <li><code class="highlighter-rouge">hagrp -display group -attribute attribute -sys node</code> - Same as above but only displays the value of attribute on <em>node</em></li>
+  <li>
+    <p><code class="highlighter-rouge">hagrp -resources group</code> - Displays a list of resources used by <em>group</em></p>
+  </li>
+  <li><code class="highlighter-rouge">haagent -list</code> - List all agents</li>
+  <li><code class="highlighter-rouge">haagent -display</code> - Detailed information about all all ggents</li>
+  <li>
+    <p><code class="highlighter-rouge">haagent -display agent</code> - Detailed information about <em>agent</em></p>
+  </li>
+  <li><code class="highlighter-rouge">hatype -list</code> - Lists all resource types</li>
+  <li><code class="highlighter-rouge">hatype -display</code> - Detailed information about all resource types</li>
+  <li>
+    <p><code class="highlighter-rouge">hatype -display resource-type</code> - Detailed information about <em>resource-type</em></p>
+  </li>
+  <li><code class="highlighter-rouge">hares -list</code> - List all resources and the node each resides on</li>
+  <li><code class="highlighter-rouge">hares -display</code> - Detailed information for all resources including agent arguments and resource status</li>
+  <li><code class="highlighter-rouge">hares -display resource</code> - Same as above but only displays information for <em>resource</em></li>
+  <li>
+    <p><code class="highlighter-rouge">hares -dep resource</code> - Shows dependency tree for <em>resource</em></p>
+  </li>
+  <li><code class="highlighter-rouge">haclus -display</code> - Lists attributes and attribute values for the cluster</li>
+  <li>
+    <p><code class="highlighter-rouge">haclus -value attribute</code> - Displays the value of <em>attribute</em></p>
+  </li>
+  <li><code class="highlighter-rouge">gabconfig -l</code> - Displays the current GAB configuration</li>
+  <li>
+    <p><code class="highlighter-rouge">gabconfig -a</code> - Displays which nodes are running HAD and/or GAB</p>
+  </li>
+  <li><code class="highlighter-rouge">lltstat</code> - Shows counters similar to <code class="highlighter-rouge">netstat -i</code></li>
+  <li><code class="highlighter-rouge">lltstat -n</code> - Displays the Node ID, node name, link state and number of links for each node</li>
+  <li><code class="highlighter-rouge">lltstat -nvv</code> - Displays link names (qfe:0, etc) as well as the MAC address and status of each link on all nodes, the asterisk in the output denotes the node the command was run on</li>
+  <li><code class="highlighter-rouge">lltstat -c</code> - Displays the value of LLT configuration directives on the local bode</li>
+  <li>
+    <p><code class="highlighter-rouge">lltstat -p</code> - Display port status and other information, pretty verbose</p>
+  </li>
+  <li><code class="highlighter-rouge">lltshow -n node</code> - Show the LLT kernel structures on <em>node</em></li>
+  <li><code class="highlighter-rouge">lltconfig -a list</code> - Shows MAC address and interface names for the local node</li>
+  <li>
+    <p><code class="highlighter-rouge">lltconfig -T query</code> - Display heartbeat frequencies</p>
+  </li>
+  <li><code class="highlighter-rouge">hastart -version</code> - Display the version of VCS that’s installed</li>
+</ul>
+
+<h2 id="starting-the-cluster">Starting the Cluster</h2>
+
+<ul>
+  <li>If all nodes go down all nodes must be started before the cluster will start.  There are ways around this.</li>
+  <li>When all nodes become active they are are all seeded.  Other nodes become seeded if they join later.</li>
+  <li>When a node starts up it downloads its configuration (main.cf) from a seeded node</li>
+  <li>
+    <p><code class="highlighter-rouge">hastart</code> must be run on each node in the cluster to start VCS</p>
+  </li>
+  <li><code class="highlighter-rouge">hastart</code> - Starts VCS on the local system</li>
+  <li><code class="highlighter-rouge">hastart -force</code> - Forces VCS to start even if the configuration is marked <em>stale</em>.  All nodes that are started after this Node will use configuration from this Node.  Use <code class="highlighter-rouge">haconf -dump -makero</code> after all nodes are started</li>
+  <li><code class="highlighter-rouge">hastart -onenode</code> - Starts VCS on for a single node cluster, DO NOT use this command in a multi-node cluster</li>
+  <li><code class="highlighter-rouge">hasys -force host</code> - Use this if all nodes are in an ADMIN_WAIT state.  <em>host</em> is the node that will load its main.cf and push it to all other nodes</li>
+  <li><code class="highlighter-rouge">hastart -stale</code> - Forces a system to wait for another node to have a valid in-memory configuration, then downloads it, and starts (eg: the system treats the on disk configuration as stale)</li>
+</ul>
+
+<p>Use the following steps to start a cluster using a specific configuration file:</p>
+
+<ol>
+  <li>Copy the configuration file to a single system</li>
+  <li><code class="highlighter-rouge">hastop -all -force</code> # stops VCS on all Nodes but keeps service groups available</li>
+  <li><code class="highlighter-rouge">hastart -stale</code> # Use on all nodes except the one that has the new configuration</li>
+  <li><code class="highlighter-rouge">hastart</code> # Use on the node that has the new configuration</li>
+</ol>
+
+<p>Use the following steps to start a cluster when all nodes are in an <strong>ADMIN_WAIT</strong> state:</p>
+
+<ol>
+  <li>Find a Node where the on disk main.cf is the one you want to use</li>
+  <li><code class="highlighter-rouge">cd /etc/VRTSvcs/config/conf</code></li>
+  <li><code class="highlighter-rouge">hacf -verify .</code></li>
+  <li><code class="highlighter-rouge">hastart -force</code></li>
+</ol>
+
+<p>Use the following steps to start a cluster when all nodes are in a <strong>STALE_ADMIN_WAIT</strong> state:</p>
+
+<ol>
+  <li>Find a node where the on disk main.cf is the one you want to use</li>
+  <li><code class="highlighter-rouge">hastop -local</code></li>
+  <li><code class="highlighter-rouge">cd /etc/VRTSvcs/config/conf</code></li>
+  <li><code class="highlighter-rouge">hacf -verify .</code></li>
+  <li><code class="highlighter-rouge">hastart -force</code></li>
+</ol>
+
+<p>Use the following procedure if all nodes have crashed and one or more nodes cannot be booted (hardware failure, etc)</p>
+
+<ol>
+  <li><code class="highlighter-rouge">hastart</code> # run on each remaining node</li>
+  <li><code class="highlighter-rouge">gabconfig -cx</code> # run on a single node, if this doesn’t work see below</li>
+  <li><code class="highlighter-rouge">hagrp -online group -sys host</code> # starts <em>group</em> on <em>host</em>, repeat for each service group</li>
+</ol>
+
+<p>Use the following if <code class="highlighter-rouge">gabconfig -cx</code> fails to start the cluster.  Execute each command on every node in the cluster</p>
+
+<ol>
+  <li>Kill the <code class="highlighter-rouge">hashadow</code> process</li>
+  <li><code class="highlighter-rouge">gabconfig -U</code></li>
+  <li><code class="highlighter-rouge">lltconfig -U</code> # Answer “yes”</li>
+  <li><code class="highlighter-rouge">lltconfig -c</code></li>
+  <li><code class="highlighter-rouge">gabconfig -cx</code> # seeds the local node</li>
+  <li><code class="highlighter-rouge">hastart</code> # starts VCS</li>
+  <li><code class="highlighter-rouge">hagrp -online group -sys host</code> # starts <em>group</em> on <em>host</em>, repeat for each service group</li>
+</ol>
+
+<h2 id="shutting-down-the-cluster">Shutting Down The Cluster</h2>
+
+<p>Before stopping VCS on node(s) make the configuration read-only with the command <code class="highlighter-rouge">haconf -dump -makero</code>!!</p>
+
+<ul>
+  <li><code class="highlighter-rouge">hastop -all</code> - Stops VCS on all nodes.  Service groups are also stopped</li>
+  <li>
+    <p><code class="highlighter-rouge">hastop -all -force</code> - Stops VCS on all nodes but service groups continue to run</p>
+  </li>
+  <li><code class="highlighter-rouge">hastop -local -force</code> - Stops VCS on the local system, service groups keep running</li>
+  <li><code class="highlighter-rouge">hastop -force</code> - Same as above</li>
+  <li><code class="highlighter-rouge">hastop -local</code> - Stops VCS and all service groups on the local node</li>
+  <li>
+    <p><code class="highlighter-rouge">hastop -local -evacuate</code> - Stops VCS on the local system and moves all service groups to another node</p>
+  </li>
+  <li><code class="highlighter-rouge">hastop -sys host</code> - Stops VCS and all service groups on <em>host</em></li>
+  <li><code class="highlighter-rouge">hastop -sys host -force</code> - Stops VCS on <em>host</em> and service groups continue to run</li>
+  <li><code class="highlighter-rouge">hastop -sys host -evacuate</code> - Stops VCS on <em>host</em> and evacuates its service groups to another node</li>
+</ul>
+
+<h2 id="service-group-administration">Service Group Administration</h2>
+
+<p>Rebooting a system will automatically fail over any Service Groups running on it!</p>
+
+<ul>
+  <li><code class="highlighter-rouge">hagrp -switch group -to host</code> - Switches <em>group</em> to <em>host</em></li>
+  <li><code class="highlighter-rouge">hagrp -offline group -sys host</code> - Offlines <em>group</em> that is running on <em>host</em></li>
+  <li>
+    <p><code class="highlighter-rouge">hagrp -online group -sys host</code> - Starts <em>group</em> on <em>host</em></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">hagrp -add group</code> - Creates a new Service Group named <em>group</em></p>
+  </li>
+  <li><code class="highlighter-rouge">hagrp -modify group attribute value1 value2 ...</code> - The general syntax for modifying service group attributes</li>
+  <li><code class="highlighter-rouge">hagrp -modify group SystemList system1 priority system2 priority...</code> - Adds the specified systems and their priorities to the <strong>SystemList</strong> for group</li>
+  <li><code class="highlighter-rouge">hagrp -modify group AutoStart [ 0 | 1 ]</code> - Enables or disables auto starting of group, 1 enables and 0 disables</li>
+  <li><code class="highlighter-rouge">hagrp -modify group AutoStartList system1 system2 ...</code> - Adds systems to the auto start list</li>
+  <li><code class="highlighter-rouge">hagrp -modify group Parallel [ 0 | 1 ]</code> - Enables or disables the group as being parallel, you must do this before adding any Resources to the group (ie: right after you create the group)</li>
+  <li><code class="highlighter-rouge">hagrp -modify group AutoFailOver [ 0 | 1 ]</code> - Enables or disables auto failover, if it is disabled and administrator must manually restart the group on another host if it fails</li>
+  <li><code class="highlighter-rouge">hagrp -modify group FailOverPolicy [ Priority | RoundRobin | Load ]</code> - Sets the fail over policy for group, the default is <strong>Priority</strong></li>
+  <li>
+    <p><code class="highlighter-rouge">hagrp -modify group SystemZones system1 zone system2 zone ...</code> - Sets the system zones for <em>group</em></p>
+  </li>
+  <li><code class="highlighter-rouge">hagrp -autoenable group -sys host</code> - Before doing this ensure the Service Group is offline on all hosts, all of it’s Resources are not running outside of VCS control and that there is not a network partition</li>
+</ul>
+
+<p>Use the following steps to freeze and unfreeze a service group.  It will continue to run and VCS will monitor it but take no action on things such as resource faults and concurrency violations.</p>
+
+<ol>
+  <li><code class="highlighter-rouge">haconf -makerw</code></li>
+  <li><code class="highlighter-rouge">hagrp -freeze group -persistent</code></li>
+  <li><code class="highlighter-rouge">haconf -dump -makero</code></li>
+  <li>At this point the Service Group is frozen, make your changes</li>
+  <li>Once your changes are complete, run the following commands to unfreeze it:</li>
+  <li><code class="highlighter-rouge">haconf -makerw</code></li>
+  <li><code class="highlighter-rouge">haconf -unfreeze group -persistent</code></li>
+  <li><code class="highlighter-rouge">haconf -dump -makero</code></li>
+  <li>Done!</li>
+</ol>
+
+<p>Use the following steps if a Service Group hangs when it’s coming online and you determine it needs to be flushed:</p>
+
+<ol>
+  <li>Do a <code class="highlighter-rouge">hastatus -group group | grep Istate</code> to see if any resources are hung, replace <em>group</em> with the group name</li>
+  <li>If one is hung determine which one it is by using <code class="highlighter-rouge">hastatus</code></li>
+  <li>Ensure the resource is offline at the OS level</li>
+  <li>Use <code class="highlighter-rouge">hagrp -flush group</code> to clear the internal state of <em>group</em></li>
+  <li>Try to start the service group again</li>
+</ol>
+
+<h2 id="gab-and-llt">GAB and LLT</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">gabconfig -c</code> - Configures and starts GAB, use this to have a node join an already seeded cluster</li>
+  <li><code class="highlighter-rouge">gabconfig -c -x</code> - Seeds the local node</li>
+  <li><code class="highlighter-rouge">gabconfig -c -n number</code> - Seeds all nodes once <em>number</em> of nodes are up and running</li>
+  <li><code class="highlighter-rouge">gabconfig -b</code> - If the GAB client process that requests heartbeats fails to respond to a heartbeat (usually HAD) GAB will panic the system</li>
+  <li><code class="highlighter-rouge">gabconfig -j</code> - When a failed private network link is reconnected systems will panic instead of stopping VCS and GAB</li>
+  <li><code class="highlighter-rouge">gabconfig -k</code> - GAB attempts to kill the GAB client process until it succeeds instead of trying 5 times and then panicing</li>
+  <li><code class="highlighter-rouge">gabconfig -t milliseconds</code> - Configures the GAB timeout value to <em>milliseconds</em>, it is recommended you don’t change it</li>
+  <li><code class="highlighter-rouge">gabconfig -u</code> - Stops GAB but does not unload the kernel module</li>
+  <li><code class="highlighter-rouge">gabconfig -s</code> - Enables GAB to be used when there is only a single network link for cluster communications, only use this option for testing</li>
+  <li>
+    <p><code class="highlighter-rouge">gabconfig -f time</code> - Time in <em>miliseconds</em> to wait for GAB to shut down after an IOFENCE is received, usually after reconnecting a node after a private network failure.  If miliseconds* have elapsed and GAB hasn’t shut down the system panics</p>
+  </li>
+  <li><code class="highlighter-rouge">lltconfig -c</code> - Starts LLT and automatically loads the kernel module</li>
+  <li><code class="highlighter-rouge">lltconfig -U</code> - Stops LLT and unloads the kernel module</li>
+  <li><code class="highlighter-rouge">lltconfig -C id -o</code> - Sets the Cluster ID to id</li>
+  <li>
+    <p><code class="highlighter-rouge">lltconfig -l -d device</code> - Indicates device to to be used as a Low Priority Link, device is somtehing like /dev/qfe:0</p>
+  </li>
+  <li><code class="highlighter-rouge">dlpiping -vs device &amp;</code> - Enables the DLPIPing server on device in verbose mode, device is something like /dev/qfe:0</li>
+  <li><code class="highlighter-rouge">dlpiping -c device remote-MAC-address</code> - Sends a ping via LLT, the DLPIPing server must be running on the remote Node.  If this works the Nodes can communicate via LLT</li>
+</ul>
+
+<p>The <code class="highlighter-rouge">llttest</code> command is interactive, unless specified all commands are done within the interactive shell</p>
+
+<ul>
+  <li><code class="highlighter-rouge">llttest -p port</code> - Has LLT listen on <em>port</em>, must be the same on the client and the server</li>
+  <li><code class="highlighter-rouge">llttest -v</code> - Verifies the data in the packets, must be used on both the client and the server</li>
+  <li><code class="highlighter-rouge">receive -c count</code> - Prepares the server to receive <em>count</em> number of packets</li>
+  <li><code class="highlighter-rouge">echo -c count</code> - Same as above but sends the packets back to the sender</li>
+  <li><code class="highlighter-rouge">transmit -c count -n node</code> - Sends <em>count</em> number of packets to <em>node</em>, ensure the node is set to receive them</li>
+  <li><code class="highlighter-rouge">packet -c count -n node</code> - Same as above but the packets are unreliable</li>
+  <li><code class="highlighter-rouge">debug level</code> increases the debug level to <em>level</em></li>
+</ul>
+
+<h2 id="how-to-edit-maincf-directly">How to Edit main.cf Directly</h2>
+
+<ol>
+  <li><code class="highlighter-rouge">cd /etc/VRTSvcs/conf/config</code></li>
+  <li><code class="highlighter-rouge">haconf -dump -makero</code> # dumps the current cluster configuration to disk</li>
+  <li><code class="highlighter-rouge">cp main.cf /tmp/main.cf</code></li>
+  <li><code class="highlighter-rouge">vi /tmp/main.cf</code> # make your changes</li>
+  <li><code class="highlighter-rouge">hastop -all -force</code> # stops VCS on all nodes but keeps service groups running</li>
+  <li><code class="highlighter-rouge">cp /tmp/main.cf /etc/VRTSvcs/conf/config</code></li>
+  <li><code class="highlighter-rouge">hastart</code> # run on all nodes starting with the one you made the changes on</li>
+</ol>
+
+<h2 id="starting-a-service-group-that-wont-start-3-methods">Starting a Service Group That Won’t Start (3 Methods)</h2>
+<p>Try one of the three following methods to start a service group that won’t start on any node.  Manually start the Service Group after using one of the methods below:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">hasys -display</code> # see if the Service Group is set to AutoDisabled</li>
+  <li><code class="highlighter-rouge">hagrp -autoenable group -sys host</code> # Use this command on any Node that the Service Group is <strong>AutoDisabled</strong> on, fill in the <em>group</em> and <em>host</em> parameters</li>
+</ol>
+
+<p>or…</p>
+
+<ol>
+  <li><code class="highlighter-rouge">hagrp -clear group -sys host</code> # clears all faults for the service group on <em>host</em></li>
+</ol>
+
+<p>or…</p>
+
+<ol>
+  <li><code class="highlighter-rouge">hares -clear resource -sys host</code> # Fill in <em>resource</em> and <em>host</em> as appropriate, clears the faulted resource</li>
+</ol>
+
+<h2 id="resource-administration">Resource Administration</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">hares -add resource resource-type group</code> - Adds <em>resource</em> to the service group named <em>group</em>.  The resource is type <em>resource-type</em></li>
+  <li><code class="highlighter-rouge">hares -modify resource attribute value</code> - Changes <em>attribute</em> for <em>resource</em> to <em>value</em></li>
+  <li><code class="highlighter-rouge">hares -modify resource Critical [ 0 | 1 ]</code> - Sets <em>resource</em> to non-critical or critical</li>
+  <li><code class="highlighter-rouge">hares -online resource -sys host</code> - Brings resource online on <em>host</em></li>
+  <li><code class="highlighter-rouge">hares -clear resource</code> - Clears faults on <em>resource</em></li>
+  <li><code class="highlighter-rouge">hares -probe resource -sys host</code> - Reprobes <em>resource</em> on <em>host</em></li>
+  <li><code class="highlighter-rouge">hares -link parent child</code> - Creates a resource dependency.  <em>child</em> must be online for <em>parent</em> to start</li>
+</ul>
+
+<h2 id="node-administration">Node Administration</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">hasys -freeze -persistent -evacuate host</code> - Freezes <em>host</em> and keeps the freeze persistent through reboots</li>
+  <li><code class="highlighter-rouge">hasys -freeze -evacuate host</code> - Same as above but the freeze is not persistent through reboots</li>
+  <li><code class="highlighter-rouge">hasys -unfreeze -persistent host</code> - Unfreezes the persistent freeze on <em>host</em></li>
+  <li><code class="highlighter-rouge">hasys -unfreeze host</code> - Same as above but used when the freeze is non-persistent</li>
+</ul>
+
+<h2 id="misc-stuff">Misc Stuff</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">hacf -cftocmd /etc/VRTSvcs/config/conf</code> - Creates a main.cmd file that contains all of the command lines necessary to recreate the main.cf</li>
+  <li><code class="highlighter-rouge">haagent -start resource-type -sys host</code> - Starts the agent for resource-type on host</li>
+  <li><code class="highlighter-rouge">hagetcf</code> - Creates a TAR file in /tmp that contains the entire VCS directory structure and configuration, useful for making backups, use the -help option for additional usage inforation</li>
+  <li><code class="highlighter-rouge">/var/adm/VRTSshrd/VRTSlic/bin/vxlicrep</code> - Reports on all installed Veritas licenses on the system</li>
+  <li><code class="highlighter-rouge">licensevcs</code> - On the root of the CD-ROM or in the installation tarball, used to install VCS licenses</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="My Symantec Veritas Cluster Server Quick Reference" data-url="https://jturgasen.github.io/symantec-cluster-server-quick-reference/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/symantec-cluster-server-quick-reference/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/symantec-cluster-server-quick-reference/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/symantec-cluster-server-quick-reference/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/shell-scripting-quick-reference/">&laquo; Josh Turgasen's Shell Scripting Quick Reference</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/symantec-volume-manager-quick-reference/">My Symantec Veritas Volume Manager Quick Reference &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

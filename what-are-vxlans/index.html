@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>What are VXLANs? | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="What are VXLANs?" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/what-are-vxlans/" />
+<meta property="og:url" content="https://jturgasen.github.io/what-are-vxlans/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/networking.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-10-11T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/what-are-vxlans/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/what-are-vxlans/"},"image":"https://jturgasen.github.io/networking.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"What are VXLANs?","dateModified":"2014-10-11T00:00:00-06:00","datePublished":"2014-10-11T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/networking.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">What are VXLANs?</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2014-10-11T00:00:00-06:00">
+          
+          Oct 11, 2014
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <p>What are VXLANs?  Why and when do we use them?  Let’s do some research and type it up FAQ style.<br /><br /><br /></p>
+
+<p><strong>What are VXLANs?</strong></p>
+
+<p>Virtual Extensible LANs (VXLANs) encapsulate layer 2 Ethernet frames into layer 3 IP packets and then encapsulates those into layer 4 UDP packets (port 8472).  It allows hosts on two separate L3 networks to appear to be on the same L2 network.  In a way, it abstracts or virtualizes the layer 2 network.  Because it’s abstracted, VXLANs can also hide things like duplicate MAC addresses, duplicate IP addresses, and duplicate VLANs.</p>
+
+<p><strong>What does the encapsulation?</strong></p>
+
+<p>The VXLAN Tunnel Endpoint (VTEP) does the encapsulation and de-encapsulation.</p>
+
+<p><strong>What are the components of VXLANs?</strong></p>
+
+<ul>
+  <li><strong>Multicast support, IGMP and PIM</strong> - These are required because VXLANs use multicast to communicate</li>
+  <li><strong>VXLAN Network Identifier (VNI)</strong> - 24 bit identifier that specifies the VXLAN network</li>
+  <li><strong>VXLAN Gateway</strong> - Allows the VXLAN to communicate with another network (such as a VLAN or subnet)</li>
+  <li><strong>VXLAN Tunnel End Point (VTEP)</strong> - Performs the encapsulation and de-encapsulation</li>
+  <li><strong>VXLAN Segment / VXLAN Overlay Network</strong> - The segment/network that is identified by the VNI</li>
+</ul>
+
+<p><strong>How do VXLANs compare to VLANs?</strong></p>
+
+<p>VLANs are great, but you can only have 4094 maximum according to Cisco.  Perhaps future hardware could greatly increase the limit but it’s an expensive solution to a problem we can solve in software.  You can have up to 16 million VXLANs and are not limited by hardware so they present a clear advantage.</p>
+
+<p>The other issue is administration and management.  Sure, we could have two systems in separate data centers and configure them to both be a member of VLAN 999, but it takes a lot of work.  Think about all of the aggregation switches between the two systems that need to be configured!  And what if we’re talking about a very dynamic environment like a cloud?  It would be a lot of work to fully automate it.  By using VXLANs we can have a static network and let the VMs / vswitches do the work.</p>
+
+<p>Yet another issue is the limitations of Spanning Tree Protocol (STP) - it tends to fall apart at scale, a single failure can bring down a large chunk of the network, and VLANs can also be viewed as their own fault domains.</p>
+
+<p><strong>How do VXLANs compare to GRE tunnels?</strong></p>
+
+<p>VXLANs are when the server (host or guest, physical or virtual) or virtual switch encapsulates the L2 packets into L3 and lets them fly.  With GRE you need to reconfigure the <em>network</em> to do the encapsulation.  In a cloud environment it’s easy to do this dynamically on the server, but it’s harder to dynamically reconfigure the network.  By using VXLANs we can create static routes on the network hardware and let the VMs / vswitches do the work of reconfiguring the network.</p>
+
+<p><strong>Is VXLAN an open standard?</strong></p>
+
+<p>Yes!  There is an IETF RFC and commercial vendors worked with the IEEE to create an open standard.</p>
+
+<p><strong>What types of software support VXLAN?</strong></p>
+
+<p>vSphere/VMware and <a href="https://en.wikipedia.org/wiki/Open_vSwitch">Open vSwitch</a> both support it.  Because Open vSwitch supports it we also see it in products such as OpenStack and Red Hat Enterprise Virtualization (RHEV).</p>
+
+<p><strong>What are some alternatives to using VXLANs?</strong></p>
+
+<p>Depending on your use case you can create a flat layer 2 network or a “layer 2 tunnel” using <a href="https://en.wikipedia.org/wiki/L2TPv3">L2TPv3</a>, <a href="https://en.wikipedia.org/wiki/EtherNet/IP">Ethernet/IP (aka EtherIP)</a>, or <a href="https://en.wikipedia.org/wiki/Generic_Routing_Encapsulation">Generic Routing Encapsulation (GRE)</a> tunnels.</p>
+
+<p><strong>What are the use cases for VXLANs?</strong></p>
+
+<p>You use VXLANs when you want to create a flat layer 2 network across a layer 3 network.</p>
+
+<p>The other main use case is to use <em>both</em> VLANs and VXLANs.  You carve out “virtual wires” (VXLANs) within a single VLAN.</p>
+
+<p><strong>What are the disadvantages of VXLANs?</strong></p>
+
+<p>“Traffic tromboning” can happen if you use an IDS or edge device.  For example, let’s say you have 2 VMs on the same physical machine and they communicate via VXLAN.  But, what if you require the traffic to go through an IDS / IPS that is on other machine, or at another data center?  Rather than talking directly, the traffic will go out VM1, through the IDS, and back to VM2.  Quite a long route for two VMs that are on the same physical server!</p>
+
+<p>Beware “tunnels in tunnels” such as L2 in L3 in GRE.  It can get out of control quickly.</p>
+
+<p>VXLAN requires multicast, which is often not supported over WAN links.</p>
+
+<p>There are no fault-isolation features as part of it’s design.</p>
+
+<p>VXLANs require 1600 byte MTUs (aka Jumbo Frames).  This may not be suitable for all situations.
+<br /><br /><br /></p>
+
+<p>That’s enough for now.  I haven’t had an opportunity to work with VXLANs but they look fun!</p>
+
+<p>Sources:</p>
+
+<ul>
+  <li><a href="http://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/white-paper-c11-729383.html">VXLAN Overview</a> by Cisco.com</li>
+  <li><a href="http://it20.info/2012/05/typical-vxlan-use-case/">Typical VXLAN Use Case</a> by IT 2.0</li>
+  <li><a href="http://www.yellow-bricks.com/2012/11/02/vxlan-use-cases/">VXLAN basics and use cases (when / when not to use it)</a> by Yellow Bricks</li>
+  <li><a href="http://www.borgcube.com/blogs/2011/11/vxlan-primer-part-1/">VXLAN Primer-Part 1</a> by BORGcube</li>
+  <li><a href="http://www.borgcube.com/blogs/2012/03/vxlan-primer-part-2-lets-get-physical/">VXLAN Primer-Part 2: Let’s Get Physical</a> by BORGcube</li>
+  <li><a href="http://blogs.cisco.com/datacenter/digging-deeper-into-vxlan/">Digging Deeper into VXLAN, Part 1</a> by Cisco</li>
+  <li><a href="http://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html">Layer 2 Network is a Single Failure Domain</a> by Ivan Pepelnjak</li>
+  <li><a href="http://blog.scottlowe.org/2011/12/02/examining-vxlan/">Examining VXLAN</a> by Scott Lowe</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="What are VXLANs?" data-url="https://jturgasen.github.io/what-are-vxlans/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/what-are-vxlans/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/what-are-vxlans/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/what-are-vxlans/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/my-server-is-out-of-memory-which-process-is-to-blame/">&laquo; My Server is Out of Memory, Which Process is to Blame</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/ssh-tips-and-best-practices/">SSH Tips and Best Practices &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

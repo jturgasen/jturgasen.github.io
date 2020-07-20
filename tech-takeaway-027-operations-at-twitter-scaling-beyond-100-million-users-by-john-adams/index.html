@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takeaway 027 Operations at Twitter Scaling Beyond 100 Million Users by John Adams | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takeaway 027 Operations at Twitter Scaling Beyond 100 Million Users by John Adams" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/twitter.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-08-01T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/"},"image":"https://jturgasen.github.io/twitter.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Tech Takeaway 027 Operations at Twitter Scaling Beyond 100 Million Users by John Adams","dateModified":"2015-08-01T00:00:00-06:00","datePublished":"2015-08-01T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/twitter.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takeaway 027 Operations at Twitter Scaling Beyond 100 Million Users by John Adams</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2015-08-01T00:00:00-06:00">
+          
+          Aug 1, 2015
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-xsmall uk-position-relative">
+
+
+  <div>
+    
+    
+    <div class="uk-article-content"></div>
+  </div>
+
+</div>
+      </div>
+
+<p><a href="https://www.youtube.com/watch?v=z8LU0Cj6BOU">Operations at Twitter: Scaling Beyond 100 Million Users by John Adams, presented at Large Installation System Administration Conference 2010 (LISA ‘10)</a></p>
+
+<p>Takeaways:</p>
+
+<ul>
+  <li>75% of their requests come via API and about 25% via web.  API is growing, web is shrinking</li>
+  <li>When a user connects to the web site it sends about 1 meg of HTML and JavaScript.  From then on it’s almost all JSON API calls via AJAX</li>
+  <li>If you display links the JavaScript itself needs to be secure</li>
+  <li>Nothing works the first time!
+    <ul>
+      <li>Scale the site using the best available technologies</li>
+      <li>Plan to build everything more than once</li>
+      <li>Most solutions work to a certain level of scale but then you must re-evaluate to grow</li>
+      <li>This is a continual process</li>
+    </ul>
+  </li>
+  <li>UNIX stuff fails at scale!</li>
+  <li><strong>cron</strong> jobs cause “micro outages” when a job kicks off at the same time on all machines</li>
+  <li>You can fix the cron issue multiple ways: Random sleeps, stagger the jobs, MD5 hash and grab the last few characters, etc</li>
+  <li><strong>syslog</strong> is another pain point</li>
+  <li>Messages are truncated at about 1500 characters because they are larger than the MTU of a UDP packet</li>
+  <li>Expect data loss when the syslog server becomes overwhelmed</li>
+  <li>Beware data rounding over time in time-series / RRD databases.  Things like one minute outages may be rounded out so you can’t actually see the outage when you look back</li>
+  <li>They increase performance / scale by using the following method:
+    <ul>
+      <li>Find weakest point using metrics + logs + science</li>
+      <li>Take corrective action</li>
+      <li>Repeat</li>
+    </ul>
+  </li>
+  <li><strong>MTTD</strong> stands for “mean time to detect” a problem in the infrastructure</li>
+  <li>They design for failure.  They can lose a “significant portion” of the infrastructure and the site will remain online</li>
+  <li>Talks about DevOps tools and ideas, the usual stuff</li>
+  <li>Instrument everything - collect tons of metrics.  They monitor 30k or 40k data points, but beware because too much monitoring can impact the system</li>
+  <li>Their ops guys do a lot of data analysis</li>
+  <li>Reporting tools should report critical metrics in as near to real time as possible</li>
+  <li>Be sure to monitor and report API availability</li>
+  <li>They do a lot of <strong>profiling</strong>.  Latency, memory leaks, network usage</li>
+  <li>For network level monitoring they love <strong>yconalyzer</strong> by Yahoo and also use tcpdump + tcpdstat</li>
+  <li>How fast are TCP connections being opened and closed?  What’s the SYN rate?  What are the packet sizes?</li>
+  <li>They also use Google’s <strong>gperftools</strong>.  They have custom modifications that allow gperftools to look inside Ruby</li>
+  <li>Use configuration management as soon as you can - it saves sooo much time later</li>
+  <li>They use Puppet + SVN</li>
+  <li>Make use of <strong>post-commit hooks</strong> and have them kick off consistency checks (automated QA)</li>
+  <li><strong>Nobody logs into machines directly</strong> - they use CM tools only</li>
+  <li>They use an in-house tool to hold their machine database (asset database)</li>
+  <li>Twitter uses an in-house tool named <strong>Murder</strong> for deploys.  It is bittorrent-based rather than a centralized server or tiers of servers</li>
+  <li>Murder is built with Python + libtorrent</li>
+  <li>By using a bittorrent based deploy system they can update &gt;1k machines in 30-60 seconds</li>
+  <li>Murder talks to the in-house machine database to determine which machine(s) to deploy new code to</li>
+  <li>To minimize errors they use <strong>Review Board</strong> so each change is reviewed by a person other than the person who made the change</li>
+  <li>They use SVN post-commit hooks to call the Review Board API, publish the diffs on Review Board, and then it sends an e-mail to everyone in operations to review the change</li>
+  <li>Twitter uses <strong>canary deploys</strong></li>
+  <li>Syslog doesn’t scale because….
+    <ul>
+      <li>No redundancy or ability to recover properly if the daemon fails</li>
+      <li>Moving large files around is painful</li>
+      <li>Instead they use the Facebook tool <strong>scribe</strong></li>
+    </ul>
+  </li>
+  <li>In Twitter’s infrastructure they use LZO to <strong>compress logs in real time and then send the data Hadoop + HDFS</strong></li>
+  <li>Logging to Hadoop + HDFS is very powerful because it’s an easy way to collect logs in a “central” location and then run analytics against the logs using MapReduce</li>
+  <li>Run check scripts both during and after a deploy</li>
+  <li>They use Google Analytics on their error pages so they can determine how much availability was lost based on how many people accessed the error pages</li>
+  <li>Their dashboard has a “criticals” view for important graphs</li>
+  <li>Share analytics with everyone (ops, dev, business)</li>
+  <li>Watch 500 and 503 errors per second to catch problems before they get out of control</li>
+  <li><strong>Block deploys if the site is in an error state</strong></li>
+  <li>Display time of last deploy on your dashboard</li>
+  <li>Communicate deploys to teams via IRC / Campfire / HipChat</li>
+  <li>Graph time-of-deploy along side server CPU and latency</li>
+  <li><strong>Draw lines in graphs when deploys go out</strong>.  This makes it easy to see if a deploy caused a problem (increased latency, traffic dropped after the deploy, etc)</li>
+  <li>Every new feature must be wrapped in a feature flag.  They call this <strong>darkmode</strong></li>
+  <li>Their feature flags are not binary.  They <strong>use a 1 to 10000 scale that determines what percentage of servers to deploy to (10000 = all, 100 = 1% etc)</strong></li>
+  <li>Feature flags / darkmode also acts as an emergency stop button</li>
+  <li>They can <strong>put services into static/read-only mode</strong> where instead of hitting a backend service the request will instead get static content from a cache</li>
+  <li>Great picture of their request pipeline at 29:13</li>
+  <li>Analyze the request pipeline, determine the bottleneck, tune, repeat</li>
+  <li>Consider DB connections a “scarce commodity” that shouldn’t be used often</li>
+  <li>They use a queue system for their web -&gt; app tier instead of just having web throw traffic at the app tier and hope it doesn’t backup</li>
+  <li>They <strong>segement their memcache clusters into pools</strong> for better performance (eg: memcaches that hold session data are not in the main pool)</li>
+  <li>memcache evictions make the cache unreliable for important stuff (darkmode flags)</li>
+  <li>When storing consistent data in memcache (eg: each item is 10 bytes) monitor memcache’s slab allocation and watch for high use / eviction rates on individual slabs using <strong>peep</strong>.  Adjust slab factors and size accordingly</li>
+  <li>Monitoring TCP retransmits</li>
+  <li>People often waste a lot of memory because they use it with the default parameters</li>
+  <li>Some talk about decoupling/microservices/decomposition and it’s usual advantages</li>
+  <li>Think about which services can be taken out of the “real time” pipeline and performed async (send a SMS or e-mail, etc) by moving the work to queues</li>
+  <li>They abstract services using <strong>Apache Thrift</strong></li>
+  <li>They use a sharding framework / library.  This abstracts sharding away from both dev and ops</li>
+  <li>“Disk is the new tape” because disk is way too slow for Web 2.0 responsiveness</li>
+  <li>Use FNV as your hashing algo in memcache because it’s much faster than MD5</li>
+  <li>Test and see what happens during a memcache outage</li>
+  <li>Consider the<strong>cold cache</strong> problem.  What happens after a system failure?</li>
+  <li>Mounting your DB with atime enabled will kill your performance</li>
+  <li>Automatically kill long-running SELECT queries by using <strong>mkill</strong></li>
+  <li>It’s better to kill the long-running queries rather than let them bring the whole site to a crawl</li>
+  <li>In general any SQL query that’s <strong>longer than a couple seconds is a bad thing - it won’t scale</strong></li>
+  <li><strong>Their key to scalability is collecting extensive metrics (instrumentation)</strong></li>
+  <li>Collecting metrics is an iterative process.  Start small but keep adding more.</li>
+  <li>If the site fails and you can’t figure out why, it’s probably time to add more metrics</li>
+  <li>If you use bleeding-edge tools don’t forget that <strong>you will be debugging them</strong> as much as the tool’s developers</li>
+  <li>Determine how many web servers you can lose before the site is unusable.  Sent an alert only if X% fail rather than sending alerts for each individual server</li>
+  <li>Same for DB read slaves</li>
+  <li>They use a very fast monitoring timeout (eg: if a request takes &gt;50ms mark the server as dead)</li>
+  <li>“It’s a dance between system failure, timeouts, and monitoring”</li>
+  <li>Post-commit hook that looks for the string “reviewed by valid_user_name”</li>
+  <li>Their code reviews can be a couple hours or a couple days.  Being <strong>agile is great but reliability is more important to them</strong></li>
+  <li>They have an automated process that creates a change request (post-commit hook?)</li>
+  <li>When their provider provisions a new machine they receive an e-mail.  They parse and ingest the e-mails into their machine database and Puppet</li>
+  <li>They use templated router config files.  This allows them to create tools that work against those templates to inject configuration changes</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takeaway 027 Operations at Twitter Scaling Beyond 100 Million Users by John Adams" data-url="https://jturgasen.github.io/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/tech-takeaway-026-fixing-twitter-improving-the-performance-and-scalability-of-the-worlds-most-popular-micro-blogging-site-by-john-adams/">&laquo; Tech Takeaway 026 Fixing Twitter Improving the Performance and Scalability of the Worlds Most Popular Micro blogging Site by John Adams</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-028-building-a-website-to-scale-target-200-million-page-views-per-day-and-beyond-by-eric-pickup/">Tech Takeaway 027 Building a Website To Scale   Target 200 Million Page Views per Day and Beyond by Eric Pickup &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

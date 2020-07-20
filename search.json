@@ -1,0 +1,467 @@
+[
+  
+    {
+      "title"    : "Certified Kubernetes Administrator Passed!",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/cka-passed/",
+      "date"     : "2020-07-19 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Taking a Break",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/taking-a-break/",
+      "date"     : "2016-06-11 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Unquestionably Essential Site Reliability Engineering by OReilly",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/unquestionably-essential-site-reliability-engineering-by-oreilly/",
+      "date"     : "2016-06-10 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 040 Apache Kafka and the Next 700 Stream Processing Systems by Jay Kreps",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-040-apache-kafka-and-the-next-700-stream-processing-systems-by-jay-kreps/",
+      "date"     : "2016-06-10 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 039 Monitoring Without Infrastructure at Airbnb by Igor Serebryany",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-039-monitoring-without-infrastructure-at-airbnb-by-igor-serebryany/",
+      "date"     : "2016-06-10 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 038 Maintaining Consistency in a Massively Parallel Environment by Dinah McNutt",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt/",
+      "date"     : "2016-02-21 00:00:00 -0700"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/",
+      "date"     : "2016-02-21 00:00:00 -0700"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 036 Growing from the Few to the Many Scaling The Operations Organization at Facebook by Pedro Canahuati",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati/",
+      "date"     : "2016-02-21 00:00:00 -0700"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 035 How Uber Uses Your Phone as a Backup Data Center by Joshua Corbin",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-035-how-uber-uses-your-phone-as-a-backup-data-center-by-joshua-corbin/",
+      "date"     : "2016-02-21 00:00:00 -0700"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 034 Building a Billion User Load Balancer by Patrick Shuff",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-034-building-a-billion-user-load-balancer-by-patrick-shuff/",
+      "date"     : "2016-02-21 00:00:00 -0700"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 033 Monitoring Managing and Troubleshooting Large Scale Networks by Peter Hoose",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-033-monitoring-managing-and-troubleshooting-large-scale-networks-by-peter-hoose/",
+      "date"     : "2016-02-21 00:00:00 -0700"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 032 The State of the Art in Microservices by Adrian Cockcroft",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-032-the-state-of-the-art-in-microservices-by-adrian-cockcroft/",
+      "date"     : "2015-08-23 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 031 Cloud Native Cost Optimization by Adrian Cockcroft",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-031-cloud-native-cost-optimization-by-adrian-cockcroft/",
+      "date"     : "2015-08-23 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 030 Automating Infrastructure Management with Terraform by Armon Dadgar",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-030-automating-infrastructure-management-with-terraform-by-armon-dadgar/",
+      "date"     : "2015-08-23 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 029 Scaling Facebook with OpenSource Tools by David Recordon",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-029-scaling-facebook-with-opensource-tools-by-david-recordon/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 027 Building a Website To Scale   Target 200 Million Page Views per Day and Beyond by Eric Pickup",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-028-building-a-website-to-scale-target-200-million-page-views-per-day-and-beyond-by-eric-pickup/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 027 Operations at Twitter Scaling Beyond 100 Million Users by John Adams",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-027-operations-at-twitter-scaling-beyond-100-million-users-by-john-adams/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 026 Fixing Twitter Improving the Performance and Scalability of the Worlds Most Popular Micro blogging Site by John Adams",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-026-fixing-twitter-improving-the-performance-and-scalability-of-the-worlds-most-popular-micro-blogging-site-by-john-adams/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 025 From Zero to Hero Recommended Practices for Training your Ever Evolving SRE Teams by Andrew Widdowson of Google",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 024 10 Deploys Per Day Dev and Ops Cooperation at Flickr by John Allspaw and Paul Hammond",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-024-10-deploys-per-day-dev-and-ops-cooperation-at-flickr-by-john-allspaw-and-paul-hammond/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 023 Introduction to Sensu by Bethany Erskine",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-023-introduction-to-sensu-by-bethany-erskine/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 022 Stop Using Nagios by Andy Sykes",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-022-stop-using-nagios-by-andy-sykes/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 021 Embracing Failure Fault Injection and Service Resilience at Netflix by Josh Evans",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-021-embracing-failure-fault-injection-and-service-resilience-at-netflix-by-josh-evans/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 020 Design Review Best Practices by Mandi Walls of Chef",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-020-design-review-best-practices-by-mandi-walls-of-chef/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 019 Grilled Cheese at Scale A Recipe for Stability Practices by Connie Lynne Villani of Groupon",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-019-grilled-cheese-at-scale-a-recipe-for-stability-practices-by-connie-lynne-villani-of-groupon/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 018 Keys to SRE by Ben Treynor of Google",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-018-keys-to-sre-by-ben-treynor-of-google/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 017 Deploying All Day Without Breaking the Internet by Sean OConnor of Bitly",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-017-deploying-all-day-without-breaking-the-internet-by-sean-oconnor-of-bitly/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 016 3 Big Shifts CloudFoundry and the Future of Enterprise IT by James Watters of Pivotal",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-016-3-big-shifts-cloudfoundry-and-the-future-of-enterprise-it-by-james-watters-of-pivotal/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 015 Consul Service Oriented at Scale by Armon Dadgar of Hashicorp",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-015-consul-service-oriented-at-scale-by-armon-dadgar-of-hashicorp/",
+      "date"     : "2015-08-01 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 014 ChefConf 2014 Chris Fortier and Manny Toledo Moving Data Centers Is Scary",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-014-chefconf-2014-chris-fortier-manny-toledo-moving-data-centers-is-scary/",
+      "date"     : "2014-11-04 00:00:00 -0700"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 013 ChefConf 2014 Jez Humble DevOps Culture and Practices To Create Flow",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-013-chefconf-2014-jez-humble-devops-culture-and-practices-to-create-flow/",
+      "date"     : "2014-11-04 00:00:00 -0700"
+    } ,
+  
+    {
+      "title"    : "Things to Consider When Designing Cloud Applications",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/things-to-consider-when-designing-cloud-applications/",
+      "date"     : "2014-10-26 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 012 Cluster Management at Google",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-012-cluster-management-at-google/",
+      "date"     : "2014-10-26 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 011 Lessons from Etsy Avoiding Kitchen Nightmares",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-011-lessons-from-etsy-avoiding-kitchen-nightmares/",
+      "date"     : "2014-10-25 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 010 The Berkshelf Way by Jamie Winsor",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-010-the-berkshelf-way-by-jamie-winsor/",
+      "date"     : "2014-10-25 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Pets vs Cattle",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/pets-vs-cattle/",
+      "date"     : "2014-10-25 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Blameless Post Mortems",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/blameless-post-mortems/",
+      "date"     : "2014-10-25 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 009 How to Fuck Up Your Configuration Management Adoption and Piss Everyone Off by Sascha Bates",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-009-how-to-fuck-up-your-configuration-management-adoption-and-piss-everyone-off/",
+      "date"     : "2014-10-24 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 008 Treating Your Infrastructure Like Garbage by Mike Fiedler",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-008-treating-your-infrastructure-like-garbage-by-mike-fiedler/",
+      "date"     : "2014-10-24 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 007 How to Let Devs Do Your Job For You by Aaron Suggs",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-007-how-to-let-devs-do-your-job-for-you-by-aaron-suggs/",
+      "date"     : "2014-10-24 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 006 Scaling systems configuration at Facebook with Chef by Phil Dibowitz",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-006-scaling-systems-configuration-at-facebook-by-phil-dibowitz-chef/",
+      "date"     : "2014-10-24 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Agile Manifesto and Principles In My Own Words",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/agile-manifesto-and-principles-in-my-own-words/",
+      "date"     : "2014-10-21 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "What is Partition Alignment and Why Does It Matter",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/what-is-partition-alignment-and-why-does-it-matter/",
+      "date"     : "2014-10-17 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Bootable, Immutable, Versioned File System Trees",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/bootable-immutable-versioned-file-system-trees/",
+      "date"     : "2014-10-17 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Why Use Configuration Management Software?",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/why-use-configuration-management-software/",
+      "date"     : "2014-10-12 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "SSH Tips and Best Practices",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/ssh-tips-and-best-practices/",
+      "date"     : "2014-10-12 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "What are VXLANs?",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/what-are-vxlans/",
+      "date"     : "2014-10-11 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "My Server is Out of Memory, Which Process is to Blame",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/my-server-is-out-of-memory-which-process-is-to-blame/",
+      "date"     : "2014-10-11 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Why Use VLANs?",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/why-use-vlans/",
+      "date"     : "2014-10-10 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "My Symantec Veritas Volume Manager Quick Reference",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/symantec-volume-manager-quick-reference/",
+      "date"     : "2014-10-10 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "My Symantec Veritas Cluster Server Quick Reference",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/symantec-cluster-server-quick-reference/",
+      "date"     : "2014-10-10 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Josh Turgasen&#39;s Shell Scripting Quick Reference",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/shell-scripting-quick-reference/",
+      "date"     : "2014-10-09 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Ensuring Smooth Software Rollouts",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/ensuring-smooth-software-rollouts/",
+      "date"     : "2014-10-05 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 005 Best practices for PaaS, OpenStack, &amp; cloud adoption",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-005-best-practices-for-paas-openstack-cloud-adoption/",
+      "date"     : "2014-09-28 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 004 Deterministic capacity planning for OpenStack as elastic cloud infrastructure",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-004-deterministic-capacity-planning-for-openstack-as-elastic-cloud-infrastructure/",
+      "date"     : "2014-09-28 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takwaway 003 Building Webscale Apps with Marathon, Docker, and Mesos",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-003-building-webscale-apps-with-marathon-docker-and-mesos/",
+      "date"     : "2014-09-28 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 002 Tupperware Containerized Deployment at Facebook",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-002-tupperware-containerized-deployment-at-facebook/",
+      "date"     : "2014-09-28 00:00:00 -0600"
+    } ,
+  
+    {
+      "title"    : "Tech Takeaway 001 Building and Running Distributed Systems using Apache Mesos",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/tech-takeaway-001-building-and-running-distributed-systems-using-apache-mesos/",
+      "date"     : "2014-09-27 00:00:00 -0600"
+    } 
+  
+]

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takeaway 015 Consul Service Oriented at Scale by Armon Dadgar of Hashicorp | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takeaway 015 Consul Service Oriented at Scale by Armon Dadgar of Hashicorp" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-015-consul-service-oriented-at-scale-by-armon-dadgar-of-hashicorp/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-015-consul-service-oriented-at-scale-by-armon-dadgar-of-hashicorp/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/consul.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-08-01T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-015-consul-service-oriented-at-scale-by-armon-dadgar-of-hashicorp/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-015-consul-service-oriented-at-scale-by-armon-dadgar-of-hashicorp/"},"image":"https://jturgasen.github.io/consul.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Tech Takeaway 015 Consul Service Oriented at Scale by Armon Dadgar of Hashicorp","dateModified":"2015-08-01T00:00:00-06:00","datePublished":"2015-08-01T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/consul.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takeaway 015 Consul Service Oriented at Scale by Armon Dadgar of Hashicorp</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2015-08-01T00:00:00-06:00">
+          
+          Aug 1, 2015
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-xsmall uk-position-relative">
+
+
+  <div>
+    
+    
+    <div class="uk-article-content"></div>
+  </div>
+
+</div>
+      </div>
+
+<p><a href="https://www.youtube.com/watch?v=eR0899h_1Ac">Consul: Service Oriented at Scale, by Armon Dadgar of Hashicorp, presented at RICON 2014</a></p>
+
+<p>Takeaways:</p>
+
+<ul>
+  <li>SOA is a spectrum, not a binary decision.  It slides between microservice and monolith models</li>
+  <li>If you use only microservices you introduce a lot of overhead, both conceptual (100s or 1000s of services) and technical (network traffic / tons of API calls)</li>
+  <li>The downside of monolith is the risk of introducing change to this single, large service</li>
+  <li>SOA should be autonomous, the scope of each service is limited and well-defined, and the services are loosely-coupled</li>
+  <li>SOA is great because you can…
+    <ul>
+      <li>Develop faster (iterate faster)</li>
+      <li>Composable</li>
+      <li>Failures are isolated</li>
+      <li>Each service is testable (well known inputs and outputs)</li>
+      <li>You scale out instead of up</li>
+    </ul>
+  </li>
+  <li>SOA is hard because…
+    <ul>
+      <li>Service discovery (where do I find the billing service?)</li>
+      <li>Monitoring (how do you monitor a very dynamic environment?)</li>
+      <li>Configuration</li>
+      <li>Orchestration</li>
+    </ul>
+  </li>
+  <li>Consul seeks to weave these all together rather than using multiple tools / silos for each function</li>
+  <li>How does a node or service find other services?  You can hard code, but that’s silly (inflexible, fragile, not scalable)</li>
+  <li>You could hard code and point to a load balancer, but now you have a SPOF</li>
+  <li>How do you orchestrate?  When you change something how do you get the message to each tier and how do you make them work together to implement the change</li>
+  <li>He feels that most service discovery solutions (DNS, ZooKeeper, RMDBS) force you to “roll your own”</li>
+  <li>Existing monitoring is a “knowledge silo” in that it doesn’t feed information back into service discovery (eg: server died so it should be removed from the list)</li>
+  <li>Consul’s service discovery is broken down into…
+    <ul>
+      <li>Nodes</li>
+      <li>Services</li>
+      <li>Checks (Nagios compatible)</li>
+      <li>Uses JSON for registration (name, tab, port, health check script, script interval)</li>
+      <li>Has DNS and HTTP interfaces for service discovery</li>
+      <li>Has a HTTP API</li>
+    </ul>
+  </li>
+  <li>Service lookup via DNS uses the <strong>.service.consul</strong> TLD   (eg: dig slave.redis.service.consul)</li>
+  <li>Notice that when you use DNS for service discovery the TTL is set to zero which forces load balancing by discouraging client DNS caching</li>
+  <li>DNS service discovery uses SRV records so it can include the port number</li>
+  <li>Discovery via HTTP API is much more feature-rich than DNS discovery</li>
+  <li>Consul clients run their checks and <strong>push</strong> info back to the servers (vs servers SSH’ing to clients, gathering info, and pulling it back)</li>
+  <li>The monitoring component only pushes updates when the status changes as opposed to pushing status at every monitoring interval</li>
+  <li>The downside of this type of monitoring is because status isn’t sent at every heartbeat you’re not sure if the agent is stable or dead</li>
+  <li>Consul’s gossip-based failure detection is more scalable.  No single server or SPOF, no “info pull” every X seconds like normal monitoring</li>
+  <li>Supports “long-polling” (eg: notify me the moment my configuration changes from now until eternity)</li>
+  <li><strong>envconsul</strong> allows you to set environment variables by pulling value(s) from keys in Consul’s key/value store</li>
+  <li><strong>consul-template</strong> is a generic templating tool that creates templates dynamically based on the key/value</li>
+  <li>He gives an example of using consul-template to dynamically update HAproxy as nodes register with the service discovery component and remove nodes when the monitoring component sees they have failed</li>
+  <li>Consul’s orchestration component consists of…
+    <ul>
+      <li>Watchers</li>
+      <li>Event System</li>
+      <li>Remote Execution</li>
+      <li>Distributed Locking</li>
+    </ul>
+  </li>
+  <li>Watchers watch certain components (key/value, health checks, etc) and kicks off a custom handler when it changes</li>
+  <li>The Event System is essentially name + payload.  The Watchers then receive and handle the event</li>
+  <li>Event System example: Flush memcached when event X is received</li>
+  <li>Remote Execution is built on top of the Event System and is essentially parallel SSH that can filter based on service/nodes/tags <code class="highlighter-rouge">consul exec -service service-name command</code></li>
+  <li>The k/v store supports client-side distributed locking.  The client can specify the consistency level of their locks, similar to Cassandra</li>
+  <li>He considers Consult to be the “data center control plane” because it includes configuration, orchestration, monitoring, and service discovery all in a single tool</li>
+  <li>Consul scales to thousands of machines and supports multiple data centers</li>
+  <li>Each machine has a Consul agent</li>
+  <li>Agents can be in either server or client mode</li>
+  <li>Usually you have 3 or 5 servers per data center (odd number for quorum)</li>
+  <li>Server agents will internally elect a leader.  The leader replicates data to the other server agents in the data center</li>
+  <li>Client and server agents in the same data center talk using <strong>LAN Gossip</strong></li>
+  <li>Intra-data center server agent communication is via <strong>WAN Gossip</strong></li>
+  <li>Client queries can be answered by leader nodes (most consistent, slowest, SPOF) and/or non-leader server nodes (faster, distributed, but less consistent)</li>
+  <li>Server agents transparently forward client requests if necessary (eg: client in DC1 wants to see a list of all Redis nodes in DC2)</li>
+  <li>Clients never talk directly to server agents.  They talk to the local agent and the local agent then forwards the request.  This means the client never has to know the name/IP/location of the server</li>
+  <li>LAN and WAN gossip pools use the <strong>Serf</strong> tool</li>
+  <li>Serf is what actually provides the…
+    <ul>
+      <li>Gossip pool membership</li>
+      <li>Event system</li>
+      <li>Failure detection</li>
+    </ul>
+  </li>
+  <li>Nodes join a gossip pool by talking to <strong>any peer</strong> (as opposed to a hard coded IP address)</li>
+  <li>Gossip layer supports protocol versioning</li>
+  <li>When a node cleanly leaves the gossip pool Consul will automatically unregisters the nodes services</li>
+  <li>Gossip events use a P2P method for delivery.  This allows for sub-second delivery on thousands of nodes</li>
+  <li>Because every node as a Consul agent, developers can assume it’s installed, depend on it, and use it (much like syslog)</li>
+  <li>Internally they use consul-template and envconsul</li>
+  <li>Consul includes a web UI</li>
+  <li>Deploys are “event driven”.  When new binaries are available a handler downloads them and then later, another event + handler does the rolling restarts</li>
+  <li>Supports <strong>client-side leader election</strong>.  This allows you to deploy N+1 instances of a service and the agents can determine which instance is active and which instance(s) are backups</li>
+  <li>When uploading large binaries their VagrantCloud service uses a <strong>write-ahead log</strong> so it can track the chunks that are being uploaded.  This allows for more consistency and graceful recovery from failures</li>
+  <li>The write-ahead log is essentially a list of chunks that the client will upload in order to make the full BLOB</li>
+  <li>One company is migrating from Puppet to Consul k/v to save time on converges</li>
+  <li>Some unnamed companies are testing it at 20k and 100k node scale</li>
+  <li>Allows for <strong>reactive infrastructure</strong> (neat term!)</li>
+  <li>Supports TLS and has a token based ACL system (similar to Amazon IAM)</li>
+  <li>The default behavior is to return services in the local data center.  Clients can ask for a different data center (eg: redis.service.east1.service.consul)</li>
+  <li>They do their rolling restarts by picking a random sleep value (0 to 30 seconds).  An alternative is a semaphore with locks.</li>
+  <li>Supports <strong>safe locks</strong>.  These are locks that are not released until the client explicitly releases it.</li>
+  <li>Also supports <strong>live locks</strong>.  Live locks are released if Consul detects that the client has failed</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takeaway 015 Consul Service Oriented at Scale by Armon Dadgar of Hashicorp" data-url="https://jturgasen.github.io/tech-takeaway-015-consul-service-oriented-at-scale-by-armon-dadgar-of-hashicorp/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-015-consul-service-oriented-at-scale-by-armon-dadgar-of-hashicorp/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-015-consul-service-oriented-at-scale-by-armon-dadgar-of-hashicorp/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-015-consul-service-oriented-at-scale-by-armon-dadgar-of-hashicorp/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/tech-takeaway-014-chefconf-2014-chris-fortier-manny-toledo-moving-data-centers-is-scary/">&laquo; Tech Takeaway 014 ChefConf 2014 Chris Fortier and Manny Toledo Moving Data Centers Is Scary</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-016-3-big-shifts-cloudfoundry-and-the-future-of-enterprise-it-by-james-watters-of-pivotal/">Tech Takeaway 016 3 Big Shifts CloudFoundry and the Future of Enterprise IT by James Watters of Pivotal &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

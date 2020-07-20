@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takeaway 006 Scaling systems configuration at Facebook with Chef by Phil Dibowitz | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takeaway 006 Scaling systems configuration at Facebook with Chef by Phil Dibowitz" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-006-scaling-systems-configuration-at-facebook-by-phil-dibowitz-chef/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-006-scaling-systems-configuration-at-facebook-by-phil-dibowitz-chef/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/facebook.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-10-24T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-006-scaling-systems-configuration-at-facebook-by-phil-dibowitz-chef/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-006-scaling-systems-configuration-at-facebook-by-phil-dibowitz-chef/"},"image":"https://jturgasen.github.io/facebook.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Tech Takeaway 006 Scaling systems configuration at Facebook with Chef by Phil Dibowitz","dateModified":"2014-10-24T00:00:00-06:00","datePublished":"2014-10-24T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/facebook.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takeaway 006 Scaling systems configuration at Facebook with Chef by Phil Dibowitz</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2014-10-24T00:00:00-06:00">
+          
+          Oct 24, 2014
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <p><a href="https://www.youtube.com/watch?v=SYZ2GzYAw_Q">Phil Dibowitz talks about scaling Chef at Facebook at ChefCon 2013</a></p>
+
+<ul>
+  <li>They manage “10s of thousand of nodes”</li>
+  <li>Ask yourself the following when scaling configuration management…
+    <ul>
+      <li>How many homogeneous systems can you maintain?</li>
+      <li>How many heterogeneous systems can you maintain?</li>
+      <li>How many people do you need (to maintain the configurations)?</li>
+      <li>Can you safely delegate delta configurations?</li>
+      <li>Can service owners (eg: developers, app teams) own their own their own configurations?</li>
+    </ul>
+  </li>
+  <li>It should be deterministic (eventual consistency is not acceptable, must be complete after first run)</li>
+  <li>Should be idempotent, eg: it only makes the necessary changes</li>
+  <li>The design should be extensible to both internal systems and customer-facing system</li>
+  <li>It should adapt to your workflow</li>
+  <li>Service owners / dev teams / ops teams should know what they need  (eg: vip + shared memory + core file location + no NSCD etc), but not how to configure them</li>
+  <li>Let the owners express what they want (VIPs, sysctl settings, etc) as data (arrays, hashes, etc)</li>
+  <li>When expressing their needs as data it should be platform-agnostic (eg: Devs don’t need to know if they are running on CentOS or Ubuntu)</li>
+  <li>Should support rapid prototyping so you can test &amp; push quickly</li>
+  <li>Templatize your configs as a hash (shmem.max = 1234, core.file.location = /var/crash etc)</li>
+  <li>Use sane defaults in your templates</li>
+  <li>The advantage of templates is that the devs / ops / service owners can override only what they need to</li>
+  <li>Another advantage is you don’t have 9000 sysctl.confs for 9000 different (but mostly similar) systems</li>
+  <li><code class="highlighter-rouge">node.save()</code> doesn’t scale, sends back too much data (a few hundred kilobytes)</li>
+  <li>The standard answer of “disable <code class="highlighter-rouge">ohai</code> plugins” sucks.  So….</li>
+  <li>The solution was <code class="highlighter-rouge">whitelist-node-attrs</code> (on GitHub).  Only send back the attributes you care about.</li>
+  <li>Facebook’s desired workflow….
+    <ul>
+      <li>API that allows engineers / ops / service owners to extend configs by munging (changing) data structures (diff sysctl settings for my app but not others, etc)</li>
+      <li>Engineers don’t need to know what they are building on, just what they need to change</li>
+      <li>Engineers can change their systems without fear of changing anything else</li>
+      <li>Testing should be easy</li>
+    </ul>
+  </li>
+  <li>The API seems to talk to cookbooks directly.  Devs send their hashes to the API and it puts them into a cookbook</li>
+  <li>Engineers only “deviate from the common case” (eg: change what they need to)</li>
+  <li>Idempotent records can get stale (eg: remove this cron job after 01/01/14, but no human ever goes in and removes it)</li>
+  <li>For example, you add a cron job do your cookbook, push it out, put an action to delete the cron job in the cookbook, and then nobody ever cleans up the delete code.  This sucks.</li>
+  <li>Consider having Chef analyze the hardware and set sysctl settings based on the hardware</li>
+  <li>Use booleans to enable/disable functions (eg: IPv6)</li>
+  <li>DSR = Direct Server Return.  Incoming connections come through load balancer, replies go around the load balancer directly to the client.  Called nPath on F5 LBs</li>
+  <li>They use “stateless” Chef servers (re-image at a moments notice, no search or databags)</li>
+  <li>They separate their Chef servers out into failure domains</li>
+  <li>Each cluster use a tiered model.  Stateless front-end Chef servers with CouchDB/Redis/Postgre on the backend.  Load balancers sit between back and front, and between front and the clients</li>
+  <li>2 backends in an active/passive config</li>
+  <li>Use Food Critic for Chef correctness (eg: lint for Chef)</li>
+  <li>Chef management is done on a per-cluster basis.  Fault domains but no “world view”</li>
+  <li>On the clients they have a “report handler” that shoots info into their internal monitoring system (last exception, run success/failure, number of resources, time to run, system info, etc)</li>
+  <li>Erlang rewrite gave insane performance and scalability gains</li>
+  <li>Can use Hosted Chef’s tenantcy for testing.  New bookbooks?  Upload them to a new org and then test.  Your very own test org.</li>
+  <li>FB has a wrapper script to accomplish this</li>
+  <li>Lessons learned:
+    <ul>
+      <li>Idempotent systems &gt; idempotent records because nobody ever cleans anything up</li>
+      <li>Delegating delta configs means easier heterogeneity</li>
+      <li>Full languages &gt; DSLs</li>
+      <li>Scale is more than just number of clients</li>
+      <li>Easy abstraction is critical to delegation</li>
+      <li>Testing against real systems is useful and necessary.  Not your first test, but <strong>a</strong> test</li>
+    </ul>
+  </li>
+  <li>That’s it!</li>
+</ul>
+
+<p>Great ideas in this talk!</p>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takeaway 006 Scaling systems configuration at Facebook with Chef by Phil Dibowitz" data-url="https://jturgasen.github.io/tech-takeaway-006-scaling-systems-configuration-at-facebook-by-phil-dibowitz-chef/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-006-scaling-systems-configuration-at-facebook-by-phil-dibowitz-chef/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-006-scaling-systems-configuration-at-facebook-by-phil-dibowitz-chef/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-006-scaling-systems-configuration-at-facebook-by-phil-dibowitz-chef/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/agile-manifesto-and-principles-in-my-own-words/">&laquo; Agile Manifesto and Principles In My Own Words</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-007-how-to-let-devs-do-your-job-for-you-by-aaron-suggs/">Tech Takeaway 007 How to Let Devs Do Your Job For You by Aaron Suggs &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

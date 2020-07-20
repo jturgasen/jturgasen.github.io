@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tech Takeaway 025 From Zero to Hero Recommended Practices for Training your Ever Evolving SRE Teams by Andrew Widdowson of Google | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Tech Takeaway 025 From Zero to Hero Recommended Practices for Training your Ever Evolving SRE Teams by Andrew Widdowson of Google" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/" />
+<meta property="og:url" content="https://jturgasen.github.io/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/sre-book.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-08-01T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/"},"image":"https://jturgasen.github.io/sre-book.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"Tech Takeaway 025 From Zero to Hero Recommended Practices for Training your Ever Evolving SRE Teams by Andrew Widdowson of Google","dateModified":"2015-08-01T00:00:00-06:00","datePublished":"2015-08-01T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/sre-book.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">Tech Takeaway 025 From Zero to Hero Recommended Practices for Training your Ever Evolving SRE Teams by Andrew Widdowson of Google</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2015-08-01T00:00:00-06:00">
+          
+          Aug 1, 2015
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-xsmall uk-position-relative">
+
+
+  <div>
+    
+    
+    <div class="uk-article-content"></div>
+  </div>
+
+</div>
+      </div>
+
+<p><a href="https://www.youtube.com/watch?v=pE7RLRea0MM">From Zero to Hero: Recommended Practices for Training your Ever-Evolving SRE Teams by Andrew Widdowson of Google, presented at SREcon15</a></p>
+
+<p>Takeaways:</p>
+
+<ul>
+  <li>Don’t just throw people in the deep end (eg: putting them on-call ASAP, telling them go grab random stuff out of the ticket queue, etc)</li>
+  <li>Put trust in new SREs.  This helps avoid imposter syndrome</li>
+  <li>Build their confidence via training so the first on-call rotation isn’t so scary</li>
+  <li>Creating a formal training process reduced the time to first on-call from 9 months to 3 months</li>
+  <li>SRE is learned “on the job”</li>
+  <li>Keep existing SREs sharp.  If a SRE is on-call for a stack that never changes (thus never/rarely breaks) they won’t learn much</li>
+  <li>Existing SREs might know everything about their system today, but the system will change with time.  Keep up to date</li>
+  <li>Newbie SREs need to “go broad quickly” because there are many individual systems that interact with each other</li>
+  <li>Create a concrete, sequential learning experience where topics are presented in a logical, orderly manner as opposed to “throwing them in the deep end” where they learn randomly</li>
+  <li>Telling the newbie to jump into the ticket queue is unfair because they have no idea about how systems interact, what each system does, etc.  The learning process is slow and random</li>
+  <li>Senior SREs should give newbies a “tour of the system” and show them how systems interact, how data/requests flow, etc</li>
+  <li>Seniors should suggest which system(s) newbies should dig into first</li>
+  <li>Consider designing <strong>learning paths</strong> (newbies should learn X then Y then Z)</li>
+  <li>Create excellent reverse engineers so they can adapt to new systems</li>
+  <li>Use organization-wide design patterns, frameworks, etc so newbies can be brought up to speed faster and can re-use knowledge</li>
+  <li>Good reverse engineers can quickly “prune the decision tree” to determine the most likely causes of an outage</li>
+  <li>Write post-mortems for each outage and keep them in a centralized, public area so newbies can learn from them</li>
+  <li>Or, create a <strong>curated list of post-mortems</strong> that newbies should read and learn from</li>
+  <li>Create a <strong>post-mortem reading club</strong>, similar to a book club, to read and discuss post-mortems as a group</li>
+  <li>Create <strong>disaster role playing</strong> scenarios so SREs can practice together.  A “game master” creates the scenario</li>
+  <li>The great things about creating RP scenarios is that newbies get to work directly with seniors, they join the conversation as a peer, and everyone can hear each other reason/think out loud</li>
+  <li>Disaster RP and the group conversation it encourages lets everyone learn about how other people walk through a problem</li>
+  <li>Break real things.  Fix real things.</li>
+  <li><strong>Take a cluster/server out of rotation, create a problem, feed it fake traffic, and have the newbie try to fix it</strong></li>
+  <li>The key is they are using <strong>real production tools, systems, and methods</strong> - not synthetic ones</li>
+  <li>If you can’t use real production systems use dev/test/stage or set up an environment.  The cost of the new environment will greatly outweigh the cost of an untrained newbie</li>
+  <li>Ride shotgun as much as possible</li>
+  <li>Clone incoming alerts during business hours so newbies can work with seniors as they fix real problems</li>
+  <li>If possible, let the newbie take the first crack at the problem</li>
+  <li>Or, if that’s not possible, have both the junior and senior work in parallel</li>
+  <li>After the outage is resolved, have the senior ask the junior questions about what happened</li>
+  <li>The best education is continuous education.  Make learning systemic</li>
+  <li>During a new product launch both juniors and seniors are <strong>equally inexperienced</strong> with the new product.  Have them work together during the launch</li>
+  <li>Don’t just write documentation, training, and post-mortems - record videos of training sessions</li>
+  <li>“You have to <strong>scale your humans</strong> faster than you scale your machines”</li>
+  <li><strong>Teach commonalities first</strong> so newbies can build a foundation</li>
+  <li>A good starting point is to <strong>map out how a query or request flows through your systems</strong></li>
+  <li>Give newbies a tour of the monitoring</li>
+  <li>How do disaster conditions effect your stack?</li>
+  <li>Seniors should teach juniors about tools that <strong>help the juniors map systems/pipelines</strong></li>
+  <li>If there is no formal training/process have a junior map out the system to the best of their knowedge and then a senior can work with them to fill in the gaps</li>
+  <li>Have juniors rewrite/update documentation.  After they are done they can work with a senior to fill in the gaps or rewrite incorrect documentation</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="Tech Takeaway 025 From Zero to Hero Recommended Practices for Training your Ever Evolving SRE Teams by Andrew Widdowson of Google" data-url="https://jturgasen.github.io/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/tech-takeaway-025-from-zero-to-hero-recommended-practices-for-training-your-ever-evolving-sre-teams-by-andrew-widdowson-of-google/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/tech-takeaway-024-10-deploys-per-day-dev-and-ops-cooperation-at-flickr-by-john-allspaw-and-paul-hammond/">&laquo; Tech Takeaway 024 10 Deploys Per Day Dev and Ops Cooperation at Flickr by John Allspaw and Paul Hammond</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/tech-takeaway-026-fixing-twitter-improving-the-performance-and-scalability-of-the-worlds-most-popular-micro-blogging-site-by-john-adams/">Tech Takeaway 026 Fixing Twitter Improving the Performance and Scalability of the Worlds Most Popular Micro blogging Site by John Adams &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>

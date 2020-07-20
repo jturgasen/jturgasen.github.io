@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>My Symantec Veritas Volume Manager Quick Reference | Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="My Symantec Veritas Volume Manager Quick Reference" />
+<meta name="author" content="josh" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<meta property="og:description" content="executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes" />
+<link rel="canonical" href="https://jturgasen.github.io/symantec-volume-manager-quick-reference/" />
+<meta property="og:url" content="https://jturgasen.github.io/symantec-volume-manager-quick-reference/" />
+<meta property="og:site_name" content="Josh Turgasen’s Tech Blog SaaS Cloud DevOps Information Security" />
+<meta property="og:image" content="https://jturgasen.github.io/veritas.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-10-10T00:00:00-06:00" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jturgasen.github.io/logo-dark.svg"},"name":"josh"},"url":"https://jturgasen.github.io/symantec-volume-manager-quick-reference/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jturgasen.github.io/symantec-volume-manager-quick-reference/"},"image":"https://jturgasen.github.io/veritas.jpg","author":{"@type":"Person","name":"josh"},"description":"executive saas leadership software development SRE SWE chef ansible terraform gke google cloud aws amazon web services cloud azure python kubernetes iac infrastructure as code iaas agile k8s CICD docker containers AKS azure configuration management microservices consul vault hashicorp linux red hat rhel openshift mesos scrum master cybersecurity information security cissp wgu continuous delivery continuous integration gke networking chef puppet ansible site reliability engineering monitoring alerting incidents seag notes","headline":"My Symantec Veritas Volume Manager Quick Reference","dateModified":"2014-10-10T00:00:00-06:00","datePublished":"2014-10-10T00:00:00-06:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta property="og:image" content="https://jturgasen.github.io/uploads/"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Josh Turgasen&#39;s Tech Blog | SaaS Cloud DevOps Information Security" href="/feed.xml">
+  <link rel="icon" href="/uploads/favicon-tux.png" type="image/x-icon" />
+  <script src="/assets/js/main.min.js"></script>
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55182074-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+
+  
+</head>
+
+
+    <body>
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="uk-position-relative uk-background-center-center uk-background-cover" style="background-image: url(https://jturgasen.github.io/uploads/veritas.jpg);"><div class="uk-position-cover" style=" background: rgba(0, 0, 0, 0.5);"></div>
+
+  
+    <div data-uk-sticky="animation: uk-animation-slide-top; top: 200; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky navbar-background uk-dark; cls-inactive: uk-navbar-transparent uk-light">
+      <nav class="uk-navbar-container">
+        
+          <div class="uk-container">
+  <div data-uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">
+        
+          
+            <img class="uk-logo-inverse" src="https://jturgasen.github.io/uploads/logo-light.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+          
+            <img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security">
+          
+        
+      </a>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+          
+          
+          
+            <li>
+              
+                <a href="#">Touch</a>
+              
+              
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    
+                      
+                        
+                        
+                        <li><a href="/">Home</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/blog/">Tech Blog</a></li>
+                      
+                    
+                      
+                        
+                        
+                        <li><a href="/cards/">About & Links</a></li>
+                      
+                    
+                  </ul>
+                </div>
+              
+            </li>
+          
+        
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        
+      </ul>
+
+      
+
+      
+
+      <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon data-uk-toggle></a>
+
+    </div>
+    
+  </div>
+</div>
+
+        
+      </nav>
+    </div>
+  
+
+  
+  <div class="uk-position-relative uk-container">
+    <div class="uk-section uk-section-large uk-width-1-1 uk-light" data-uk-parallax="y: 100;">
+      
+        <div class="uk-flex uk-text-center uk-flex-middle uk-flex-center uk-container uk-container-small">
+          <div class="uk-width-1-1">
+            <h1 class="uk-heading-medium">My Symantec Veritas Volume Manager Quick Reference</h1>
+            
+            
+              <div class="uk-flex uk-flex-center uk-margin-medium-top">
+                
+
+<div class="uk-article-meta" itemscope itemtype="http://schema.org/Person">
+  <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex uk-flex-middle">
+
+    
+      <div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="avatar" data-src="https://jturgasen.github.io/uploads/avatar-josh.png" alt="Josh Turgasen" itemprop="image" data-uk-img>
+      </div>
+    
+
+    <div>
+      
+        Written by <span itemprop="name"><span itemprop="name"><strong>Josh Turgasen</strong></span></span>
+      
+      <time datetime="2014-10-10T00:00:00-06:00">
+          
+          Oct 10, 2014
+      </time>
+    </div>
+
+  </div>
+</div>
+
+              </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    
+    
+    
+
+    
+      <div class="uk-section uk-section-large">
+        <div class="uk-container uk-container-default">
+          
+            <div class="uk-grid-large" data-uk-grid>
+              <div class="uk-width-expand@m">
+                <article class="uk-article">
+  <div class="uk-article-content button-link uk-margin-medium-top-">
+    <p>My old Veritas Volume Manager quick reference from back in the day!  Note that it’s Solaris-centric but almost all of the information can be used on Linux too.</p>
+
+<h2 id="misc-information">Misc Information</h2>
+
+<ul>
+  <li>Sizes can be specified with the b, k, m and g modifiers which are blocks, kilobytes, megabytes and gigabytes respectively.  For example, 3g is 3 gigabytes and 700m is 700 megabytes.  No letter is specified the size is assumed to be 512 byte blocks/sectors</li>
+  <li>All commands can be used with the -g disk-group option and argument to specify a disk group other than the default (rootdg)</li>
+  <li><strong>Disk Media Name</strong> is the administrative VxVM name like disk01</li>
+  <li><strong>Disk Access Name</strong> is the device name such as c0t0d0</li>
+  <li>Some commands are in <code class="highlighter-rouge">/etc/vx/bin</code></li>
+  <li>Remember, if the OS can’t see the disks the VxVM can’t see them, use <code class="highlighter-rouge">format</code> to ensure the OS can see the disks</li>
+</ul>
+
+<h2 id="displaying-information">Displaying Information</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">vxprint -ht</code> - The most commonly used command to display information</li>
+  <li><code class="highlighter-rouge">vxprint -rht</code> - Same as above but displays layered volume information as well</li>
+  <li><code class="highlighter-rouge">vxprint -A</code> - Displays all information about all imported disk groups and associated disks as well as volumes and their associated plexes and subdisks</li>
+  <li><code class="highlighter-rouge">vxprint -G</code> - Displays information about all disk groups</li>
+  <li><code class="highlighter-rouge">vxprint -v</code> - Displays volumes, FS type and size in 512 byte blocks for each</li>
+  <li><code class="highlighter-rouge">vxprint -p</code> - Displays plexes, the volume each is associated with and the size of the volume in 512 byte blocks</li>
+  <li><code class="highlighter-rouge">vxprint -s</code> - Displays subdisks, the plex each is associated with and the size of the volume in 512 byte blocks</li>
+  <li><code class="highlighter-rouge">vxprint -d</code> - Displays disks and the physical disk each is associated with (c0t0d0s2 for example)</li>
+  <li><code class="highlighter-rouge">vxprint -S</code> - Displays summary information including the total number of disks, subdisks, plexes and volumes, unused subdisks and unused slexes in each disk group</li>
+  <li><code class="highlighter-rouge">vxprint -l another-option-here</code> - Prints verbose information for the each record (<code class="highlighter-rouge">vxprint -v -l</code> for example)</li>
+  <li><code class="highlighter-rouge">vxprint -l object</code> - Prints verbose information for <em>object</em> such as a subdisk or plex</li>
+  <li>
+    <p><code class="highlighter-rouge">vxprint -r options</code> - Displays information for layered volumes, <em>options</em> are optional</p>
+  </li>
+  <li><code class="highlighter-rouge">vxinfo</code> - Displays the status of all volumes (started, unstartable, startable and started unusable)</li>
+  <li>
+    <p><code class="highlighter-rouge">vxinfo -p</code> - Same as above but lists information for each plex as well</p>
+  </li>
+  <li><code class="highlighter-rouge">vxdg free</code> - Displays the amount of free space on each disk in the disk group, in sectors</li>
+</ul>
+
+<h2 id="volume-operations">Volume Operations</h2>
+
+<p>Volumes must be started before they can be mounted and fsck’ed!</p>
+
+<ul>
+  <li><code class="highlighter-rouge">vxvol start volume</code> - Starts <em>volume</em> and performs recovery operations as necessary</li>
+  <li><code class="highlighter-rouge">vxvol startall</code> - Starts all volumes in the default disk group (rootdg)</li>
+  <li><code class="highlighter-rouge">vxvol stop volume</code> - Stops <em>volume</em>. Note that you must stop any applications and unmount the file system using the Volume before stopping it</li>
+  <li>
+    <p><code class="highlighter-rouge">vxvol stopall</code> - Stops all volumes in the default disk group (rootdg). Note that you must stop all applications and unmount the file systems using the Volumes before stopping them</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">vxmake -U fsgen vol volume plex=plex01,plex02,...</code> - Creates a new volume named <em>volume</em> that consists of the specified plexes</p>
+  </li>
+  <li><code class="highlighter-rouge">vxedit -r rm volume</code> - Deletes <em>volume</em> and all of its associated objects (plexes and subdisks), make sure the volume is unmounted and stopped before you do this</li>
+  <li><code class="highlighter-rouge">vxedit rm volume</code> - Deletes volume, it must have no associated plexes</li>
+  <li>
+    <p><code class="highlighter-rouge">vxedit rename old-name new-name</code> - Renames a volume from <em>old-name</em> to <em>new-name</em></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">vxr5check volume</code> - Verifies the parity of the RAID 5 of <em>volume</em>, do not use this command if the volume is in degraded mode</p>
+  </li>
+  <li><code class="highlighter-rouge">vxassist make volume size</code> - Creates the new Volume named volume that is size using an non-reserved non-spare disk space in the Disk Group</li>
+  <li><code class="highlighter-rouge">vxassist make volume size disk1 disk2 ...</code> - Same as above but uses space from the specified disks</li>
+  <li><code class="highlighter-rouge">vxassist make volume size layout=stripe ncols=number</code> - Creates a Volume with a single striped Plex that has number of columns using any available disks, minimum of 2 maximum of 8</li>
+  <li><code class="highlighter-rouge">vxassist make volume size layout=stripe ncols=number disk1 disk2 ...</code> - Same as above but only uses storage from the specified disks, try to keep the number of columns the same as the number of disks you specify</li>
+  <li><code class="highlighter-rouge">vxassist make volume size layout=stripe ncols=number stripeunit=ssize</code> - Creates a new Volume with a single striped Plex that uses a stripe size of ssize, ssize should be multiples of 8k</li>
+  <li><code class="highlighter-rouge">vxassist make volume size layout=stripe ncols=number stripeunit=ssize disk1 disk2 ...</code> - Same as above but uses storage from the specified disks</li>
+  <li><code class="highlighter-rouge">vxassist make volume size layout=raid5</code> - Creates a new RAID-5 volume using default settings (3 columns, a stripe size of 16k and a single RAID-5 log Plex)</li>
+  <li><code class="highlighter-rouge">vxassist make volume size layout=raid5,nlog</code> - Same as above but with no log Plex, you can also use the ncol= and stripesize= options to specify the number of columns and/or stripe size to use</li>
+  <li><code class="highlighter-rouge">vxassist make volume size layout=mirror nmirror=number</code> - Creates a new Volume that has number of mirrors</li>
+  <li><code class="highlighter-rouge">vxassist make volume size layout=mirror,log nmirror=number</code> - Same as above but creates a DLR Plex as well</li>
+  <li><code class="highlighter-rouge">vxassist remove volume volume</code> - Deletes volume named <em>volume</em> and all of its associated objects</li>
+</ul>
+
+<h1 id="plex-and-mirror-operations">Plex and Mirror Operations</h1>
+
+<ul>
+  <li><code class="highlighter-rouge">vxplex att volume plex</code> - Attaches plex to volume, the Plexes are synced if necessary</li>
+  <li><code class="highlighter-rouge">vxplex cp volume new-plex</code> - Copies the data from volume to the unassociated Plex new-plex, volume must not be enabled</li>
+  <li><code class="highlighter-rouge">vxplex det plex</code> - Detaches plex from its associated Volume</li>
+  <li><code class="highlighter-rouge">vxplex dis plex</code> - Dissociates plex from its Volume</li>
+  <li>
+    <p><code class="highlighter-rouge">vxplex mv original-plex new-plex</code> - original-plex is an active Plex associated with a Volume and new-plex is a Plex that is not associated with any Volume and is at least the same size as original-plex or larger.  new-plex is associated with the Volume and then original-plex is dissociated.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">vxrootmir disk-media-name</code> - Creates a mirror of the rootvol volume that can be used as an alternate boot device on disk-media-name, also it seems to create normal UNIX partitions as well</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">vxmake plex plex sd=sd1,sd2,...</code> - Creates a new plex named plex which consistes of subdisks named sd1, sd2 and so on</p>
+  </li>
+  <li><code class="highlighter-rouge">vxedit -r rm plex</code> - Deletes plex and all of its associated Subdisks</li>
+  <li><code class="highlighter-rouge">vxedit rm plex</code> - Deletes plex, it must not be associated and have no associated Subdisks</li>
+  <li>
+    <p><code class="highlighter-rouge">vxedit rename old-name new-name</code> - Renames a Plex, note that its Volume is not renamed</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">vxbootsetup disk-media-name</code> - Use after mirroring a boot disk with vxassist, vxmake, vxplex to make the disk bootable and create standard UNIX VTOC (partitions or slices) and makes the disk bootable</p>
+  </li>
+  <li><code class="highlighter-rouge">vxassist mirror volume</code> - Creates another Plex for volume using space from any available disks</li>
+  <li><code class="highlighter-rouge">vxassist mirror volume disk1 disk2 ...</code> - Same as above but uses space from the specified disk(s)</li>
+  <li>
+    <p><code class="highlighter-rouge">vxassist remove mirror volume !disk</code> - Removes the mirror of volume that resides on !disk</p>
+  </li>
+  <li><code class="highlighter-rouge">vxmirror -a</code> - Mirrors all Volumes in the specified Disk Group until it runs out of space</li>
+</ul>
+
+<h2 id="subdisk-operations">Subdisk Operations</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">vxsd mv old-subdisk new-subdisk1 [ new-subdisk2 ] ...</code> - Moves the contents of <em>old-subdisk</em> onto one or more new subdisks.  The subdisks must be the same size, <em>old-subdisk</em> must be associated with a plex on an active volume, and the new subdisk(s) must not be associated with a plex</li>
+  <li><code class="highlighter-rouge">vxsd -s size subdisk-to-split subdisk1 subdisk2</code> - Splits a <em>subdisk-to-split</em> by moving its contents onto two subdisks.  <em>size</em> is the amount of data to be put on <em>subdisk1</em> and all remaining data is put on <em>subdisk2</em>.  If <em>subdisk-to-split</em> is associated with a plex the new subdisks are associated with the same plex</li>
+  <li><code class="highlighter-rouge">vxsd join subdisk1 subdisk2 ... new-subdisk</code> - Joins two or more Subdisks (subdisk1 subdisk2 etc) into a single Subdisk (new-subdisk).  The Subdisks being joined must be contiguous on the same disk and associated with the same Plex if they are associated with a Plex</li>
+  <li><code class="highlighter-rouge">vxsd assoc plex subdisk1 [ subdisk2 ... ]</code> - Associates one or more subdisks (<em>subdisk1</em> <em>subdisk2</em> etc) with a non-RAID5 or non-striped plex (<em>plex</em>).</li>
+  <li><code class="highlighter-rouge">vxsd dis subdisk</code> - Dissociates <em>subdisk</em> from its plex.  Used when removing a subdisk or dissociating it from its plex so it can be used as part of another plex</li>
+  <li>
+    <p><code class="highlighter-rouge">vxsd rm subdisk</code> - Removes <em>subdisk</em> and the space is made available to the disk group it is a part of</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">vxmake sd sd-name disk01,offset,length</code> - Creates a new subdisk named <em>sd-name</em> using space from <em>disk01</em> that starts at <em>offset</em> and is a size of <em>length</em> in sectors</p>
+  </li>
+  <li><code class="highlighter-rouge">vxedit rm subdisk</code> - Deletes <em>subdisk</em>, it must be dissociated with its plex</li>
+  <li><code class="highlighter-rouge">vxedit -r rm subdisk</code> - Use if the above doesn’t work, ensure it is not associated with a plex!</li>
+  <li><code class="highlighter-rouge">vxedit rename old-name new-name</code> - Renames a subdisk from <em>old-name</em> to <em>new-name</em>, note its disk is not renamed</li>
+</ul>
+
+<h2 id="disk-operations">Disk Operations</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">vxdisk list</code> - Displays the disk access name and disk media name for all disks in each imported disk group</li>
+  <li><code class="highlighter-rouge">vxdisk -s list</code> - Displays verbose information about each disk on the system that is under VxVM control</li>
+  <li>
+    <p><code class="highlighter-rouge">vxdisk list disk-name</code> - Displays detailed information about <em>disk-name</em> which is either a disk nedia name or disk access name</p>
+  </li>
+  <li><code class="highlighter-rouge">vxdiskconfig</code> - Scans for disks that have been added since VxVM has been started.  Note that the OS must see them before this will work.  Generally used when the connection to one or more disks has been interrupted such as a bad SCSI cable or a problem with the SAN, same as <code class="highlighter-rouge">vxdctl enable</code></li>
+  <li>
+    <p><code class="highlighter-rouge">vxdiskadd device-name</code> - Puts <em>device-name</em> under VxVM control, you will be prompted for the disk group to add it to and if it should be encapsulated or initialized</p>
+  </li>
+  <li><code class="highlighter-rouge">vxdisksetup -i device</code> - Initializes <em>device</em>, puts it under Volume Manager control and into the free disk pool</li>
+  <li>
+    <p><code class="highlighter-rouge">vxdiskunsetup device</code> - Removes a Disk (<em>device</em>) from Volume Manager control, it must not be part of a disk group</p>
+  </li>
+  <li><code class="highlighter-rouge">vxedit rename old-name new-name</code> - Renames a disk from <em>old-name</em> to <em>new-name</em>, note its subdisks are not renamed</li>
+  <li><code class="highlighter-rouge">vxedit set spare=on disk-media-name</code> - Sets <em>disk-media-name</em> as a spare</li>
+  <li><code class="highlighter-rouge">vxedit set spare=off disk-media-name</code> - Disables using <em>disk-media-name</em> as a spare</li>
+  <li><code class="highlighter-rouge">vxedit set nohotuse=on disk-media-name</code> - Disables <em>disk-media-name</em> for hot relocation</li>
+  <li>
+    <p><code class="highlighter-rouge">vxedit set nohotuse=off disk-media-name</code> - Allows <em>disk-media-name</em> to be used for hot relocation</p>
+  </li>
+  <li><code class="highlighter-rouge">vxevac old-media-name new-media-name</code> - Evacuates all subdisks that reside on <em>old-media-name</em> to <em>new-media-name</em>, make sure there is sufficient space on <em>new-media-name</em> first!</li>
+  <li><code class="highlighter-rouge">vxevac disk-media-name</code> - Same as above but moves them to any non-reserved disk within the gisk group</li>
+</ul>
+
+<h2 id="disk-group-operations">Disk Group Operations</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">vxdg list</code> - Displays a list of all disk groups, the state (enabled or disabled) and disk group ID of each</li>
+  <li><code class="highlighter-rouge">vxdg list group</code> - Displays verbose information about <em>group</em></li>
+  <li><code class="highlighter-rouge">vxdg free</code> - Displays the amount of disk space available on each disk for all disk groups on the system</li>
+  <li><code class="highlighter-rouge">vxdg nohotuse</code> - Displays space on each disk that cannot be used for hot relocation</li>
+  <li>
+    <p><code class="highlighter-rouge">vxdg destroy</code> - Deletes an imported disk group, only one disk must be left and all volumes must be stopped</p>
+  </li>
+  <li><code class="highlighter-rouge">vxdg adddisk media-name=access-name</code> - Adds a disk to a disk group</li>
+  <li><code class="highlighter-rouge">vxdg spare</code> - Displays spare space that can be used for relocating subdisks during recovery</li>
+  <li>
+    <p><code class="highlighter-rouge">vxdg init name dmname1=daname1 dmname2=daname2 ...</code> - Creates the new gisk group name, an example of dmname1=daname1 is newdg01=c1t0d0</p>
+  </li>
+  <li><code class="highlighter-rouge">vxdg deport group</code> - Deports <em>group</em>, it is NOT automatically imported when the system is rebooted</li>
+  <li><code class="highlighter-rouge">vxdg deport -h host group</code> - Deports <em>group</em> on <em>host</em> and it is automatically imported by host next time host reboots</li>
+  <li>
+    <p><code class="highlighter-rouge">vxdg -n new-name deport old-name</code> - Exports the disk group <em>old-name</em> and renames it to <em>new-name</em></p>
+  </li>
+  <li><code class="highlighter-rouge">vxdg import disk-group</code> - Imports <em>disk-group</em></li>
+  <li><code class="highlighter-rouge">vxdg -n new-name import old-name</code> - Imports the Disk Group <em>old-name</em> and renames it to <em>new-name</em></li>
+  <li><code class="highlighter-rouge">vxdg -t -n new-name import old-name</code> - Same as above but the <em>new-name</em> is only temporary, usually used when importing a second rootdg for recovery</li>
+</ul>
+
+<h2 id="licensing">Licensing</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">hostid</code> - Displays the Host ID of the system.  Veritas licenses are based off a system’s Host ID and system type (see below)</li>
+  <li>
+    <p><code class="highlighter-rouge">uname -i</code> - The system type (Ultra 2, Ultra 60, etc), also required by Veritas to generate a license key</p>
+  </li>
+  <li><code class="highlighter-rouge">vxlicense -u</code> - Displays the system’s Host ID in hex</li>
+  <li><code class="highlighter-rouge">vxlicense -p</code> - Displays currently licensed products</li>
+  <li><code class="highlighter-rouge">/usr/lib/vxfs/bin/vxliccheck -pv</code> - Verifies the licenses for installed products are valid</li>
+  <li><code class="highlighter-rouge">vxlicense -c</code> - Prompts for a license key.  Enter it to enable VxVM or any additional features</li>
+  <li><code class="highlighter-rouge">vxdctl license</code> - Displays currently installed licenses based on known licensing information</li>
+  <li><code class="highlighter-rouge">vxdctl license init</code> - Forces VxVM to scan for new licenses, <strong>WILL EXPIRE OLD EXPIRED LICENSES</strong></li>
+</ul>
+
+<h2 id="managing-vxvm-tasks">Managing VxVM Tasks</h2>
+
+<p><code class="highlighter-rouge">vxtask</code> shows the progress of tasks (subdisk moves, RAID rebuilds, volume grows, etc).</p>
+
+<ul>
+  <li><code class="highlighter-rouge">vxtask list</code> - Displays tasks currently in progress and the % completed</li>
+  <li><code class="highlighter-rouge">vxtask abort task-id</code> - Aborts <em>task-id</em></li>
+  <li><code class="highlighter-rouge">vxtask pause task-id</code> - Pauses <em>task-id</em></li>
+  <li><code class="highlighter-rouge">vxtask resume task-id</code> - Resumes <em>task-id</em> that was paused with <code class="highlighter-rouge">vxtask pause</code></li>
+  <li><code class="highlighter-rouge">vxtask monitor task-id</code> - Displays <code class="highlighter-rouge">vmstat 1</code> type output for <em>task-id</em>, displays the task as EXITED when it completes</li>
+</ul>
+
+<h2 id="replacing-a-failed-disk">Replacing a Failed Disk</h2>
+
+<p>Use this method when the OS can still see the disk (bad blocks, etc):</p>
+
+<ol>
+  <li>Use <code class="highlighter-rouge">vxdiskadm</code> and choose option 4, Remove a Disk for Replacement</li>
+  <li>Physically remove the failed disk, reattach and power on the new disk.  Make sure it has the same SCSI ID as the original disk</li>
+  <li>Use the <code class="highlighter-rouge">format</code> command to verify the system can see the disk and write a label to it</li>
+  <li>Execute the <code class="highlighter-rouge">vxdctl enable</code> or <code class="highlighter-rouge">vxdiskconf</code> command to have VxVM scan for new disks</li>
+  <li>Run <code class="highlighter-rouge">vxdiskadm</code> and choose option 5, Replace a Failed or Removed Disk</li>
+  <li>Go though the steps.  If it asks you to encapuslate or initialize the disk initialize it</li>
+</ol>
+
+<p>Use this method when the OS can no longer see the failed disk:</p>
+
+<ol>
+  <li>Physically remove the failed disk, reattach and power on the new disk.  Ensure it has the same SCSI ID as the old one</li>
+  <li>Use <code class="highlighter-rouge">format</code> to write a label to the new disk.  If format doesn’t see the disk go to the next step</li>
+  <li>Run <code class="highlighter-rouge">drvconfig</code> and <code class="highlighter-rouge">disks</code> on Solaris 2.6 or <code class="highlighter-rouge">devfsadm</code> on Solaris 7 and later and run format again</li>
+  <li>Run <code class="highlighter-rouge">vxdiskadm</code> and use option 1, Add or initialize one or more disks</li>
+  <li>Follow the menus and add the disk and exit <code class="highlighter-rouge">vxdiskadm</code>.  If it asks, tell it to initialize the new disk</li>
+  <li>Use <code class="highlighter-rouge">vxassist mirror volume</code> to re-mirror the volumes one at at time</li>
+  <li>Use <code class="highlighter-rouge">vxbootsetup</code> on the new disk to make it bootable</li>
+</ol>
+
+<h2 id="growing-and-shrinking-volumes">Growing and Shrinking Volumes</h2>
+
+<p>Sizes can be specified with the b, k, m and g modifiers which are blocks, kilobytes, megabytes and gigabytes respectively.  For example, 3g is 3 gigabytes and 700m is 700 megabytes.  No letter is specified the size is assumed to be 512 byte blocks/sectors</p>
+
+<ul>
+  <li>You can use the <code class="highlighter-rouge">vxassist maxgrow volume</code> command to see how much you can grow <em>volume</em> by</li>
+  <li>Using <code class="highlighter-rouge">vxresize</code> keeps data accessible at all times and automatically extends the file system</li>
+  <li>UFS file systems cannot be shrunk</li>
+  <li>
+    <p><code class="highlighter-rouge">vxassist</code> kinda sucks because it doesn’t resize the file system, you must do it manually</p>
+  </li>
+  <li><code class="highlighter-rouge">vxassist maxgrow volume</code> - Displays the size in megs/gigs and sectors that <em>volume</em> can be grown by given the volume’s layout</li>
+  <li>
+    <p><code class="highlighter-rouge">vxdg free</code> - Displays the amount of free space on each disk in sectors and displays the offset where free space starts on each disk</p>
+  </li>
+  <li><code class="highlighter-rouge">vxresize volume size</code> - Grows <em>volume</em> to size</li>
+  <li><code class="highlighter-rouge">vxresize volume size disk1 disk2 ...</code> - Same as above but specifies the disk(s) used to grow the volume.  Note that at least one disk must be specified for each plex (eg: 3 plexs = 3 disks)</li>
+  <li><code class="highlighter-rouge">vxresize volume +size</code> - Grows volume by size, resizes the file system automatically</li>
+  <li><code class="highlighter-rouge">vxresize volume -size</code> - Shrinks volume by size, resizes the file system automatically</li>
+</ul>
+
+<h2 id="building-volumes-using-vxmake">Building Volumes Using vxmake</h2>
+
+<p>Follow the steps below to manually create a volume using <code class="highlighter-rouge">vxmake</code>.  You might want to use <code class="highlighter-rouge">vxassist</code> instead, it’s much easier.</p>
+
+<ol>
+  <li><code class="highlighter-rouge">vxdg free</code> # determine the offsets</li>
+  <li><code class="highlighter-rouge">vxdg init customdg disk01=c0t2d0s2 disk02=c0t3d0s2</code> # creates the disk group named <em>customdg</em> and adds the disks</li>
+  <li><code class="highlighter-rouge">vxmake sd subdisk01 disk01,0,10000</code> # creates the first subdisk</li>
+  <li><code class="highlighter-rouge">vxmake sd subdisk02 disk02,0,10000</code> # creates the second subdisk</li>
+  <li><code class="highlighter-rouge">vxmake plex plex01 sd=subdisk01</code> # creates the first plex</li>
+  <li><code class="highlighter-rouge">vxmake plex plex02 sd=subdisk02</code> # creates the second plex</li>
+  <li><code class="highlighter-rouge">vxmake -U fsgen vol data plex=plex01,plex02</code> # creates the volume</li>
+  <li><code class="highlighter-rouge">vxvol start data</code> # starts the volume</li>
+  <li><code class="highlighter-rouge">newfs device</code> # create a file system</li>
+  <li><code class="highlighter-rouge">mount device mount-point</code> # mount the volume</li>
+  <li>Update <code class="highlighter-rouge">/etc/vfstab</code></li>
+</ol>
+
+<h2 id="misc-sweet-commands">Misc Sweet Commands</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">/etc/vx/diag.d/vxdmpinq raw-device</code> - Displays the vendor, product ID, serial number and revision of the disk</li>
+  <li><code class="highlighter-rouge">vxstat -s -ff plex</code> - Displays I/O errors on Subdisks belonging to plex</li>
+</ul>
+
+    
+        <div class="uk-child-width-auto uk-grid-small uk-grid uk-flex-center uk-margin-medium-top" data-uk-grid>
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="twitter" data-title="My Symantec Veritas Volume Manager Quick Reference" data-url="https://jturgasen.github.io/symantec-volume-manager-quick-reference/"><span data-uk-icon="icon: twitter; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="facebook" data-url="https://jturgasen.github.io/symantec-volume-manager-quick-reference/"><span data-uk-icon="icon: facebook; ratio: 1.2"></span></a>
+    </div>
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="linkedin" data-url="https://jturgasen.github.io/symantec-volume-manager-quick-reference/"><span data-uk-icon="icon: linkedin; ratio: 1.2"></span></a>
+    </div>
+  
+  
+  
+    <div>
+      <a class="sharer uk-link-muted" data-sharer="reddit" data-url="https://jturgasen.github.io/symantec-volume-manager-quick-reference/"><span data-uk-icon="icon: reddit; ratio: 1.2"></span></a>
+    </div>
+  
+</div>
+    
+  </div>
+
+<br><br>
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/symantec-cluster-server-quick-reference/">&laquo; My Symantec Veritas Cluster Server Quick Reference</a>
+  
+  <br><br><br>
+  
+    <a class="next" href="/why-use-vlans/">Why Use VLANs? &raquo;</a>
+  
+</div>
+
+</article>
+
+              </div>
+              <aside class="uk-width-1-3@m">
+                
+
+
+
+  <div class="uk-margin-large-bottom">
+    
+
+          
+            <h4 class="uk-margin-small-bottom">Touch</h4>
+            <ul class="uk-nav">
+              
+                
+
+                  
+
+                  <li><a href="/" class="uk-link-text">Home</a></li>
+
+                
+
+                  
+
+                  <li><a href="/blog/" class="uk-link-text">Tech Blog</a></li>
+
+                
+
+                  
+
+                  <li><a href="/cards/" class="uk-link-text">About & Links</a></li>
+
+                
+              
+            </ul>
+          
+
+      
+  </div>
+
+
+              </aside>
+            </div>
+          
+        </div>
+      </div>
+    
+
+    
+      <footer class="uk-section uk-section-secondary uk-text-center uk-text-muted uk-link-muted">
+    <div class="uk-container uk-container-small">
+
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                
+                    
+                    
+                    
+                        <li><a href="/" >Home</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/blog/" >Tech Blog</a></li>
+                    
+                
+                    
+                    
+                    
+                        <li><a href="/cards/" >About & Links</a></li>
+                    
+                
+            </ul>
+        </div>
+        
+          <div class="uk-margin-medium">
+              <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                  
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+              </div>
+          </div>
+        
+        <div class="uk-margin-medium uk-text-small copyright">By <a href="https://unbound.studio/" target="_blank">Unbound Studio</a> in Mexico City.<br>Made his own by <a href=mailto:jturgasen@gmail.com>JoshT</a></div>
+
+    </div>
+</footer>
+
+    
+
+    <div id="nav-mobile" data-uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+
+        <ul class="uk-nav uk-nav-primary">
+            <li><a class="uk-logo uk-margin-small-bottom" href="/"><img src="https://jturgasen.github.io/uploads/logo-dark.svg" alt="Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security"></a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/" >Home</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/blog/" >Tech Blog</a></li>
+            
+                
+            <li><a href="https://jturgasen.github.io/cards/" >About & Links</a></li>
+            
+        </ul>
+
+        <div class="uk-margin-small-top uk-text-center uk-text-muted uk-link-muted">
+            <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center uk-grid">
+                
+
+
+
+
+
+
+<div>
+    <a href="https://www.linkedin.com/in/jturgasen" data-uk-icon="icon: linkedin" class="uk-icon-link uk-icon" aria-label="LinkedIn" rel="noopener" target="_blank"></a>
+</div>
+
+
+
+
+
+<div>
+    <a href="https://www.github.com/jturgasen" data-uk-icon="icon: github" class="uk-icon-link uk-icon" aria-label="Github" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="mailto:jturgasen@gmail.com" data-uk-icon="icon: mail" class="uk-icon-link uk-icon" aria-label="Mail" rel="noopener" target="_blank"></a>
+</div>
+
+
+<div>
+    <a href="https://www.joshturgasen.com" data-uk-icon="icon: link" class="uk-icon-link uk-icon" aria-label="Link" rel="noopener" target="_blank"></a>
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+    </body>
+
+</html>
