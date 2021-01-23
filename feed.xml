@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://jturgasen.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jturgasen.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-07-20T13:04:09-06:00</updated><id>https://jturgasen.github.io/feed.xml</id><title type="html">Josh Turgasen’s Tech Blog | SaaS Cloud DevOps Information Security</title><subtitle>Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security</subtitle><author><name>Josh Turgasen</name><email>jturgasen@gmail.com</email></author><entry><title type="html">Certified Kubernetes Administrator Passed!</title><link href="https://jturgasen.github.io/cka-passed/" rel="alternate" type="text/html" title="Certified Kubernetes Administrator Passed!" /><published>2020-07-19T00:00:00-06:00</published><updated>2020-07-19T00:00:00-06:00</updated><id>https://jturgasen.github.io/cka-passed</id><content type="html" xml:base="https://jturgasen.github.io/cka-passed/">&lt;p&gt;Woot!  What a fun hands-on test!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://jturgasen.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jturgasen.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-01-22T21:14:48-07:00</updated><id>https://jturgasen.github.io/feed.xml</id><title type="html">Josh Turgasen’s Tech Blog | SaaS Cloud DevOps Information Security</title><subtitle>Josh Turgasen's Tech Blog | SaaS Cloud DevOps Information Security</subtitle><author><name>Josh Turgasen</name><email>jturgasen@gmail.com</email></author><entry><title type="html">Software Engineering at Google Notes Completed</title><link href="https://jturgasen.github.io/software-engineering-at-google-notes-completed/" rel="alternate" type="text/html" title="Software Engineering at Google Notes Completed" /><published>2021-01-22T00:00:00-07:00</published><updated>2021-01-22T00:00:00-07:00</updated><id>https://jturgasen.github.io/software-engineering-at-google-notes-completed</id><content type="html" xml:base="https://jturgasen.github.io/software-engineering-at-google-notes-completed/">&lt;p&gt;My notes from the book Software Engineering at Google: Lessons Learned from Programming Over Time is complete.&lt;/p&gt;
+
+&lt;p&gt;Head on over to &lt;a href=&quot;www.seagnotes.com&quot;&gt;https://www.seagnotes.com&lt;/a&gt; to take a gander&lt;/p&gt;</content><author><name>josh</name></author><summary type="html">My notes from the book Software Engineering at Google: Lessons Learned from Programming Over Time is complete.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/seag-card.png" /><media:content medium="image" url="https://jturgasen.github.io/seag-card.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Certified Kubernetes Administrator Passed!</title><link href="https://jturgasen.github.io/cka-passed/" rel="alternate" type="text/html" title="Certified Kubernetes Administrator Passed!" /><published>2020-07-19T00:00:00-06:00</published><updated>2020-07-19T00:00:00-06:00</updated><id>https://jturgasen.github.io/cka-passed</id><content type="html" xml:base="https://jturgasen.github.io/cka-passed/">&lt;p&gt;Woot!  What a fun hands-on test!&lt;/p&gt;
 
 &lt;p&gt;I won’t take the time typing up tips, just research on Google and you’ll find plenty.&lt;/p&gt;
 
@@ -172,92 +174,7 @@
   &lt;li&gt;Make your automated cluster decommisioning workflow idempotent or you might end up wiping a few BigTable clusters by accident&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;If you like the stuff on my blog you’ll love this book so much that you stop reading my blog - promise.&lt;/p&gt;</content><author><name>josh</name></author><summary type="html">I’m a man of few words. Buy.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/sre-book.jpg" /><media:content medium="image" url="https://jturgasen.github.io/sre-book.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tech Takeaway 033 Monitoring Managing and Troubleshooting Large Scale Networks by Peter Hoose</title><link href="https://jturgasen.github.io/tech-takeaway-033-monitoring-managing-and-troubleshooting-large-scale-networks-by-peter-hoose/" rel="alternate" type="text/html" title="Tech Takeaway 033 Monitoring Managing and Troubleshooting Large Scale Networks by Peter Hoose" /><published>2016-02-21T00:00:00-07:00</published><updated>2016-02-21T00:00:00-07:00</updated><id>https://jturgasen.github.io/tech-takeaway-033-monitoring-managing-and-troubleshooting-large-scale-networks-by-peter-hoose</id><content type="html" xml:base="https://jturgasen.github.io/tech-takeaway-033-monitoring-managing-and-troubleshooting-large-scale-networks-by-peter-hoose/">&lt;div class=&quot;uk-section uk-section-large&quot;&gt;
-        &lt;div class=&quot;uk-container uk-container-xsmall uk-position-relative&quot;&gt;
-
-
-  &lt;div&gt;
-    
-    
-    &lt;div class=&quot;uk-article-content&quot;&gt;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/BRY9xwg5nAU&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-  &lt;/div&gt;
-
-&lt;/div&gt;
-      &lt;/div&gt;
-
-&lt;p&gt;Takeaways:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Must take risks to make progress&lt;/li&gt;
-  &lt;li&gt;Embrace hacks - sometimes they’re necessary&lt;/li&gt;
-  &lt;li&gt;Myths about large networks
-    &lt;ul&gt;
-      &lt;li&gt;Automation fixes everything (it’s a tool, addon, augment)&lt;/li&gt;
-      &lt;li&gt;We’ve fixed everything (Google/FB/Twitter’s network)&lt;/li&gt;
-      &lt;li&gt;This talk doesn’t apply to you (it does)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Microbursts&lt;/strong&gt; are rapid bursts of packets that lead to failures (pack loss, RSTs, TCP retrans, etc)&lt;/li&gt;
-  &lt;li&gt;Determine which counter/metric will confirm it’s a microburst, then isolate the problem (does it only happen on switch X and not the others?)&lt;/li&gt;
-  &lt;li&gt;They determined certain ports would burst to line rate in parallel&lt;/li&gt;
-  &lt;li&gt;Note that they 30 second average counter on the port did NOT show this behavior: they had to sniff the traffic to see it&lt;/li&gt;
-  &lt;li&gt;How bursty is each flow?&lt;/li&gt;
-  &lt;li&gt;Lessons learned
-    &lt;ul&gt;
-      &lt;li&gt;Resolved issues (gj)&lt;/li&gt;
-      &lt;li&gt;They got RCA (good)&lt;/li&gt;
-      &lt;li&gt;They used software to fix the problem (ok)&lt;/li&gt;
-      &lt;li&gt;Service owner identified the problem - engineers/ops should know before customers&lt;/li&gt;
-      &lt;li&gt;Took a long time to resolve (weeks/months)&lt;/li&gt;
-      &lt;li&gt;Small loss can cause significant impact on a service&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Link imbalance is the next topic….&lt;/li&gt;
-  &lt;li&gt;They had a single link that would spike to 100%, the other 3 were normal&lt;/li&gt;
-  &lt;li&gt;First thing they did was shut down the link, see what happens..and it moved to a link on a completely unrelated pair of switches&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Fat flow&lt;/strong&gt; is when you shut down a link, and the problem moves because the traffic is still flowing but now it simply uses a different path&lt;/li&gt;
-  &lt;li&gt;A fat flow would explain the link getting pegged, but the other 3 links in the bond had LESS traffic while the link was pegged&lt;/li&gt;
-  &lt;li&gt;Problem is only on backbone devices, only happens when a link is &amp;gt;80% utilized, and the problem was migratory&lt;/li&gt;
-  &lt;li&gt;They tried something where they changed the hashing method that determines which link a flow goes over…&lt;strong&gt;worked for a few hours&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;They then wrote some software to monitor for the issue and fire when it was found&lt;/li&gt;
-  &lt;li&gt;It sent message to FBAR (cronjob on steriods, auto-remediation) -&amp;gt; roll hash -&amp;gt; works for a few hours -&amp;gt; continue monitoring&lt;/li&gt;
-  &lt;li&gt;They made a list of
-    &lt;ul&gt;
-      &lt;li&gt;What they were going to examine/measure and&lt;/li&gt;
-      &lt;li&gt;What they expected to see for each object&lt;/li&gt;
-      &lt;li&gt;eg: TCP retrans should back off due to congestion, etc etc&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;For some reason, TCP tried harder during congestion rather than backing off&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;For some reason, open connections increased during the congestion, and fell off when the congestion stopped&lt;/li&gt;
-  &lt;li&gt;They then determined that the connections went from caching layer to DB layer&lt;/li&gt;
-  &lt;li&gt;Their caching layer used a &lt;strong&gt;MRU&lt;/strong&gt; caching policy&lt;/li&gt;
-  &lt;li&gt;This means last conn that had a reply is the one where the next data is sent.  If that last connection is slow/congested…..&lt;/li&gt;
-  &lt;li&gt;It keeps trying harder and harder&lt;/li&gt;
-  &lt;li&gt;So they changed from MRU and that fixed it, done&lt;/li&gt;
-  &lt;li&gt;They did the usual for network monitoring: alert if &amp;gt;X% loss or latency&lt;/li&gt;
-  &lt;li&gt;They started at 5% loss and moved the threshold down with time&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;1% TCP packet loss can result in 50% reduction in throughput&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;0.00010% loss can reduce throughput by 50% on 200ms RTT flows&lt;/li&gt;
-  &lt;li&gt;They talk about the various TCP algos and how they deal with and how fast they recover from loss/congestion&lt;/li&gt;
-  &lt;li&gt;Monitor interfaces for loss.  It’s super easy to fix and less packet loss is better&lt;/li&gt;
-  &lt;li&gt;Their interface monitoring workflow is automated - when it finds one, it takes it out of service and puts in a ticket with the hardware techs&lt;/li&gt;
-  &lt;li&gt;He also notes that all these great things were NOT accomplished with politices, change controls, process, etc etc - just teamwork and software&lt;/li&gt;
-  &lt;li&gt;FBAR processes 3.37b messages per month.  1% are real problems&lt;/li&gt;
-  &lt;li&gt;FBAR auto-remediates (FaceBook Auto Remediation?)stuff.  It resolved 99.6% of problems&lt;/li&gt;
-  &lt;li&gt;You need 150 engineers to equal FBAR&lt;/li&gt;
-  &lt;li&gt;When a fan on a router dies, FBAR gracefully redirects/bleeds traffic off, then takes the router out of service (vs overheat and fail)&lt;/li&gt;
-  &lt;li&gt;How do they determine if interface is down?  Good old syslog&lt;/li&gt;
-  &lt;li&gt;Watch for BGP state, scrape devices for BGP and OSPF state, etc&lt;/li&gt;
-  &lt;li&gt;They use SNMP&lt;/li&gt;
-  &lt;li&gt;After gathering all of this info, they simple write software that would emulate what a human would do with the info
-    &lt;ul&gt;
-      &lt;li&gt;What actions would a human take with this info?  Script that.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;They also use pattern detection in addtion to the usual threshold -&amp;gt; alert&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>josh</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/monitoring.jpg" /><media:content medium="image" url="https://jturgasen.github.io/monitoring.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tech Takeaway 038 Maintaining Consistency in a Massively Parallel Environment by Dinah McNutt</title><link href="https://jturgasen.github.io/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt/" rel="alternate" type="text/html" title="Tech Takeaway 038 Maintaining Consistency in a Massively Parallel Environment by Dinah McNutt" /><published>2016-02-21T00:00:00-07:00</published><updated>2016-02-21T00:00:00-07:00</updated><id>https://jturgasen.github.io/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt</id><content type="html" xml:base="https://jturgasen.github.io/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt/">&lt;div class=&quot;uk-section uk-section-large&quot;&gt;
+&lt;p&gt;If you like the stuff on my blog you’ll love this book so much that you stop reading my blog - promise.&lt;/p&gt;</content><author><name>josh</name></author><summary type="html">I’m a man of few words. Buy.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/sre-book.jpg" /><media:content medium="image" url="https://jturgasen.github.io/sre-book.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tech Takeaway 038 Maintaining Consistency in a Massively Parallel Environment by Dinah McNutt</title><link href="https://jturgasen.github.io/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt/" rel="alternate" type="text/html" title="Tech Takeaway 038 Maintaining Consistency in a Massively Parallel Environment by Dinah McNutt" /><published>2016-02-21T00:00:00-07:00</published><updated>2016-02-21T00:00:00-07:00</updated><id>https://jturgasen.github.io/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt</id><content type="html" xml:base="https://jturgasen.github.io/tech-takeaway-038-maintaining-consistency-in-a-massively-parallel-environment-by-dinah-mcnutt/">&lt;div class=&quot;uk-section uk-section-large&quot;&gt;
         &lt;div class=&quot;uk-container uk-container-xsmall uk-position-relative&quot;&gt;
 
 
@@ -320,7 +237,76 @@
   &lt;li&gt;&lt;strong&gt;File groups&lt;/strong&gt; are groups of files within a MPM (eg: a file group for files for an app + a config file)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The title pulled me in and I didn’t expect a talk about packaging.  2 meh talks in a row, here’s to hoping the next one is better!&lt;/p&gt;</content><author><name>josh</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/google.jpg" /><media:content medium="image" url="https://jturgasen.github.io/google.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tech Takeaway 036 Growing from the Few to the Many Scaling The Operations Organization at Facebook by Pedro Canahuati</title><link href="https://jturgasen.github.io/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati/" rel="alternate" type="text/html" title="Tech Takeaway 036 Growing from the Few to the Many Scaling The Operations Organization at Facebook by Pedro Canahuati" /><published>2016-02-21T00:00:00-07:00</published><updated>2016-02-21T00:00:00-07:00</updated><id>https://jturgasen.github.io/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati</id><content type="html" xml:base="https://jturgasen.github.io/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati/">&lt;div class=&quot;uk-section uk-section-large&quot;&gt;
+&lt;p&gt;The title pulled me in and I didn’t expect a talk about packaging.  2 meh talks in a row, here’s to hoping the next one is better!&lt;/p&gt;</content><author><name>josh</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/google.jpg" /><media:content medium="image" url="https://jturgasen.github.io/google.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn</title><link href="https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/" rel="alternate" type="text/html" title="Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn" /><published>2016-02-21T00:00:00-07:00</published><updated>2016-02-21T00:00:00-07:00</updated><id>https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn</id><content type="html" xml:base="https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/">&lt;div class=&quot;uk-section uk-section-large&quot;&gt;
+        &lt;div class=&quot;uk-container uk-container-xsmall uk-position-relative&quot;&gt;
+
+
+  &lt;div&gt;
+    
+    
+    &lt;div class=&quot;uk-article-content&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+      &lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=-mL3zT1iIKw&quot;&gt;A Day in the Life of a Netflix Engineer by Dave Hahn of Netflix at AWS re:Invent 2015&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Takeaways:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;At Netflix their ops team is responsible for…
+    &lt;ul&gt;
+      &lt;li&gt;Crisis management&lt;/li&gt;
+      &lt;li&gt;Availability reporting&lt;/li&gt;
+      &lt;li&gt;Reliability best practices&lt;/li&gt;
+      &lt;li&gt;AWS relationship&lt;/li&gt;
+      &lt;li&gt;Operations education&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The #1 goal of the team is to &lt;strong&gt;protect the customer experience&lt;/strong&gt; by designing for…
+    &lt;ul&gt;
+      &lt;li&gt;Graceful degredation&lt;/li&gt;
+      &lt;li&gt;Failover&lt;/li&gt;
+      &lt;li&gt;Failback&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Talks about the user experience and graceful failures like…
+    &lt;ul&gt;
+      &lt;li&gt;Show movie list if recommendations are broke&lt;/li&gt;
+      &lt;li&gt;Failover if a streaming endpoint fails&lt;/li&gt;
+      &lt;li&gt;Don’t show broke links in a page, use filler instead&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;They trade increased velocity of innovation for increase failures (or increased risk)&lt;/li&gt;
+  &lt;li&gt;Beware homegrown tools that make it easy to do the wrong thing (eg: no or little bounds checking)&lt;/li&gt;
+  &lt;li&gt;You can’t change things you can’t measure&lt;/li&gt;
+  &lt;li&gt;They use A/B testing&lt;/li&gt;
+  &lt;li&gt;Blah blah blah about how great they are….&lt;/li&gt;
+  &lt;li&gt;Being good at data center operations does not help them competitively as a company.  They’re entertainment, not an internet company&lt;/li&gt;
+  &lt;li&gt;Talks about their custom CDN devices&lt;/li&gt;
+  &lt;li&gt;SOA “composed of loosely coupled elements that have bounded contexts”&lt;/li&gt;
+  &lt;li&gt;They have an internal, self-documenting tool that enumerates API dependencies and associations&lt;/li&gt;
+  &lt;li&gt;Blah blah blah DevOps culture&lt;/li&gt;
+  &lt;li&gt;Each microservice team completely owns their service   (on-call, deploy it, pick tech for it, etc)&lt;/li&gt;
+  &lt;li&gt;Making devs be on-call is better than having ops people try to figure out software failures&lt;/li&gt;
+  &lt;li&gt;Include both devs and ops in incident reviews / post-mortems&lt;/li&gt;
+  &lt;li&gt;Mentions Eureka, their service discovery software&lt;/li&gt;
+  &lt;li&gt;They use the EC2 API so much that they get throttled.  To alleviate this, they cache AWS objects locally in some custom software&lt;/li&gt;
+  &lt;li&gt;Talks about Hystrix&lt;/li&gt;
+  &lt;li&gt;Talks about automating and abstracting infrastructure to make life easier for  the devs&lt;/li&gt;
+  &lt;li&gt;Talks about Spinnaker (their deployment tool)&lt;/li&gt;
+  &lt;li&gt;They collect metrics for “insights”.  Uses “Atlas” (TSDB), their own software&lt;/li&gt;
+  &lt;li&gt;Talks about using preditive metrics (deviations from the norm/prediction) instead of simple threshold metrics&lt;/li&gt;
+  &lt;li&gt;Blah blah blah plan for failure in the cloud&lt;/li&gt;
+  &lt;li&gt;The policy is that “a single failed instance should not affect a running service”&lt;/li&gt;
+  &lt;li&gt;They are big into stateless-ness (in case of failures)&lt;/li&gt;
+  &lt;li&gt;Use Cassandra for “high data spread and redundancy”&lt;/li&gt;
+  &lt;li&gt;Chaos Monkey runs hourly.  It has been 2 years since Chaos Monkey has actually broke the system&lt;/li&gt;
+  &lt;li&gt;They kick off Chaos Kong monthly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Not a great talk for me because I already understand most of the concepts and tools he spoke about and he didn’t dig too deep - but a good talk for newbies.&lt;/p&gt;</content><author><name>josh</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/netflix.jpg" /><media:content medium="image" url="https://jturgasen.github.io/netflix.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tech Takeaway 036 Growing from the Few to the Many Scaling The Operations Organization at Facebook by Pedro Canahuati</title><link href="https://jturgasen.github.io/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati/" rel="alternate" type="text/html" title="Tech Takeaway 036 Growing from the Few to the Many Scaling The Operations Organization at Facebook by Pedro Canahuati" /><published>2016-02-21T00:00:00-07:00</published><updated>2016-02-21T00:00:00-07:00</updated><id>https://jturgasen.github.io/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati</id><content type="html" xml:base="https://jturgasen.github.io/tech-takeaway-036-growing-from-the-few-to-the-many-scaling-the-operations-organization-at-facebook-by-pedro-canahuati/">&lt;div class=&quot;uk-section uk-section-large&quot;&gt;
         &lt;div class=&quot;uk-container uk-container-xsmall uk-position-relative&quot;&gt;
 
 
@@ -412,7 +398,7 @@
   &lt;li&gt;Commonize infrastructure&lt;/li&gt;
   &lt;li&gt;They built tools to migrate existing apps to the new common infra&lt;/li&gt;
   &lt;li&gt;Off the shelf HW is stale and vendors move slow - DIY it (OpenCompute, etc)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>josh</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/facebook.jpg" /><media:content medium="image" url="https://jturgasen.github.io/facebook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn</title><link href="https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/" rel="alternate" type="text/html" title="Tech Takeaway 037 A Day in the Life of a Netflix Engineer by Dave Hahn" /><published>2016-02-21T00:00:00-07:00</published><updated>2016-02-21T00:00:00-07:00</updated><id>https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn</id><content type="html" xml:base="https://jturgasen.github.io/tech-takeaway-037-a-day-in-the-life-of-a-netflix-engineer-by-dave-hahn/">&lt;div class=&quot;uk-section uk-section-large&quot;&gt;
+&lt;/ul&gt;</content><author><name>josh</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/facebook.jpg" /><media:content medium="image" url="https://jturgasen.github.io/facebook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tech Takeaway 034 Building a Billion User Load Balancer by Patrick Shuff</title><link href="https://jturgasen.github.io/tech-takeaway-034-building-a-billion-user-load-balancer-by-patrick-shuff/" rel="alternate" type="text/html" title="Tech Takeaway 034 Building a Billion User Load Balancer by Patrick Shuff" /><published>2016-02-21T00:00:00-07:00</published><updated>2016-02-21T00:00:00-07:00</updated><id>https://jturgasen.github.io/tech-takeaway-034-building-a-billion-user-load-balancer-by-patrick-shuff</id><content type="html" xml:base="https://jturgasen.github.io/tech-takeaway-034-building-a-billion-user-load-balancer-by-patrick-shuff/">&lt;div class=&quot;uk-section uk-section-large&quot;&gt;
         &lt;div class=&quot;uk-container uk-container-xsmall uk-position-relative&quot;&gt;
 
 
@@ -425,135 +411,53 @@
 &lt;/div&gt;
       &lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=-mL3zT1iIKw&quot;&gt;A Day in the Life of a Netflix Engineer by Dave Hahn of Netflix at AWS re:Invent 2015&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=MKgJeqF1DHw&quot;&gt;Building A Billion User Load Balancer by Patrick Shuff of Facebook at SCALE 13x in 2015&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Takeaways:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;At Netflix their ops team is responsible for…
+  &lt;li&gt;Requests that come into FB are broke into two categories
     &lt;ul&gt;
-      &lt;li&gt;Crisis management&lt;/li&gt;
-      &lt;li&gt;Availability reporting&lt;/li&gt;
-      &lt;li&gt;Reliability best practices&lt;/li&gt;
-      &lt;li&gt;AWS relationship&lt;/li&gt;
-      &lt;li&gt;Operations education&lt;/li&gt;
+      &lt;li&gt;Dynamic (newsfeeds, likes, etc)&lt;/li&gt;
+      &lt;li&gt;Static (video, image, js/css)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;The #1 goal of the team is to &lt;strong&gt;protect the customer experience&lt;/strong&gt; by designing for…
-    &lt;ul&gt;
-      &lt;li&gt;Graceful degredation&lt;/li&gt;
-      &lt;li&gt;Failover&lt;/li&gt;
-      &lt;li&gt;Failback&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Talks about the user experience and graceful failures like…
-    &lt;ul&gt;
-      &lt;li&gt;Show movie list if recommendations are broke&lt;/li&gt;
-      &lt;li&gt;Failover if a streaming endpoint fails&lt;/li&gt;
-      &lt;li&gt;Don’t show broke links in a page, use filler instead&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;They trade increased velocity of innovation for increase failures (or increased risk)&lt;/li&gt;
-  &lt;li&gt;Beware homegrown tools that make it easy to do the wrong thing (eg: no or little bounds checking)&lt;/li&gt;
-  &lt;li&gt;You can’t change things you can’t measure&lt;/li&gt;
-  &lt;li&gt;They use A/B testing&lt;/li&gt;
-  &lt;li&gt;Blah blah blah about how great they are….&lt;/li&gt;
-  &lt;li&gt;Being good at data center operations does not help them competitively as a company.  They’re entertainment, not an internet company&lt;/li&gt;
-  &lt;li&gt;Talks about their custom CDN devices&lt;/li&gt;
-  &lt;li&gt;SOA “composed of loosely coupled elements that have bounded contexts”&lt;/li&gt;
-  &lt;li&gt;They have an internal, self-documenting tool that enumerates API dependencies and associations&lt;/li&gt;
-  &lt;li&gt;Blah blah blah DevOps culture&lt;/li&gt;
-  &lt;li&gt;Each microservice team completely owns their service   (on-call, deploy it, pick tech for it, etc)&lt;/li&gt;
-  &lt;li&gt;Making devs be on-call is better than having ops people try to figure out software failures&lt;/li&gt;
-  &lt;li&gt;Include both devs and ops in incident reviews / post-mortems&lt;/li&gt;
-  &lt;li&gt;Mentions Eureka, their service discovery software&lt;/li&gt;
-  &lt;li&gt;They use the EC2 API so much that they get throttled.  To alleviate this, they cache AWS objects locally in some custom software&lt;/li&gt;
-  &lt;li&gt;Talks about Hystrix&lt;/li&gt;
-  &lt;li&gt;Talks about automating and abstracting infrastructure to make life easier for  the devs&lt;/li&gt;
-  &lt;li&gt;Talks about Spinnaker (their deployment tool)&lt;/li&gt;
-  &lt;li&gt;They collect metrics for “insights”.  Uses “Atlas” (TSDB), their own software&lt;/li&gt;
-  &lt;li&gt;Talks about using preditive metrics (deviations from the norm/prediction) instead of simple threshold metrics&lt;/li&gt;
-  &lt;li&gt;Blah blah blah plan for failure in the cloud&lt;/li&gt;
-  &lt;li&gt;The policy is that “a single failed instance should not affect a running service”&lt;/li&gt;
-  &lt;li&gt;They are big into stateless-ness (in case of failures)&lt;/li&gt;
-  &lt;li&gt;Use Cassandra for “high data spread and redundancy”&lt;/li&gt;
-  &lt;li&gt;Chaos Monkey runs hourly.  It has been 2 years since Chaos Monkey has actually broke the system&lt;/li&gt;
-  &lt;li&gt;They kick off Chaos Kong monthly&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Not a great talk for me because I already understand most of the concepts and tools he spoke about and he didn’t dig too deep - but a good talk for newbies.&lt;/p&gt;</content><author><name>josh</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/netflix.jpg" /><media:content medium="image" url="https://jturgasen.github.io/netflix.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tech Takeaway 035 How Uber Uses Your Phone as a Backup Data Center by Joshua Corbin</title><link href="https://jturgasen.github.io/tech-takeaway-035-how-uber-uses-your-phone-as-a-backup-data-center-by-joshua-corbin/" rel="alternate" type="text/html" title="Tech Takeaway 035 How Uber Uses Your Phone as a Backup Data Center by Joshua Corbin" /><published>2016-02-21T00:00:00-07:00</published><updated>2016-02-21T00:00:00-07:00</updated><id>https://jturgasen.github.io/tech-takeaway-035-how-uber-uses-your-phone-as-a-backup-data-center-by-joshua-corbin</id><content type="html" xml:base="https://jturgasen.github.io/tech-takeaway-035-how-uber-uses-your-phone-as-a-backup-data-center-by-joshua-corbin/">&lt;div class=&quot;uk-section uk-section-large&quot;&gt;
-        &lt;div class=&quot;uk-container uk-container-xsmall uk-position-relative&quot;&gt;
-
-
-  &lt;div&gt;
-    
-    
-    &lt;div class=&quot;uk-article-content&quot;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-
-&lt;/div&gt;
-      &lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=0EhTOKcwRok&quot;&gt;How Uber Uses Your Phone as a Backup Data Center by Joshua Corbin of Uber at Scale 2015&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Takeaways:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Talks about the general architecture
-    &lt;ul&gt;
-      &lt;li&gt;Clients’ app talks to DC&lt;/li&gt;
-      &lt;li&gt;Driver’s app  talks to DC&lt;/li&gt;
-      &lt;li&gt;Client request -&amp;gt; DC -&amp;gt; driver app&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;State change transtion&lt;/strong&gt; is the process of requesting a driver, the driver accepting, and so on&lt;/li&gt;
-  &lt;li&gt;They have to handle the trip data for the duration of the trip.  Can’t delete it before the driver drops the passanger off!&lt;/li&gt;
-  &lt;li&gt;Talks about how if a data center fails you lose your trip data because it’s not replicated to another DC&lt;/li&gt;
-  &lt;li&gt;They tried replicating trip data like normal (DC to DC replication)
-    &lt;ul&gt;
-      &lt;li&gt;But subject to lag, gets hard with &amp;gt;2 DCs, requires a lot of bandwidth, etc etc&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Rather than save trips to a data center, they save it to the driver phone&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;If a DC fails, the driver’s app reconnects to a different DC and re-uploads the data - the phone is the source of truth&lt;/li&gt;
-  &lt;li&gt;Assume the driver’s phones are weak - lock down the data yourself and/or be picky about what data you send to the driver’s phone&lt;/li&gt;
-  &lt;li&gt;KISS for the replication protocol&lt;/li&gt;
-  &lt;li&gt;Minimize bandwidth used by the mobile network&lt;/li&gt;
-  &lt;li&gt;Their replication protocol is a simple K/V format&lt;/li&gt;
-  &lt;li&gt;For this system they decided on…
-    &lt;ul&gt;
-      &lt;li&gt;Ensure system is non-blocking but eventually consistent.  Don’t block business operations&lt;/li&gt;
-      &lt;li&gt;DC failover/failback without worrying about stale data&lt;/li&gt;
-      &lt;li&gt;4x 9s reliability&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Replies to the client are async so they’re non-blocking (eg: no need to wait for true success re: replication service)&lt;/li&gt;
-  &lt;li&gt;How do they deal with state and moving between data centers?
-    &lt;ul&gt;
-      &lt;li&gt;Tomestones for completed trips are kept on the phone, phone is the source of truth&lt;/li&gt;
-      &lt;li&gt;Tomestones are great because they are just a few bytes vs lots of data for the full trip&lt;/li&gt;
-      &lt;li&gt;They use &lt;strong&gt;vector clocks&lt;/strong&gt; to compare data on phone vs data on server and then sync if different&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;They tested data center failover and iterated based on what they learned&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Thundering herd problem&lt;/strong&gt; is when you fail DCs and the new DC gets a big rush of traffic, has cold caches, and gets crushed&lt;/li&gt;
-  &lt;li&gt;Key concepts to get 4x 9s
-    &lt;ul&gt;
-      &lt;li&gt;All mutations that are done by the dispatching service are actually stored on the phone&lt;/li&gt;
-      &lt;li&gt;Data that’s stored on the phone can be used for restoration&lt;/li&gt;
-      &lt;li&gt;Ensure the backup data center can handle the load&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;They gather lots of metrics (driver phones, how well the mutations are stored, etc)&lt;/li&gt;
-  &lt;li&gt;They then compare the data they gathered to the data that their service expects it to have
-    &lt;ul&gt;
-      &lt;li&gt;Is it in sync or out of sync?&lt;/li&gt;
-      &lt;li&gt;How out of sync?  Why?  etc etc&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;They can break down metrics by app version&lt;/li&gt;
-  &lt;li&gt;Metrics are also sent to the backup data center.  They are then used for a &lt;strong&gt;shadow restoration&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;After the shadow restoration at the backup DC, they compare the trip info that was restored to a snapshot of trip data from the primary DC&lt;/li&gt;
-  &lt;li&gt;Are they the same?  Are they different?  Exactly what is different?&lt;/li&gt;
-  &lt;li&gt;This analysis allows them to refine their replication so the RPO is as small as possible&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>josh</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/uber.jpg" /><media:content medium="image" url="https://jturgasen.github.io/uber.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+  &lt;li&gt;Lots of crap that nobody cares about….&lt;/li&gt;
+  &lt;li&gt;Overview of TCP/IP….&lt;/li&gt;
+  &lt;li&gt;Their front-end L7 load-balancer (“proxygen”) terminates SSL and TCP and then reverse proxies that back to web server - standard stuff&lt;/li&gt;
+  &lt;li&gt;They have a L4 load balancer sit in front of their L7 load balancer&lt;/li&gt;
+  &lt;li&gt;Their L4 is called “shiv” and is based on the “ipvs” (IP virtual server) module&lt;/li&gt;
+  &lt;li&gt;The L4 makes a hash for each connection and the hash is used to “sticky” the connection from the L4 to a consistent L7 (vs bouncing between L7s)&lt;/li&gt;
+  &lt;li&gt;But wait, they have ANOTHER LB in front of the L4&lt;/li&gt;
+  &lt;li&gt;Their final LB is the TOR router (L3)    TOR/L3 lb -&amp;gt; L4 lb -&amp;gt; L7 lb -&amp;gt; http servers&lt;/li&gt;
+  &lt;li&gt;ECMP = Equal Cost Multipathing   the TOR routers use this&lt;/li&gt;
+  &lt;li&gt;FB’s typical cluster is 10s of shivs, 100s of L7 behind that, and thousands of servers behind the L7s&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Everything in prod is bare metal, FB does not use virtualization&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;L4s get ECMPed from the TOR&lt;/li&gt;
+  &lt;li&gt;The L4s peer with the TOR via the Python OSS &lt;strong&gt;exabgp&lt;/strong&gt; daemon&lt;/li&gt;
+  &lt;li&gt;They &lt;strong&gt;do&lt;/strong&gt; keep state between the TOR and L4 so that clients consistently hit the same L4 + L7&lt;/li&gt;
+  &lt;li&gt;As long as they L4 servers have a consistent view of the L7 servers, clients will get that consistent hash + sticky and won’t have to re-create the TCP connection&lt;/li&gt;
+  &lt;li&gt;Keeping the TCP connection open is feature of “ipvs”&lt;/li&gt;
+  &lt;li&gt;For static requests, &lt;strong&gt;direct server return&lt;/strong&gt; is important&lt;/li&gt;
+  &lt;li&gt;Egress packets bypass the L4 and go directly to the client&lt;/li&gt;
+  &lt;li&gt;ipvs/L7 does IP in IP encapsulation for packets sent to the L4. they are sent via a tunnel interface (not the normal eth0)&lt;/li&gt;
+  &lt;li&gt;They used to re-write MAC addresses instead of doing IP in IP, but that’s because their TOR used to be L2 but now it’s L3&lt;/li&gt;
+  &lt;li&gt;Talks about POPs and edge locations, reducing how far a packet has to travel…&lt;/li&gt;
+  &lt;li&gt;HTTPS Soeul to Oregon it takes about 1.1sec to actually get data from FB….slowwwww&lt;/li&gt;
+  &lt;li&gt;So they put a POP in Tokyo.  Now Korea goes there&lt;/li&gt;
+  &lt;li&gt;Now it takes about 330ms&lt;/li&gt;
+  &lt;li&gt;They have pre-established connections between edge and FB&lt;/li&gt;
+  &lt;li&gt;They did a lot of TCP tuning at their POPs - no need to tune clients when things terminate at the POP and the real action is POP &amp;lt;—&amp;gt; FB&lt;/li&gt;
+  &lt;li&gt;TOR and L4 and L7 &lt;strong&gt;live in the POP and in the data center&lt;/strong&gt;, servers are in the data center&lt;/li&gt;
+  &lt;li&gt;FB has a DNS LB called &lt;strong&gt;Cartographer&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Cartographer ingests information (capacity, latency, routing, health), processes it, and makes a “dns map” that is then used to create real, optimial, updated DNS entries&lt;/li&gt;
+  &lt;li&gt;They use &lt;strong&gt;tinyDNS&lt;/strong&gt;.  The updates from Cartographer come every few minutes&lt;/li&gt;
+  &lt;li&gt;They do DNS LB not based on geographic closeness, but by network/logical closeness&lt;/li&gt;
+  &lt;li&gt;For static resources, 1 out of every X requests (X is a big number) for static content will be purposely sent to a non-optimal POP&lt;/li&gt;
+  &lt;li&gt;They then trace this request to see the path and time it takes.  This is how they map “closeness”&lt;/li&gt;
+  &lt;li&gt;Because Cartographer is dynamic, it allows them to direct traffic to each POP so that it’s highly (but not over) utilized&lt;/li&gt;
+  &lt;li&gt;They use a 5 min TTL for facebook.com .  POP dies = 5 min outage from customer’s perspective&lt;/li&gt;
+  &lt;li&gt;Says people (clients) don’t respect TTLs, beware&lt;/li&gt;
+  &lt;li&gt;By using open resolvers (aka Google’s DNS) you might not get the optimal POP because FB sees the request as coming from Google, not from you&lt;/li&gt;
+  &lt;li&gt;Their HHVM dynamically generates links within the pages its generating.  These links point to content on an optimal POP to optimize performance&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>josh</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://jturgasen.github.io/facebook.jpg" /><media:content medium="image" url="https://jturgasen.github.io/facebook.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
